@@ -2,7 +2,6 @@
 <manifest
     android:compileSdkVersion="35"
     android:compileSdkVersionCodename="15"
-    package="ca.dnamobile.javalauncher"
     platformBuildVersionCode="35"
     platformBuildVersionName="15"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -113,7 +112,6 @@
         android:icon="@mipmap/ic_launcher_droidbridge"
         android:allowBackup="true"
         android:supportsRtl="true"
-        android:extractNativeLibs="true"
         android:roundIcon="@mipmap/ic_launcher_droidbridge_round"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:allowNativeHeapPointerTagging="false">
