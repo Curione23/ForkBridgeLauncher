@@ -33,6 +33,11 @@
     <color name="launcher_tertiary">#ff695e2f</color>
     <color name="launcher_tertiary_container">#fff2e2a7</color>
     
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
 </resources>
