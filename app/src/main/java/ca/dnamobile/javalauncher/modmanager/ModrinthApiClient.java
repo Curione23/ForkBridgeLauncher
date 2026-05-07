@@ -36,7 +36,7 @@ public final class ModrinthApiClient {
         StringBuilder sbAppend = new StringBuilder(BASE_URL).append("/search?");
         appendQuery(sbAppend, "query", str);
         appendQuery(sbAppend, "limit", String.valueOf(Math.max(1, Math.min(100, i))));
-        appendQuery(sbAppend, TypedValues.CycleType.S_WAVE_OFFSET, String.valueOf(Math.max(0, i2)));
+        appendQuery(sbAppend, "offset", String.valueOf(Math.max(0, i2)));
         appendQuery(sbAppend, "index", str4);
         appendQuery(sbAppend, "facets", buildSearchFacets(modManagerContentType, str2, str3).toString());
         JSONObject jSONObject = new JSONObject(get(sbAppend.toString()));
@@ -47,7 +47,7 @@ public final class ModrinthApiClient {
                 arrayList.add(parseProject(jSONArrayOptJSONArray.getJSONObject(i3), false));
             }
         }
-        return new SearchResult(arrayList, jSONObject.optInt(TypedValues.CycleType.S_WAVE_OFFSET, i2), jSONObject.optInt("limit", i), jSONObject.optInt("total_hits", arrayList.size()));
+        return new SearchResult(arrayList, jSONObject.optInt("offset", i2), jSONObject.optInt("limit", i), jSONObject.optInt("total_hits", arrayList.size()));
     }
 
     public ModrinthProject getProject(String str) throws Exception {

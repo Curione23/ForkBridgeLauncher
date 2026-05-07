@@ -237,7 +237,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.buttonBackFromInstanceDetails.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda92
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$onCreate$0(view);
+                InstanceDetailsActivity.this.lambda$onCreate$0(view);
             }
         });
         if (!readExtras()) {
@@ -311,7 +311,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda87
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showFullscreenSafeDialog$1(dialogInterface);
+                InstanceDetailsActivity.this.lambda$showFullscreenSafeDialog$1(dialogInterface);
             }
         });
         alertDialog.show();
@@ -319,7 +319,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.mainHandler.postDelayed(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda88
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showFullscreenSafeDialog$2(alertDialog);
+                InstanceDetailsActivity.this.lambda$showFullscreenSafeDialog$2(alertDialog);
             }
         }, 120L);
     }
@@ -390,7 +390,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         return OfflineAccessBlocker.requireMicrosoftLoginHistoryBeforeLaunch(this, this.accountStore, new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda96
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$requireMicrosoftLoginHistoryBeforeLaunch$3(runnable);
+                InstanceDetailsActivity.this.lambda$requireMicrosoftLoginHistoryBeforeLaunch$3(runnable);
             }
         });
     }
@@ -470,37 +470,37 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.buttonPlay.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda45
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupActions$4(view);
+                InstanceDetailsActivity.this.lambda$setupActions$4(view);
             }
         });
         this.binding.buttonInstanceSettings.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda46
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.showInstanceSettingsMenu(view);
+                InstanceDetailsActivity.this.showInstanceSettingsMenu(view);
             }
         });
         this.binding.buttonBrowseContent.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda47
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupActions$5(view);
+                InstanceDetailsActivity.this.lambda$setupActions$5(view);
             }
         });
         this.binding.buttonAddMods.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda48
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupActions$6(view);
+                InstanceDetailsActivity.this.lambda$setupActions$6(view);
             }
         });
         this.binding.buttonCheckContentUpdates.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda49
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupActions$7(view);
+                InstanceDetailsActivity.this.lambda$setupActions$7(view);
             }
         });
         this.binding.buttonUpdateAllContent.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda51
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupActions$8(view);
+                InstanceDetailsActivity.this.lambda$setupActions$8(view);
             }
         });
     }
@@ -547,7 +547,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.editTextContentSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda52
             @Override // android.widget.TextView.OnEditorActionListener
             public final boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                return this.f$0.lambda$setupContentSearch$9(textView, i, keyEvent);
+                return InstanceDetailsActivity.this.lambda$setupContentSearch$9(textView, i, keyEvent);
             }
         });
     }
@@ -588,7 +588,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.recyclerResourceItems.setOnTouchListener(new View.OnTouchListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda32
             @Override // android.view.View.OnTouchListener
             public final boolean onTouch(View view, MotionEvent motionEvent) {
-                return this.f$0.lambda$setupContentTabs$10(view, motionEvent);
+                return InstanceDetailsActivity.this.lambda$setupContentTabs$10(view, motionEvent);
             }
         });
         constrainResourceRecyclerHeightIfNeeded();
@@ -676,7 +676,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda12
             @Override // android.widget.PopupWindow.OnDismissListener
             public final void onDismiss() {
-                this.f$0.enableFullscreen();
+                InstanceDetailsActivity.this.enableFullscreen();
             }
         });
         addInstanceSettingsMenuRow(linearLayout, R.string.instance_settings_view_folder, popupWindow, 1);
@@ -734,7 +734,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda34
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$addInstanceSettingsMenuRow$11(popupWindow, i, view);
+                InstanceDetailsActivity.this.lambda$addInstanceSettingsMenuRow$11(popupWindow, i, view);
             }
         });
         linearLayout.addView(textView, new LinearLayout.LayoutParams(-1, dp(48)));
@@ -818,19 +818,19 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         addExportPlatformRow(linearLayout2, "Modrinth", ".mrpack export · best for Modrinth publishing", new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda9
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showExportModpackPlatformDialog$12(alertDialogCreate);
+                InstanceDetailsActivity.this.lambda$showExportModpackPlatformDialog$12(alertDialogCreate);
             }
         });
         addExportPlatformRow(linearLayout2, "CurseForge", ".zip export · best for CurseForge publishing", new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda10
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showExportModpackPlatformDialog$13(alertDialogCreate);
+                InstanceDetailsActivity.this.lambda$showExportModpackPlatformDialog$13(alertDialogCreate);
             }
         });
         addExportPlatformRow(linearLayout2, "MultiMC / Prism", ".zip instance export · bundles .minecraft files directly", new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda11
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showExportModpackPlatformDialog$14(alertDialogCreate);
+                InstanceDetailsActivity.this.lambda$showExportModpackPlatformDialog$14(alertDialogCreate);
             }
         });
         showFullscreenSafeDialog(alertDialogCreate);
@@ -920,7 +920,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda84
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$exportModpackToUri$16(platform, uri);
+                InstanceDetailsActivity.this.lambda$exportModpackToUri$16(platform, uri);
             }
         }, "Export Modpack").start();
     }
@@ -945,7 +945,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$4$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -960,7 +960,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$4$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -970,7 +970,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$4$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$2(str);
+                    InstanceDetailsActivity.this.lambda$onComplete$2(str);
                 }
             });
         }
@@ -986,7 +986,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$4$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$3(th);
+                    InstanceDetailsActivity.this.lambda$onError$3(th);
                 }
             });
         }
@@ -1016,7 +1016,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda8
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$importModpackFromUri$17(uri);
+                InstanceDetailsActivity.this.lambda$importModpackFromUri$17(uri);
             }
         }, "Import Modpack").start();
     }
@@ -1041,7 +1041,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$5$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -1056,7 +1056,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$5$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -1066,7 +1066,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$5$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$2(str);
+                    InstanceDetailsActivity.this.lambda$onComplete$2(str);
                 }
             });
         }
@@ -1083,7 +1083,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$5$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$3(th);
+                    InstanceDetailsActivity.this.lambda$onError$3(th);
                 }
             });
         }
@@ -1136,7 +1136,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda100
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showUpdateVersionDialog$20();
+                InstanceDetailsActivity.this.lambda$showUpdateVersionDialog$20();
             }
         }, "Load Minecraft Releases").start();
     }
@@ -1148,7 +1148,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showUpdateVersionDialog$18(arrayListFetchMinecraftReleases);
+                    InstanceDetailsActivity.this.lambda$showUpdateVersionDialog$18(arrayListFetchMinecraftReleases);
                 }
             });
         } catch (Throwable th) {
@@ -1156,7 +1156,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showUpdateVersionDialog$19(th);
+                    InstanceDetailsActivity.this.lambda$showUpdateVersionDialog$19(th);
                 }
             });
         }
@@ -1191,7 +1191,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         showVersionSelectionDialog("Update Version", "Pick the Minecraft release to update this instance to. Snapshots are hidden.", strArr, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda35
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$showMinecraftReleaseSelector$21(arrayList, dialogInterface, i2);
+                InstanceDetailsActivity.this.lambda$showMinecraftReleaseSelector$21(arrayList, dialogInterface, i2);
             }
         });
     }
@@ -1247,7 +1247,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle("Update Version").setMessage(str2).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton("Update", new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda0
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$confirmUpdateVersion$23(str, dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$confirmUpdateVersion$23(str, dialogInterface, i);
             }
         }).show();
     }
@@ -1267,7 +1267,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda38
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$runVersionUpdate$26(str);
+                InstanceDetailsActivity.this.lambda$runVersionUpdate$26(str);
             }
         }, "Update Instance Version").start();
     }
@@ -1279,7 +1279,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda70
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runVersionUpdate$24(updateResultUpdateInstanceVersion);
+                    InstanceDetailsActivity.this.lambda$runVersionUpdate$24(updateResultUpdateInstanceVersion);
                 }
             });
         } catch (Throwable th) {
@@ -1287,7 +1287,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda71
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runVersionUpdate$25(th);
+                    InstanceDetailsActivity.this.lambda$runVersionUpdate$25(th);
                 }
             });
         }
@@ -1308,7 +1308,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$6$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -1323,7 +1323,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$6$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -1352,7 +1352,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda98
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showUpdateLoaderDialog$29(supportedLoaderKind, gameVersionIdForContent);
+                InstanceDetailsActivity.this.lambda$showUpdateLoaderDialog$29(supportedLoaderKind, gameVersionIdForContent);
             }
         }, "Load Loader Versions").start();
     }
@@ -1364,7 +1364,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda81
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showUpdateLoaderDialog$27(loaderKind, arrayListFetchLoaderVersions);
+                    InstanceDetailsActivity.this.lambda$showUpdateLoaderDialog$27(loaderKind, arrayListFetchLoaderVersions);
                 }
             });
         } catch (Throwable th) {
@@ -1372,7 +1372,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda82
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showUpdateLoaderDialog$28(th);
+                    InstanceDetailsActivity.this.lambda$showUpdateLoaderDialog$28(th);
                 }
             });
         }
@@ -1409,7 +1409,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         showVersionSelectionDialog("Update Loader", "Pick the " + loaderKind.displayName + " loader version to install for Minecraft " + getGameVersionIdForContent() + "." + str, strArr, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda99
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$showLoaderVersionSelector$30(arrayList, strResolveCurrentLoaderVersion, dialogInterface, i2);
+                InstanceDetailsActivity.this.lambda$showLoaderVersionSelector$30(arrayList, strResolveCurrentLoaderVersion, dialogInterface, i2);
             }
         });
     }
@@ -1428,7 +1428,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             negativeButton.setPositiveButton("Update", new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda102
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$confirmUpdateLoader$31(loaderVersion, dialogInterface, i);
+                    InstanceDetailsActivity.this.lambda$confirmUpdateLoader$31(loaderVersion, dialogInterface, i);
                 }
             });
         }
@@ -1450,7 +1450,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda50
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$runLoaderUpdate$34(loaderVersion);
+                InstanceDetailsActivity.this.lambda$runLoaderUpdate$34(loaderVersion);
             }
         }, "Update Instance Loader").start();
     }
@@ -1462,7 +1462,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda94
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runLoaderUpdate$32(updateResultUpdateInstanceLoader);
+                    InstanceDetailsActivity.this.lambda$runLoaderUpdate$32(updateResultUpdateInstanceLoader);
                 }
             });
         } catch (Throwable th) {
@@ -1470,7 +1470,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda105
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runLoaderUpdate$33(th);
+                    InstanceDetailsActivity.this.lambda$runLoaderUpdate$33(th);
                 }
             });
         }
@@ -1491,7 +1491,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$7$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -1506,7 +1506,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$7$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -1570,7 +1570,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle("Repair Instance").setMessage(sb.toString()).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton("Repair", new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda101
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showRepairInstanceDialog$35(dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showRepairInstanceDialog$35(dialogInterface, i);
             }
         }).show();
     }
@@ -1591,7 +1591,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda103
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$runRepairInstance$40(gameVersionIdForContent);
+                InstanceDetailsActivity.this.lambda$runRepairInstance$40(gameVersionIdForContent);
             }
         }, "Repair Instance").start();
     }
@@ -1607,13 +1607,13 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             MinecraftVersionInstaller.installVanillaVersion(this, minecraftVersionResolveRepairManifestVersion, new MinecraftVersionInstaller.InstallProgressListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda42
                 @Override // ca.dnamobile.javalauncher.ui.version.MinecraftVersionInstaller.InstallProgressListener
                 public final void onProgress(int i, String str2) {
-                    this.f$0.lambda$runRepairInstance$37(i, str2);
+                    InstanceDetailsActivity.this.lambda$runRepairInstance$37(i, str2);
                 }
             });
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda43
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runRepairInstance$38(str);
+                    InstanceDetailsActivity.this.lambda$runRepairInstance$38(str);
                 }
             });
         } catch (Throwable th) {
@@ -1621,7 +1621,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda44
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$runRepairInstance$39(th);
+                    InstanceDetailsActivity.this.lambda$runRepairInstance$39(th);
                 }
             });
         }
@@ -1632,7 +1632,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda58
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$runRepairInstance$36(i, str);
+                InstanceDetailsActivity.this.lambda$runRepairInstance$36(i, str);
             }
         });
     }
@@ -1677,7 +1677,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         if (requireMicrosoftLoginHistoryBeforeLaunch(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda85
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$launchInstance$41(str);
+                InstanceDetailsActivity.this.lambda$launchInstance$41(str);
             }
         })) {
             return;
@@ -1705,17 +1705,17 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.renderer_plugin_storage_title).setMessage(getString(R.string.renderer_plugin_storage_message, new Object[]{rendererInterface.getRendererName(), MobileGluesConfigHelper.getConfigFile().getAbsolutePath()})).setNegativeButton(R.string.renderer_plugin_continue_anyway, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda23
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showRendererPluginStorageDialog$42(str, dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showRendererPluginStorageDialog$42(str, dialogInterface, i);
             }
         }).setNeutralButton(R.string.renderer_plugin_open_settings, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda24
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showRendererPluginStorageDialog$43(rendererInterface, dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showRendererPluginStorageDialog$43(rendererInterface, dialogInterface, i);
             }
         }).setPositiveButton(R.string.button_grant_renderer_storage_access, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda25
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showRendererPluginStorageDialog$44(dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showRendererPluginStorageDialog$44(dialogInterface, i);
             }
         }).show();
     }
@@ -1849,7 +1849,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.instance_folder_open_failed_title).setMessage(getString(R.string.instance_folder_open_failed_message, new Object[]{absolutePath})).setNegativeButton(android.R.string.ok, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.instance_folder_copy_path, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda78
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showFolderPathFallback$45(absolutePath, dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showFolderPathFallback$45(absolutePath, dialogInterface, i);
             }
         }).show();
     }
@@ -1885,7 +1885,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda86
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showEditInstanceNameDialog$47(alertDialogCreate, editText, dialogInterface);
+                InstanceDetailsActivity.this.lambda$showEditInstanceNameDialog$47(alertDialogCreate, editText, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -1896,7 +1896,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda20
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showEditInstanceNameDialog$46(editText, alertDialog, view);
+                InstanceDetailsActivity.this.lambda$showEditInstanceNameDialog$46(editText, alertDialog, view);
             }
         });
     }
@@ -1922,7 +1922,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda33
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$renameInstance$50(file, str, alertDialog);
+                    InstanceDetailsActivity.this.lambda$renameInstance$50(file, str, alertDialog);
                 }
             }, "Rename Instance").start();
         }
@@ -1936,7 +1936,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$renameInstance$48(launcherInstanceRenameInstance, alertDialog, str2);
+                    InstanceDetailsActivity.this.lambda$renameInstance$48(launcherInstanceRenameInstance, alertDialog, str2);
                 }
             });
         } catch (Throwable th) {
@@ -1944,7 +1944,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda4
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$renameInstance$49(th);
+                    InstanceDetailsActivity.this.lambda$renameInstance$49(th);
                 }
             });
         }
@@ -2033,7 +2033,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda6
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$savePickedInstanceIcon$53(file, uri);
+                    InstanceDetailsActivity.this.lambda$savePickedInstanceIcon$53(file, uri);
                 }
             }, "Update Instance Icon").start();
         }
@@ -2046,7 +2046,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda66
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$savePickedInstanceIcon$51(launcherInstanceUpdateInstanceIcon);
+                    InstanceDetailsActivity.this.lambda$savePickedInstanceIcon$51(launcherInstanceUpdateInstanceIcon);
                 }
             });
         } catch (Throwable th) {
@@ -2054,7 +2054,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda67
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$savePickedInstanceIcon$52(th);
+                    InstanceDetailsActivity.this.lambda$savePickedInstanceIcon$52(th);
                 }
             });
         }
@@ -2144,7 +2144,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(getString(R.string.delete_instance_title, new Object[]{this.instanceName})).setMessage(getString(i, new Object[]{this.instanceName, absolutePath})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_delete_forever, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda104
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$showDeleteInstanceDialog$54(dialogInterface, i2);
+                InstanceDetailsActivity.this.lambda$showDeleteInstanceDialog$54(dialogInterface, i2);
             }
         }).show();
     }
@@ -2159,7 +2159,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda77
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$deleteInstance$57();
+                InstanceDetailsActivity.this.lambda$deleteInstance$57();
             }
         }, "Delete Instance From Details").start();
     }
@@ -2172,7 +2172,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda15
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteInstance$55();
+                    InstanceDetailsActivity.this.lambda$deleteInstance$55();
                 }
             });
         } catch (Throwable th) {
@@ -2180,7 +2180,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda16
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteInstance$56(th);
+                    InstanceDetailsActivity.this.lambda$deleteInstance$56(th);
                 }
             });
         }
@@ -2250,7 +2250,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.contentRefreshExecutor.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda79
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshContentList$64(modManagerContentType, directoryForCategory, resourceCategory, i);
+                InstanceDetailsActivity.this.lambda$refreshContentList$64(modManagerContentType, directoryForCategory, resourceCategory, i);
             }
         });
     }
@@ -2270,7 +2270,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             if ((file.exists() || file.mkdirs()) && (fileArrListFiles = file.listFiles(new FileFilter() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda26
                 @Override // java.io.FileFilter
                 public final boolean accept(File file2) {
-                    return this.f$0.lambda$refreshContentList$58(resourceCategory, file2);
+                    return InstanceDetailsActivity.this.lambda$refreshContentList$58(resourceCategory, file2);
                 }
             })) != null) {
                 ArrayList<File> arrayList2 = new ArrayList();
@@ -2284,7 +2284,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 }).thenComparing(new Function() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda29
                     @Override // java.util.function.Function
                     public final Object apply(Object obj) {
-                        return this.f$0.lambda$refreshContentList$60(resourceCategory, (File) obj);
+                        return InstanceDetailsActivity.this.lambda$refreshContentList$60(resourceCategory, (File) obj);
                     }
                 }));
                 for (File file2 : arrayList2) {
@@ -2297,7 +2297,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda30
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshContentList$63(i, resourceCategory, arrayList, file);
+                InstanceDetailsActivity.this.lambda$refreshContentList$63(i, resourceCategory, arrayList, file);
             }
         });
     }
@@ -2330,7 +2330,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.recyclerResourceItems.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda68
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshContentList$62(i, resourceCategory);
+                InstanceDetailsActivity.this.lambda$refreshContentList$62(i, resourceCategory);
             }
         });
     }
@@ -2347,7 +2347,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.binding.recyclerResourceItems.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda7
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshContentList$61();
+                InstanceDetailsActivity.this.lambda$refreshContentList$61();
             }
         });
     }
@@ -2363,7 +2363,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda18
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showContentLoadingSoon$65(str, str2);
+                InstanceDetailsActivity.this.lambda$showContentLoadingSoon$65(str, str2);
             }
         };
         this.pendingContentLoadingRunnable = runnable;
@@ -2611,7 +2611,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda17
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$requestMetadataSearchFilter$66();
+                InstanceDetailsActivity.this.lambda$requestMetadataSearchFilter$66();
             }
         };
         this.pendingMetadataSearchFilterRunnable = runnable;
@@ -2735,7 +2735,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(getString(R.string.instance_content_delete_title, new Object[]{instanceContentItemResolveContentItemForAction.title})).setMessage(getString(R.string.instance_content_delete_message, new Object[]{instanceContentItemResolveContentItemForAction.file.getAbsolutePath()})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_delete_forever, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda97
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showDeleteContentItemDialog$67(instanceContentItemResolveContentItemForAction, dialogInterface, i);
+                InstanceDetailsActivity.this.lambda$showDeleteContentItemDialog$67(instanceContentItemResolveContentItemForAction, dialogInterface, i);
             }
         }).show();
     }
@@ -2750,7 +2750,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda80
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$deleteContentItem$70(instanceContentItemResolveContentItemForAction);
+                InstanceDetailsActivity.this.lambda$deleteContentItem$70(instanceContentItemResolveContentItemForAction);
             }
         }, "Delete Instance Content").start();
     }
@@ -2767,7 +2767,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda36
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteContentItem$68(instanceContentItem);
+                    InstanceDetailsActivity.this.lambda$deleteContentItem$68(instanceContentItem);
                 }
             });
         } catch (Throwable th) {
@@ -2775,7 +2775,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda37
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteContentItem$69(th, instanceContentItem);
+                    InstanceDetailsActivity.this.lambda$deleteContentItem$69(th, instanceContentItem);
                 }
             });
         }
@@ -2832,7 +2832,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.contentOperationExecutor.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda73
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$setContentItemEnabled$72(file2, file, modManagerContentType, strSafeCanonicalPath, resourceCategory, z, strStripDisabledSuffix);
+                InstanceDetailsActivity.this.lambda$setContentItemEnabled$72(file2, file, modManagerContentType, strSafeCanonicalPath, resourceCategory, z, strStripDisabledSuffix);
             }
         });
     }
@@ -2869,7 +2869,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda5
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$setContentItemEnabled$71(z3, th3, str, file2, resourceCategory, z, str2, file);
+                InstanceDetailsActivity.this.lambda$setContentItemEnabled$71(z3, th3, str, file2, resourceCategory, z, str2, file);
             }
         });
         Logging.e(TAG, "Unable to toggle content item " + file.getAbsolutePath(), th);
@@ -2878,7 +2878,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda5
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$setContentItemEnabled$71(z32, th32, str, file2, resourceCategory, z, str2, file);
+                InstanceDetailsActivity.this.lambda$setContentItemEnabled$71(z32, th32, str, file2, resourceCategory, z, str2, file);
             }
         });
     }
@@ -3052,7 +3052,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda74
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$checkUpdatesForSelectedCategory$79(modManagerContentType);
+                    InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$79(modManagerContentType);
                 }
             }, "Check Instance Content Updates").start();
         }
@@ -3073,7 +3073,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$8$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -3088,7 +3088,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$8$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -3104,7 +3104,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda59
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$checkUpdatesForSelectedCategory$73();
+                        InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$73();
                     }
                 });
                 final int iMax = Math.max(1, modpackInstalledEntriesForType.size());
@@ -3116,7 +3116,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda60
                             @Override // java.lang.Runnable
                             public final void run() {
-                                this.f$0.lambda$checkUpdatesForSelectedCategory$74(i2, iMax);
+                                InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$74(i2, iMax);
                             }
                         });
                     } else {
@@ -3126,7 +3126,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda62
                                 @Override // java.lang.Runnable
                                 public final void run() {
-                                    this.f$0.lambda$checkUpdatesForSelectedCategory$75(i3, iMax);
+                                    InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$75(i3, iMax);
                                 }
                             });
                         } else {
@@ -3142,7 +3142,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda63
                                 @Override // java.lang.Runnable
                                 public final void run() {
-                                    this.f$0.lambda$checkUpdatesForSelectedCategory$76(i4, iMax);
+                                    InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$76(i4, iMax);
                                 }
                             });
                         }
@@ -3159,7 +3159,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda64
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$checkUpdatesForSelectedCategory$77(arrayListCheckUpdates);
+                    InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$77(arrayListCheckUpdates);
                 }
             });
         } catch (Throwable th2) {
@@ -3167,7 +3167,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda65
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$checkUpdatesForSelectedCategory$78(th2);
+                    InstanceDetailsActivity.this.lambda$checkUpdatesForSelectedCategory$78(th2);
                 }
             });
         }
@@ -3221,7 +3221,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda21
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$checkSingleContentUpdate$82(modManagerContentType, installedEntryForItem, strBuildUpdateKey);
+                InstanceDetailsActivity.this.lambda$checkSingleContentUpdate$82(modManagerContentType, installedEntryForItem, strBuildUpdateKey);
             }
         }, "Check Content Item Update").start();
     }
@@ -3233,7 +3233,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda28
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$checkSingleContentUpdate$80(updateCandidateCheckUpdateForEntry, str);
+                    InstanceDetailsActivity.this.lambda$checkSingleContentUpdate$80(updateCandidateCheckUpdateForEntry, str);
                 }
             });
         } catch (Throwable th) {
@@ -3241,7 +3241,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda39
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$checkSingleContentUpdate$81(str, th);
+                    InstanceDetailsActivity.this.lambda$checkSingleContentUpdate$81(str, th);
                 }
             });
         }
@@ -3316,7 +3316,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle(R.string.instance_content_update_all_title).setMessage(getString(R.string.instance_content_update_all_message, new Object[]{Integer.valueOf(arrayList.size())})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.instance_content_update_all, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda91
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$updateAllAvailableForSelectedCategory$83(arrayList, dialogInterface, i);
+                    InstanceDetailsActivity.this.lambda$updateAllAvailableForSelectedCategory$83(arrayList, dialogInterface, i);
                 }
             }).show();
         }
@@ -3340,7 +3340,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda19
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$updateCandidate$86(updateCandidate, updateCleanupPlanCreateUpdateCleanupPlan, strBuildUpdateKey);
+                InstanceDetailsActivity.this.lambda$updateCandidate$86(updateCandidate, updateCleanupPlanCreateUpdateCleanupPlan, strBuildUpdateKey);
             }
         }, "Update Instance Content Item").start();
     }
@@ -3363,7 +3363,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$9$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -3378,7 +3378,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$9$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$1(str);
+                    InstanceDetailsActivity.this.lambda$onComplete$1(str);
                 }
             });
         }
@@ -3402,7 +3402,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda89
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$updateCandidate$84(str, updateCandidate, iFinalizeContentUpdateCleanup);
+                    InstanceDetailsActivity.this.lambda$updateCandidate$84(str, updateCandidate, iFinalizeContentUpdateCleanup);
                 }
             });
         } catch (Throwable th2) {
@@ -3410,7 +3410,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda90
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$updateCandidate$85(str, th2, updateCandidate);
+                    InstanceDetailsActivity.this.lambda$updateCandidate$85(str, th2, updateCandidate);
                 }
             });
         }
@@ -3461,7 +3461,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda14
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$updateAllCandidates$89(arrayList, arrayList2);
+                InstanceDetailsActivity.this.lambda$updateAllCandidates$89(arrayList, arrayList2);
             }
         }, "Update All Instance Content").start();
     }
@@ -3481,7 +3481,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$10$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    InstanceDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -3496,7 +3496,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$10$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    InstanceDetailsActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -3510,7 +3510,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda93
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$updateAllCandidates$87(arrayList, iFinalizeContentUpdateCleanup);
+                    InstanceDetailsActivity.this.lambda$updateAllCandidates$87(arrayList, iFinalizeContentUpdateCleanup);
                 }
             });
         } catch (Throwable th) {
@@ -3518,7 +3518,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda95
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$updateAllCandidates$88(th);
+                    InstanceDetailsActivity.this.lambda$updateAllCandidates$88(th);
                 }
             });
         }
@@ -4332,7 +4332,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda41
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showUpdateProgressDialog$91(dialogInterface);
+                InstanceDetailsActivity.this.lambda$showUpdateProgressDialog$91(dialogInterface);
             }
         });
         this.updateProgressDialog.show();
@@ -4439,7 +4439,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda31
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onActivityResult$92(arrayListCollectSelectedUris, resourceCategory);
+                    InstanceDetailsActivity.this.lambda$onActivityResult$92(arrayListCollectSelectedUris, resourceCategory);
                 }
             }, "Import Instance Content").start();
         }
@@ -4465,7 +4465,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda53
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$importSelectedContent$93(i, resourceCategory);
+                    InstanceDetailsActivity.this.lambda$importSelectedContent$93(i, resourceCategory);
                 }
             });
         } catch (Throwable th) {
@@ -4473,7 +4473,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda54
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$importSelectedContent$94(resourceCategory, th);
+                    InstanceDetailsActivity.this.lambda$importSelectedContent$94(resourceCategory, th);
                 }
             });
         }
@@ -4642,7 +4642,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda57
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$exportWorldToUri$98(file, uri);
+                InstanceDetailsActivity.this.lambda$exportWorldToUri$98(file, uri);
             }
         }, "Export World").start();
     }
@@ -4687,7 +4687,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                                     runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda61
                                         @Override // java.lang.Runnable
                                         public final void run() {
-                                            this.f$0.lambda$exportWorldToUri$95(i2, size);
+                                            InstanceDetailsActivity.this.lambda$exportWorldToUri$95(i2, size);
                                         }
                                     });
                                 }
@@ -4708,7 +4708,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda72
                         @Override // java.lang.Runnable
                         public final void run() {
-                            this.f$0.lambda$exportWorldToUri$96(file);
+                            InstanceDetailsActivity.this.lambda$exportWorldToUri$96(file);
                         }
                     });
                 } finally {
@@ -4720,7 +4720,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda83
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$exportWorldToUri$97(th3);
+                    InstanceDetailsActivity.this.lambda$exportWorldToUri$97(th3);
                 }
             });
         }
@@ -5776,7 +5776,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             contentViewHolder.playWorldButton.setOnClickListener(z ? new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$0(instanceContentItem, view);
+                    InstanceDetailsActivity.this.lambda$onBindViewHolder$0(instanceContentItem, view);
                 }
             } : null);
             if (instanceContentItem.category == ResourceCategory.WORLDS && instanceContentItem.file.isDirectory()) {
@@ -5795,7 +5795,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 contentViewHolder.enabledSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda3
                     @Override // android.widget.CompoundButton.OnCheckedChangeListener
                     public final void onCheckedChanged(CompoundButton compoundButton, boolean z3) {
-                        this.f$0.lambda$onBindViewHolder$1(instanceContentItem, compoundButton, z3);
+                        InstanceDetailsActivity.this.lambda$onBindViewHolder$1(instanceContentItem, compoundButton, z3);
                     }
                 });
             }
@@ -5803,7 +5803,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             contentViewHolder.deleteButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda4
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$2(instanceContentItem, view);
+                    InstanceDetailsActivity.this.lambda$onBindViewHolder$2(instanceContentItem, view);
                 }
             });
         }
@@ -5844,7 +5844,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 InstanceDetailsActivity.this.iconExecutor.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda2
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$loadSourceAsync$4(instanceContentItem, str, contentViewHolder);
+                        InstanceDetailsActivity.this.lambda$loadSourceAsync$4(instanceContentItem, str, contentViewHolder);
                     }
                 });
             }
@@ -5865,7 +5865,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda10
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadSourceAsync$3(str, installedSourceForItem, contentViewHolder);
+                    InstanceDetailsActivity.this.lambda$loadSourceAsync$3(str, installedSourceForItem, contentViewHolder);
                 }
             });
         }
@@ -5896,7 +5896,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             contentViewHolder.updateButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda1
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$bindWorldExportButton$5(instanceContentItem, view);
+                    InstanceDetailsActivity.this.lambda$bindWorldExportButton$5(instanceContentItem, view);
                 }
             });
         }
@@ -5930,7 +5930,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 contentViewHolder.updateButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda5
                     @Override // android.view.View.OnClickListener
                     public final void onClick(View view) {
-                        this.f$0.lambda$bindUpdateButton$6(instanceContentItem, view);
+                        InstanceDetailsActivity.this.lambda$bindUpdateButton$6(instanceContentItem, view);
                     }
                 });
                 return;
@@ -5952,7 +5952,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 contentViewHolder.updateButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda6
                     @Override // android.view.View.OnClickListener
                     public final void onClick(View view) {
-                        this.f$0.lambda$bindUpdateButton$7(instanceContentItem, view);
+                        InstanceDetailsActivity.this.lambda$bindUpdateButton$7(instanceContentItem, view);
                     }
                 });
             } else {
@@ -5966,7 +5966,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                     contentViewHolder.updateButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda7
                         @Override // android.view.View.OnClickListener
                         public final void onClick(View view) {
-                            this.f$0.lambda$bindUpdateButton$8(instanceContentItem, view);
+                            InstanceDetailsActivity.this.lambda$bindUpdateButton$8(instanceContentItem, view);
                         }
                     });
                     return;
@@ -5976,7 +5976,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 contentViewHolder.updateButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda8
                     @Override // android.view.View.OnClickListener
                     public final void onClick(View view) {
-                        this.f$0.lambda$bindUpdateButton$9(instanceContentItem, view);
+                        InstanceDetailsActivity.this.lambda$bindUpdateButton$9(instanceContentItem, view);
                     }
                 });
             }
@@ -6025,7 +6025,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
                 InstanceDetailsActivity.this.iconExecutor.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda9
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$loadMetadataAsync$11(instanceContentItem, str, contentViewHolder);
+                        InstanceDetailsActivity.this.lambda$loadMetadataAsync$11(instanceContentItem, str, contentViewHolder);
                     }
                 });
             }
@@ -6044,7 +6044,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
             InstanceDetailsActivity.this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$InstanceContentAdapter$$ExternalSyntheticLambda11
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadMetadataAsync$10(str, loadedContentMetadata2, contentViewHolder, instanceContentItem);
+                    InstanceDetailsActivity.this.lambda$loadMetadataAsync$10(str, loadedContentMetadata2, contentViewHolder, instanceContentItem);
                 }
             });
         }
@@ -6227,7 +6227,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda76
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showPerInstanceRamInputDialog$100(alertDialogCreate, editText, iArr, zArr, switchMaterial, seekBar, i, i2, i3, textView, i4, dialogInterface);
+                InstanceDetailsActivity.this.lambda$showPerInstanceRamInputDialog$100(alertDialogCreate, editText, iArr, zArr, switchMaterial, seekBar, i, i2, i3, textView, i4, dialogInterface);
             }
         });
         showFullscreenSafeDialog(alertDialogCreate);
@@ -6238,7 +6238,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.InstanceDetailsActivity$$ExternalSyntheticLambda55
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showPerInstanceRamInputDialog$99(editText, iArr, zArr, switchMaterial, seekBar, i, i2, i3, textView, i4, alertDialog, view);
+                InstanceDetailsActivity.this.lambda$showPerInstanceRamInputDialog$99(editText, iArr, zArr, switchMaterial, seekBar, i, i2, i3, textView, i4, alertDialog, view);
             }
         });
     }

@@ -42,12 +42,12 @@ public class ErrorActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle("Game exited").setMessage(stringExtra + "\n\nShare latestlog.txt so the crash can be checked?").setPositiveButton(R.string.button_share_latest_log, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ErrorActivity$$ExternalSyntheticLambda0
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$onCreate$0(dialogInterface, i2);
+                ErrorActivity.this.lambda$onCreate$0(dialogInterface, i2);
             }
         }).setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ErrorActivity$$ExternalSyntheticLambda1
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$onCreate$1(dialogInterface, i2);
+                ErrorActivity.this.lambda$onCreate$1(dialogInterface, i2);
             }
         }).show();
     }

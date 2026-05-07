@@ -218,7 +218,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         ((MaterialButton) findViewById(R.id.buttonBackToInstance)).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda9
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$bindViews$0(view);
+                ContentBrowserActivity.this.lambda$bindViews$0(view);
             }
         });
     }
@@ -255,7 +255,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.sourceToggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda10
             @Override // com.google.android.material.button.MaterialButtonToggleGroup.OnButtonCheckedListener
             public final void onButtonChecked(MaterialButtonToggleGroup materialButtonToggleGroup, int i, boolean z) {
-                this.f$0.lambda$setupSourceToggle$1(materialButtonToggleGroup, i, z);
+                ContentBrowserActivity.this.lambda$setupSourceToggle$1(materialButtonToggleGroup, i, z);
             }
         });
     }
@@ -329,7 +329,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda16
             @Override // android.widget.TextView.OnEditorActionListener
             public final boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                return this.f$0.lambda$setupSearch$2(textView, i, keyEvent);
+                return ContentBrowserActivity.this.lambda$setupSearch$2(textView, i, keyEvent);
             }
         });
         this.editSearch.addTextChangedListener(new TextWatcher() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity.2
@@ -365,7 +365,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda23
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$scheduleSearchFromTyping$3();
+                ContentBrowserActivity.this.lambda$scheduleSearchFromTyping$3();
             }
         };
         this.pendingSearchRunnable = runnable;
@@ -421,13 +421,13 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.buttonPagePrevious.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda24
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupPagination$4(view);
+                ContentBrowserActivity.this.lambda$setupPagination$4(view);
             }
         });
         this.buttonPageNext.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda25
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupPagination$5(view);
+                ContentBrowserActivity.this.lambda$setupPagination$5(view);
             }
         });
     }
@@ -474,13 +474,13 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         nestedScrollView.post(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda28
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$forceScrollTop$6();
+                ContentBrowserActivity.this.lambda$forceScrollTop$6();
             }
         });
         this.scrollRoot.postDelayed(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda29
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$forceScrollTop$7();
+                ContentBrowserActivity.this.lambda$forceScrollTop$7();
             }
         }, 120L);
     }
@@ -526,7 +526,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda11
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$loadContent$10(strTrim, i, iIncrementAndGet, z2);
+                ContentBrowserActivity.this.lambda$loadContent$10(strTrim, i, iIncrementAndGet, z2);
             }
         }, this.selectedSource == ContentSource.CURSEFORGE ? "CurseForgeSearch" : "ModrinthSearch").start();
     }
@@ -571,14 +571,14 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda20
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadContent$8(i2, i4, arrayList2, z);
+                    ContentBrowserActivity.this.lambda$loadContent$8(i2, i4, arrayList2, z);
                 }
             });
         } catch (Throwable th) {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda21
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadContent$9(i2, th);
+                    ContentBrowserActivity.this.lambda$loadContent$9(i2, th);
                 }
             });
         }
@@ -654,7 +654,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda15
             @Override // androidx.appcompat.widget.PopupMenu.OnMenuItemClickListener
             public final boolean onMenuItemClick(MenuItem menuItem) {
-                return this.f$0.lambda$showProjectMenu$11(modrinthProject, menuItem);
+                return ContentBrowserActivity.this.lambda$showProjectMenu$11(modrinthProject, menuItem);
             }
         });
         popupMenu.show();
@@ -687,7 +687,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle(getString(R.string.content_browser_install_title_value, new Object[]{modrinthProject.title})).setMessage(getString(R.string.content_browser_install_message, new Object[]{modrinthProject.title, getPluralLabel(this.selectedType), this.gameVersionId.isEmpty() ? getString(R.string.content_browser_unknown_version) : this.gameVersionId, displayLoader(this.loader)})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda5
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$confirmInstall$12(modrinthProject, dialogInterface, i);
+                    ContentBrowserActivity.this.lambda$confirmInstall$12(modrinthProject, dialogInterface, i);
                 }
             }).show();
         }
@@ -708,7 +708,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda7
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$installProject$13(modrinthProject, file, anonymousClass3);
+                    ContentBrowserActivity.this.lambda$installProject$13(modrinthProject, file, anonymousClass3);
                 }
             }, modrinthProject.source == ModManagerSource.CURSEFORGE ? "CurseForgeInstall" : "ModrinthInstall").start();
         }
@@ -729,7 +729,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    ContentBrowserActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -739,7 +739,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$1(str);
+                    ContentBrowserActivity.this.lambda$onComplete$1(str);
                 }
             });
         }
@@ -757,7 +757,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$2(th);
+                    ContentBrowserActivity.this.lambda$onError$2(th);
                 }
             });
         }
@@ -786,7 +786,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$installModpackProject$14(modpackVersionChoice, modrinthProject, anonymousClass4);
+                ContentBrowserActivity.this.lambda$installModpackProject$14(modpackVersionChoice, modrinthProject, anonymousClass4);
             }
         }, modrinthProject.source == ModManagerSource.CURSEFORGE ? "CurseForgeModpackInstall" : "ModrinthModpackInstall").start();
     }
@@ -801,7 +801,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    ContentBrowserActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -822,7 +822,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onProgress$1(i, i2);
+                    ContentBrowserActivity.this.lambda$onProgress$1(i, i2);
                 }
             });
         }
@@ -837,7 +837,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$2(str, launcherInstance);
+                    ContentBrowserActivity.this.lambda$onComplete$2(str, launcherInstance);
                 }
             });
         }
@@ -856,7 +856,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$3(th);
+                    ContentBrowserActivity.this.lambda$onError$3(th);
                 }
             });
         }
@@ -885,7 +885,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda22
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$showModpackVersionPicker$17(modrinthProject);
+                ContentBrowserActivity.this.lambda$showModpackVersionPicker$17(modrinthProject);
             }
         }, modrinthProject.source == ModManagerSource.CURSEFORGE ? "CurseForgeModpackVersions" : "ModrinthModpackVersions").start();
     }
@@ -897,14 +897,14 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda13
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showModpackVersionPicker$15(arrayListListProjectVersions, modrinthProject);
+                    ContentBrowserActivity.this.lambda$showModpackVersionPicker$15(arrayListListProjectVersions, modrinthProject);
                 }
             });
         } catch (Throwable th) {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda14
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$showModpackVersionPicker$16(th);
+                    ContentBrowserActivity.this.lambda$showModpackVersionPicker$16(th);
                 }
             });
         }
@@ -974,7 +974,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         recyclerView.setAdapter(new ModpackMinecraftVersionDialogAdapter(arrayList, new ModpackMinecraftVersionClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda17
             @Override // ca.dnamobile.javalauncher.ContentBrowserActivity.ModpackMinecraftVersionClickListener
             public final void onMinecraftVersionClicked(ContentBrowserActivity.ModpackMinecraftVersionGroup modpackMinecraftVersionGroup) {
-                this.f$0.lambda$showMinecraftVersionPickerDialog$18(modrinthProject, linkedHashMap, modpackMinecraftVersionGroup);
+                ContentBrowserActivity.this.lambda$showMinecraftVersionPickerDialog$18(modrinthProject, linkedHashMap, modpackMinecraftVersionGroup);
             }
         }));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, Math.min(Math.max(dp(240), getResources().getDisplayMetrics().heightPixels - dp(230)), dp(460)));
@@ -985,13 +985,13 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda18
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showMinecraftVersionPickerDialog$19(dialogInterface);
+                ContentBrowserActivity.this.lambda$showMinecraftVersionPickerDialog$19(dialogInterface);
             }
         });
         this.currentModpackVersionDialog.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda19
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showMinecraftVersionPickerDialog$20(dialogInterface);
+                ContentBrowserActivity.this.lambda$showMinecraftVersionPickerDialog$20(dialogInterface);
             }
         });
         this.currentModpackVersionDialog.show();
@@ -1044,7 +1044,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         recyclerView.setAdapter(new ModpackVersionDialogAdapter(arrayList3, new ModpackVersionClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda30
             @Override // ca.dnamobile.javalauncher.ContentBrowserActivity.ModpackVersionClickListener
             public final void onVersionClicked(ModpackInstallManager.ModpackVersionChoice modpackVersionChoice) {
-                this.f$0.lambda$showModpackVersionsForMinecraftDialog$21(modrinthProject, modpackVersionChoice);
+                ContentBrowserActivity.this.lambda$showModpackVersionsForMinecraftDialog$21(modrinthProject, modpackVersionChoice);
             }
         }));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, Math.min(Math.max(dp(260), getResources().getDisplayMetrics().heightPixels - dp(230)), dp(540)));
@@ -1055,20 +1055,20 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda1
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showModpackVersionsForMinecraftDialog$22(dialogInterface);
+                ContentBrowserActivity.this.lambda$showModpackVersionsForMinecraftDialog$22(dialogInterface);
             }
         });
         this.currentModpackVersionDialog.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda2
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showModpackVersionsForMinecraftDialog$23(dialogInterface);
+                ContentBrowserActivity.this.lambda$showModpackVersionsForMinecraftDialog$23(dialogInterface);
             }
         });
         this.currentModpackVersionDialog.show();
         this.currentModpackVersionDialog.getButton(-3).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda3
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showModpackVersionsForMinecraftDialog$24(modrinthProject, linkedHashMap, view);
+                ContentBrowserActivity.this.lambda$showModpackVersionsForMinecraftDialog$24(modrinthProject, linkedHashMap, view);
             }
         });
         FullscreenUtils.enableImmersive(this);
@@ -1114,7 +1114,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle("Install Modpack").setMessage(sb.toString()).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda27
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$confirmInstallModpackVersion$25(modrinthProject, modpackVersionChoice, dialogInterface, i);
+                ContentBrowserActivity.this.lambda$confirmInstallModpackVersion$25(modrinthProject, modpackVersionChoice, dialogInterface, i);
             }
         }).show();
     }
@@ -1149,7 +1149,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.modpackInstallDialog.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda26
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showModpackInstallDialog$26(dialogInterface);
+                ContentBrowserActivity.this.lambda$showModpackInstallDialog$26(dialogInterface);
             }
         });
         this.modpackInstallDialog.show();
@@ -1413,7 +1413,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda12
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$resolveProjectIconUrlAsync$28(modrinthProject, str, imageView, i);
+                    ContentBrowserActivity.this.lambda$resolveProjectIconUrlAsync$28(modrinthProject, str, imageView, i);
                 }
             }, "ResolveContentIcon").start();
         }
@@ -1611,7 +1611,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         Collections.sort(arrayList3, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda6
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return this.f$0.compareMinecraftVersionKeysDescending((String) obj, (String) obj2);
+                return ContentBrowserActivity.this.compareMinecraftVersionKeysDescending((String) obj, (String) obj2);
             }
         });
         LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap2 = new LinkedHashMap<>();
@@ -1649,7 +1649,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         Collections.sort(arrayList, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda4
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return this.f$0.lambda$sortModpackVersionsNewestFirst$29((ModpackInstallManager.ModpackVersionChoice) obj, (ModpackInstallManager.ModpackVersionChoice) obj2);
+                return ContentBrowserActivity.this.lambda$sortModpackVersionsNewestFirst$29((ModpackInstallManager.ModpackVersionChoice) obj, (ModpackInstallManager.ModpackVersionChoice) obj2);
             }
         });
     }
@@ -2012,7 +2012,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ModpackMinecraftVersionDialogAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$0(modpackMinecraftVersionGroup, view);
+                    ContentBrowserActivity.this.lambda$onBindViewHolder$0(modpackMinecraftVersionGroup, view);
                 }
             });
         }
@@ -2160,7 +2160,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             versionViewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ModpackVersionDialogAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$0(modpackVersionChoice, view);
+                    ContentBrowserActivity.this.lambda$onBindViewHolder$0(modpackVersionChoice, view);
                 }
             });
         }
@@ -2260,19 +2260,19 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             viewHolder.install.setOnClickListener(zIsProjectInstalled ? null : new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$0(modrinthProject, view);
+                    ContentBrowserActivity.this.lambda$onBindViewHolder$0(modrinthProject, view);
                 }
             });
             viewHolder.menu.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda1
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$1(modrinthProject, view);
+                    ContentBrowserActivity.this.lambda$onBindViewHolder$1(modrinthProject, view);
                 }
             });
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda2
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$2(modrinthProject, view);
+                    ContentBrowserActivity.this.lambda$onBindViewHolder$2(modrinthProject, view);
                 }
             });
         }
