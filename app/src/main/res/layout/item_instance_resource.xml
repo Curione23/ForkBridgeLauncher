@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8.0dip"
+    app:cardUseCompatPadding="false"
+    app:strokeWidth="1.0dip"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@id/imageResourceIcon"
+            android:background="@android:color/transparent"
+            android:padding="0.0dip"
+            android:layout_width="44.0dip"
+            android:layout_height="44.0dip"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/instance_content_icon_description"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay_JavaLauncher_ResourceIcon" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginStart="12.0dip">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:id="@id/textResourceName"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:layout_weight="1.0" />
+                <ImageView
+                    android:id="@id/imageResourceInstalledSource"
+                    android:padding="2.0dip"
+                    android:visibility="gone"
+                    android:layout_width="22.0dip"
+                    android:layout_height="22.0dip"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@string/modmanager_installed_source_icon"
+                    android:layout_marginStart="8.0dip" />
+            </LinearLayout>
+            <TextView
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:ellipsize="end"
+                android:id="@id/textResourceSubtitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2.0dip"
+                android:maxLines="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8.0dip">
+            <com.google.android.material.button.MaterialButton
+                android:id="@id/buttonPlayWorld"
+                android:padding="0.0dip"
+                android:visibility="gone"
+                android:layout_width="44.0dip"
+                android:layout_height="44.0dip"
+                android:minWidth="44.0dip"
+                android:minHeight="44.0dip"
+                android:contentDescription="@string/instance_content_play_world_button"
+                app:icon="@drawable/ic_play_arrow_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0.0dip" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@id/buttonUpdateResource"
+                android:padding="0.0dip"
+                android:layout_width="44.0dip"
+                android:layout_height="44.0dip"
+                android:minWidth="44.0dip"
+                android:minHeight="44.0dip"
+                android:contentDescription="@string/instance_content_update_button"
+                android:layout_marginStart="6.0dip"
+                app:icon="@drawable/ic_update_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0.0dip"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@id/switchResourceEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/instance_content_enable_switch"
+                android:layout_marginStart="6.0dip" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@id/buttonDeleteResource"
+                android:padding="0.0dip"
+                android:layout_width="44.0dip"
+                android:layout_height="44.0dip"
+                android:minWidth="44.0dip"
+                android:minHeight="44.0dip"
+                android:contentDescription="@string/instance_content_delete_button"
+                android:layout_marginStart="6.0dip"
+                app:icon="@drawable/ic_delete_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0.0dip"
+                app:iconTint="?colorError"
+                app:strokeColor="?colorError"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

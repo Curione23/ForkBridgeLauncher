@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:background="#ff000000"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <net.kdt.pojavlaunch.MinecraftGLSurface
+        android:id="@id/minecraft_surface"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <ScrollView
+        android:layout_gravity="top"
+        android:background="#66000000"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false">
+        <TextView
+            android:textSize="12.0sp"
+            android:typeface="monospace"
+            android:textColor="#ffffffff"
+            android:id="@id/textStatus"
+            android:padding="12.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:id="@id/layoutLogOverlay"
+        android:background="#99000000"
+        android:padding="8.0dip"
+        android:focusable="false"
+        android:visibility="gone"
+        android:clickable="false"
+        android:layout_width="360.0dip"
+        android:layout_height="fill_parent">
+        <TextView
+            android:textSize="11.0sp"
+            android:textStyle="bold"
+            android:textColor="#ffffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_log_overlay_title" />
+        <ScrollView
+            android:id="@id/scrollLogOverlay"
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_marginTop="4.0dip"
+            android:fillViewport="false"
+            android:layout_weight="1.0">
+            <TextView
+                android:textSize="10.0sp"
+                android:typeface="monospace"
+                android:textColor="#ffffffff"
+                android:id="@id/textLogOverlay"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false" />
+        </ScrollView>
+    </LinearLayout>
+    <ImageButton
+        android:layout_gravity="end|bottom|center"
+        android:id="@id/buttonGameSettings"
+        android:background="@drawable/bg_ingame_settings_button"
+        android:padding="12.0dip"
+        android:layout_width="48.0dip"
+        android:layout_height="48.0dip"
+        android:layout_margin="16.0dip"
+        android:src="@drawable/ic_settings_24"
+        android:tint="#ffffffff"
+        android:contentDescription="@string/game_button_overlay_settings" />
+</FrameLayout>

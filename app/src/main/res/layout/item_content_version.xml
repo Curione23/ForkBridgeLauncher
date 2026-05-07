@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10.0dip"
+    app:cardBackgroundColor="?colorSurface"
+    app:cardCornerRadius="16.0dip"
+    app:cardElevation="0.0dip"
+    app:strokeColor="?colorOutlineVariant"
+    app:strokeWidth="1.0dip"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0">
+            <TextView
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:id="@id/textVersionName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1" />
+            <TextView
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:id="@id/textVersionMeta"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dip" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@id/buttonInstallVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="44.0dip"
+            android:minWidth="0.0dip"
+            android:minHeight="44.0dip"
+            android:text="@string/content_browser_install"
+            android:layout_marginStart="12.0dip"
+            app:icon="@drawable/ic_add_24"
+            style="@style/Widget.Material3.Button.OutlinedButton" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

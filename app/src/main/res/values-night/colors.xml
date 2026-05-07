@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="launcher_background">#ff100f0d</color>
+    <color name="launcher_card">#ff1f1711</color>
+    <color name="launcher_dark">#ff100f0d</color>
+    <color name="launcher_error">#ffffb4ab</color>
+    <color name="launcher_error_container">#ff93000a</color>
+    <color name="launcher_green">#ffff9d2e</color>
+    <color name="launcher_green_container">#ff8a3000</color>
+    <color name="launcher_green_pressed">#ffff8000</color>
+    <color name="launcher_on_error">#ff690005</color>
+    <color name="launcher_on_error_container">#ffffdad6</color>
+    <color name="launcher_on_green">#ff351200</color>
+    <color name="launcher_on_green_container">#ffffdcc2</color>
+    <color name="launcher_on_orange">#ff351200</color>
+    <color name="launcher_on_orange_container">#ffffdcc2</color>
+    <color name="launcher_on_secondary">#ff442a1a</color>
+    <color name="launcher_on_secondary_container">#ffffdcc7</color>
+    <color name="launcher_on_surface">#fff5ded3</color>
+    <color name="launcher_on_surface_variant">#ffdcc2b2</color>
+    <color name="launcher_on_tertiary">#ff393005</color>
+    <color name="launcher_on_tertiary_container">#fff2e2a7</color>
+    <color name="launcher_orange">#ffff9d2e</color>
+    <color name="launcher_orange_container">#ff8a3000</color>
+    <color name="launcher_orange_pressed">#ffff8000</color>
+    <color name="launcher_outline">#ffa68b7a</color>
+    <color name="launcher_outline_variant">#ff554134</color>
+    <color name="launcher_secondary">#ffe6bea7</color>
+    <color name="launcher_secondary_container">#ff5d4030</color>
+    <color name="launcher_surface">#ff100f0d</color>
+    <color name="launcher_surface_variant">#ff554134</color>
+    <color name="launcher_tertiary">#ffd5c68b</color>
+    <color name="launcher_tertiary_container">#ff50471a</color>
+</resources>
