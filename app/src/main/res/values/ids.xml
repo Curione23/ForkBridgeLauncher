@@ -1,64 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="accessibility_action_clickable_span" />
-    <item type="id" name="accessibility_custom_action_0" />
-    <item type="id" name="accessibility_custom_action_1" />
-    <item type="id" name="accessibility_custom_action_10" />
-    <item type="id" name="accessibility_custom_action_11" />
-    <item type="id" name="accessibility_custom_action_12" />
-    <item type="id" name="accessibility_custom_action_13" />
-    <item type="id" name="accessibility_custom_action_14" />
-    <item type="id" name="accessibility_custom_action_15" />
-    <item type="id" name="accessibility_custom_action_16" />
-    <item type="id" name="accessibility_custom_action_17" />
-    <item type="id" name="accessibility_custom_action_18" />
-    <item type="id" name="accessibility_custom_action_19" />
-    <item type="id" name="accessibility_custom_action_2" />
-    <item type="id" name="accessibility_custom_action_20" />
-    <item type="id" name="accessibility_custom_action_21" />
-    <item type="id" name="accessibility_custom_action_22" />
-    <item type="id" name="accessibility_custom_action_23" />
-    <item type="id" name="accessibility_custom_action_24" />
-    <item type="id" name="accessibility_custom_action_25" />
-    <item type="id" name="accessibility_custom_action_26" />
-    <item type="id" name="accessibility_custom_action_27" />
-    <item type="id" name="accessibility_custom_action_28" />
-    <item type="id" name="accessibility_custom_action_29" />
-    <item type="id" name="accessibility_custom_action_3" />
-    <item type="id" name="accessibility_custom_action_30" />
-    <item type="id" name="accessibility_custom_action_31" />
-    <item type="id" name="accessibility_custom_action_4" />
-    <item type="id" name="accessibility_custom_action_5" />
-    <item type="id" name="accessibility_custom_action_6" />
-    <item type="id" name="accessibility_custom_action_7" />
-    <item type="id" name="accessibility_custom_action_8" />
-    <item type="id" name="accessibility_custom_action_9" />
-    <item type="id" name="action_bar" />
-    <item type="id" name="action_bar_activity_content" />
-    <item type="id" name="action_bar_container" />
-    <item type="id" name="action_bar_root" />
-    <item type="id" name="action_bar_spinner" />
-    <item type="id" name="action_bar_subtitle" />
-    <item type="id" name="action_bar_title" />
-    <item type="id" name="action_container" />
-    <item type="id" name="action_context_bar" />
-    <item type="id" name="action_divider" />
-    <item type="id" name="action_image" />
-    <item type="id" name="action_menu_divider" />
-    <item type="id" name="action_menu_presenter" />
-    <item type="id" name="action_mode_bar" />
-    <item type="id" name="action_mode_bar_stub" />
-    <item type="id" name="action_mode_close_button" />
-    <item type="id" name="action_text" />
-    <item type="id" name="actions" />
-    <item type="id" name="activity_chooser_view_content" />
-    <item type="id" name="alertTitle" />
-    <item type="id" name="bottomMainActions" />
-    <item type="id" name="browser_actions_header_text" />
-    <item type="id" name="browser_actions_menu_item_icon" />
-    <item type="id" name="browser_actions_menu_item_text" />
-    <item type="id" name="browser_actions_menu_items" />
-    <item type="id" name="browser_actions_menu_view" />
     <item type="id" name="buttonAddMods" />
     <item type="id" name="buttonBackFromInstanceDetails" />
     <item type="id" name="buttonBackToInstance" />
@@ -89,7 +30,6 @@
     <item type="id" name="buttonOpenSettings" />
     <item type="id" name="buttonPageNext" />
     <item type="id" name="buttonPagePrevious" />
-    <item type="id" name="buttonPanel" />
     <item type="id" name="buttonPlay" />
     <item type="id" name="buttonPlayWorld" />
     <item type="id" name="buttonProjectDetailsBack" />
@@ -109,243 +49,7 @@
     <item type="id" name="buttonUpdateResource" />
     <item type="id" name="buttonUseMicrosoftAccount" />
     <item type="id" name="buttonViewCount" />
-    <item type="id" name="cancel_button" />
-    <item type="id" name="cardAccountSettings" />
-    <item type="id" name="cardControllerSettings" />
-    <item type="id" name="cardInstanceHeader" />
-    <item type="id" name="cardInstanceSettings" />
-    <item type="id" name="cardLauncherSettings" />
-    <item type="id" name="cardPrivacyPolicySettings" />
-    <item type="id" name="cardRendererSettings" />
-    <item type="id" name="cardResourceItems" />
-    <item type="id" name="cardSettingsTabsHeader" />
-    <item type="id" name="checkKeepLogs" />
-    <item type="id" name="checkbox" />
-    <item type="id" name="chronometer" />
-    <item type="id" name="circle_center" />
-    <item type="id" name="confirm_button" />
-    <item type="id" name="container" />
-    <item type="id" name="content" />
-    <item type="id" name="contentPanel" />
-    <item type="id" name="coordinator" />
-    <item type="id" name="customPanel" />
-    <item type="id" name="date_picker_actions" />
-    <item type="id" name="decor_content_parent" />
-    <item type="id" name="default_activity_button" />
-    <item type="id" name="design_bottom_sheet" />
-    <item type="id" name="design_menu_item_action_area" />
-    <item type="id" name="design_menu_item_action_area_stub" />
-    <item type="id" name="design_menu_item_text" />
-    <item type="id" name="design_navigation_view" />
-    <item type="id" name="dialog_button" />
-    <item type="id" name="editContentSearch" />
-    <item type="id" name="editTextContentSearch" />
-    <item type="id" name="edit_query" />
-    <item type="id" name="edit_text_id" />
-    <item type="id" name="expand_activities_button" />
-    <item type="id" name="expanded_menu" />
-    <item type="id" name="fabCreateInstance" />
-    <item type="id" name="fragment_container_view_tag" />
-    <item type="id" name="fullscreen_header" />
-    <item type="id" name="ghost_view" />
-    <item type="id" name="ghost_view_holder" />
-    <item type="id" name="group_divider" />
-    <item type="id" name="header_title" />
-    <item type="id" name="hide_ime_id" />
-    <item type="id" name="home" />
-    <item type="id" name="icon" />
-    <item type="id" name="icon_group" />
-    <item type="id" name="image" />
-    <item type="id" name="imageContentBrowserInstanceIcon" />
-    <item type="id" name="imageInstanceIcon" />
-    <item type="id" name="imagePlayerHead" />
-    <item type="id" name="imageProjectDetailsIcon" />
-    <item type="id" name="imageProjectIcon" />
-    <item type="id" name="imageProjectInstalledSource" />
-    <item type="id" name="imageResourceIcon" />
-    <item type="id" name="imageResourceInstalledSource" />
-    <item type="id" name="info" />
-    <item type="id" name="installinstanceslayout" />
-    <item type="id" name="instanceCard" />
-    <item type="id" name="is_pooling_container_tag" />
-    <item type="id" name="item_touch_helper_previous_elevation" />
-    <item type="id" name="layoutContentBrowserHeader" />
-    <item type="id" name="layoutContentControls" />
-    <item type="id" name="layoutContentPagination" />
-    <item type="id" name="layoutContentSearch" />
-    <item type="id" name="layoutControllerSettings" />
-    <item type="id" name="layoutLogOverlay" />
-    <item type="id" name="layoutResourceCategoryTabs" />
-    <item type="id" name="layoutVulkanDriverSettings" />
-    <item type="id" name="line1" />
-    <item type="id" name="line3" />
-    <item type="id" name="list_item" />
-    <item type="id" name="m3_side_sheet" />
-    <item type="id" name="mainContent" />
-    <item type="id" name="mainviewcardview" />
-    <item type="id" name="masked" />
-    <item type="id" name="material_clock_display" />
-    <item type="id" name="material_clock_display_and_toggle" />
-    <item type="id" name="material_clock_face" />
-    <item type="id" name="material_clock_hand" />
-    <item type="id" name="material_clock_level" />
-    <item type="id" name="material_clock_period_am_button" />
-    <item type="id" name="material_clock_period_pm_button" />
-    <item type="id" name="material_clock_period_toggle" />
-    <item type="id" name="material_hour_text_input" />
-    <item type="id" name="material_hour_tv" />
-    <item type="id" name="material_label" />
-    <item type="id" name="material_minute_text_input" />
-    <item type="id" name="material_minute_tv" />
-    <item type="id" name="material_textinput_timepicker" />
-    <item type="id" name="material_timepicker_cancel_button" />
-    <item type="id" name="material_timepicker_container" />
-    <item type="id" name="material_timepicker_mode_button" />
-    <item type="id" name="material_timepicker_ok_button" />
-    <item type="id" name="material_timepicker_view" />
-    <item type="id" name="material_value_index" />
-    <item type="id" name="message" />
-    <item type="id" name="minecraft_surface" />
-    <item type="id" name="month_grid" />
-    <item type="id" name="month_navigation_bar" />
-    <item type="id" name="month_navigation_fragment_toggle" />
-    <item type="id" name="month_navigation_next" />
-    <item type="id" name="month_navigation_previous" />
-    <item type="id" name="month_title" />
-    <item type="id" name="motion_base" />
-    <item type="id" name="mtrl_anchor_parent" />
-    <item type="id" name="mtrl_calendar_day_selector_frame" />
-    <item type="id" name="mtrl_calendar_days_of_week" />
-    <item type="id" name="mtrl_calendar_frame" />
-    <item type="id" name="mtrl_calendar_main_pane" />
-    <item type="id" name="mtrl_calendar_months" />
-    <item type="id" name="mtrl_calendar_selection_frame" />
-    <item type="id" name="mtrl_calendar_text_input_frame" />
-    <item type="id" name="mtrl_calendar_year_selector_frame" />
-    <item type="id" name="mtrl_card_checked_layer_id" />
-    <item type="id" name="mtrl_child_content_container" />
-    <item type="id" name="mtrl_internal_children_alpha_tag" />
-    <item type="id" name="mtrl_motion_snapshot_view" />
-    <item type="id" name="mtrl_picker_fullscreen" />
-    <item type="id" name="mtrl_picker_header" />
-    <item type="id" name="mtrl_picker_header_selection_text" />
-    <item type="id" name="mtrl_picker_header_title_and_selection" />
-    <item type="id" name="mtrl_picker_header_toggle" />
-    <item type="id" name="mtrl_picker_text_input_date" />
-    <item type="id" name="mtrl_picker_text_input_range_end" />
-    <item type="id" name="mtrl_picker_text_input_range_start" />
-    <item type="id" name="mtrl_picker_title_text" />
-    <item type="id" name="mtrl_view_tag_bottom_padding" />
-    <item type="id" name="navigation_bar_item_active_indicator_view" />
-    <item type="id" name="navigation_bar_item_icon_container" />
-    <item type="id" name="navigation_bar_item_icon_view" />
-    <item type="id" name="navigation_bar_item_labels_group" />
-    <item type="id" name="navigation_bar_item_large_label_view" />
-    <item type="id" name="navigation_bar_item_small_label_view" />
-    <item type="id" name="navigation_header_container" />
-    <item type="id" name="notification_background" />
-    <item type="id" name="notification_main_column" />
-    <item type="id" name="notification_main_column_container" />
-    <item type="id" name="off" />
-    <item type="id" name="on" />
-    <item type="id" name="open_search_bar_text_view" />
-    <item type="id" name="open_search_view_background" />
-    <item type="id" name="open_search_view_clear_button" />
-    <item type="id" name="open_search_view_content_container" />
-    <item type="id" name="open_search_view_divider" />
-    <item type="id" name="open_search_view_dummy_toolbar" />
-    <item type="id" name="open_search_view_edit_text" />
-    <item type="id" name="open_search_view_header_container" />
-    <item type="id" name="open_search_view_root" />
-    <item type="id" name="open_search_view_scrim" />
-    <item type="id" name="open_search_view_search_prefix" />
-    <item type="id" name="open_search_view_status_bar_spacer" />
-    <item type="id" name="open_search_view_toolbar" />
-    <item type="id" name="open_search_view_toolbar_container" />
-    <item type="id" name="parentPanel" />
-    <item type="id" name="parent_matrix" />
-    <item type="id" name="pooling_container_listener_holder_tag" />
-    <item type="id" name="pressed" />
-    <item type="id" name="progressVersions" />
-    <item type="id" name="progress_circular" />
-    <item type="id" name="progress_horizontal" />
-    <item type="id" name="radio" />
-    <item type="id" name="recyclerContentProjects" />
-    <item type="id" name="recyclerProjectVersions" />
-    <item type="id" name="recyclerResourceItems" />
-    <item type="id" name="recyclerVersions" />
-    <item type="id" name="report_drawn" />
-    <item type="id" name="right_icon" />
-    <item type="id" name="right_side" />
-    <item type="id" name="row_index_key" />
-    <item type="id" name="save_non_transition_alpha" />
-    <item type="id" name="save_overlay_view" />
-    <item type="id" name="scrollContentBrowserRoot" />
-    <item type="id" name="scrollIndicatorDown" />
-    <item type="id" name="scrollIndicatorUp" />
-    <item type="id" name="scrollLogOverlay" />
-    <item type="id" name="scrollView" />
-    <item type="id" name="search_badge" />
-    <item type="id" name="search_bar" />
-    <item type="id" name="search_button" />
-    <item type="id" name="search_close_btn" />
-    <item type="id" name="search_edit_frame" />
-    <item type="id" name="search_go_btn" />
-    <item type="id" name="search_mag_icon" />
-    <item type="id" name="search_plate" />
-    <item type="id" name="search_src_text" />
-    <item type="id" name="search_voice_btn" />
-    <item type="id" name="select_dialog_listview" />
-    <item type="id" name="selection_type" />
-    <item type="id" name="settingsContent" />
-    <item type="id" name="settingsScrollView" />
-    <item type="id" name="settingsSectionTabs" />
-    <item type="id" name="settingsTabsHeader" />
-    <item type="id" name="shortcut" />
-    <item type="id" name="sliderAllocatedRam" />
-    <item type="id" name="sliderGameResolutionScale" />
-    <item type="id" name="snackbar_action" />
-    <item type="id" name="snackbar_text" />
-    <item type="id" name="spacer" />
-    <item type="id" name="special_effects_controller_view_tag" />
-    <item type="id" name="spinnerRenderer" />
-    <item type="id" name="spinnerVulkanDriver" />
-    <item type="id" name="split_action_bar" />
-    <item type="id" name="submenuarrow" />
-    <item type="id" name="submit_area" />
-    <item type="id" name="switchAvoidRoundedCorners" />
-    <item type="id" name="switchDoubleTapToDrop" />
-    <item type="id" name="switchForceFullscreenMode" />
-    <item type="id" name="switchForceSdlControllerBridge" />
-    <item type="id" name="switchInstallNotifications" />
-    <item type="id" name="switchMinecraftTouchGestures" />
-    <item type="id" name="switchRemoveInheritedVanilla" />
-    <item type="id" name="switchResourceEnabled" />
-    <item type="id" name="switchShowGameLogOverlay" />
-    <item type="id" name="switchShowInGameSettingsButton" />
-    <item type="id" name="switchShowSharedInstalls" />
-    <item type="id" name="switchTouchControlsEnabled" />
-    <item type="id" name="switchUseNativeSurface" />
-    <item type="id" name="switchUseOpenGlFor26Plus" />
-    <item type="id" name="switchUseSystemVulkanDriver" />
-    <item type="id" name="tabContentTypes" />
-    <item type="id" name="tabResourceCategories" />
-    <item type="id" name="tabVersionTypes" />
-    <item type="id" name="tag_accessibility_actions" />
-    <item type="id" name="tag_accessibility_clickable_spans" />
-    <item type="id" name="tag_accessibility_heading" />
-    <item type="id" name="tag_accessibility_pane_title" />
-    <item type="id" name="tag_on_apply_window_listener" />
-    <item type="id" name="tag_on_receive_content_listener" />
-    <item type="id" name="tag_on_receive_content_mime_types" />
-    <item type="id" name="tag_screen_reader_focusable" />
-    <item type="id" name="tag_state_description" />
-    <item type="id" name="tag_transition_group" />
-    <item type="id" name="tag_unhandled_key_event_manager" />
-    <item type="id" name="tag_unhandled_key_listeners" />
-    <item type="id" name="tag_window_insets_animation_callback" />
-    <item type="id" name="text" />
-    <item type="id" name="text2" />
+
     <item type="id" name="textAccountStatus" />
     <item type="id" name="textAllocatedRam" />
     <item type="id" name="textAppTitle" />
@@ -372,8 +76,7 @@
     <item type="id" name="textProjectAuthor" />
     <item type="id" name="textProjectDescription" />
     <item type="id" name="textProjectDetailsDescription" />
-    <item type="id" name="textProjectDetailsGallery" />
-    <item type="id" name="textProjectDetailsMeta" />
+    <item type="id" name="textProjectDetailsGallery" />    <item type="id" name="textProjectDetailsMeta" />
     <item type="id" name="textProjectDetailsStatus" />
     <item type="id" name="textProjectDetailsTitle" />
     <item type="id" name="textProjectDownloads" />
@@ -391,8 +94,6 @@
     <item type="id" name="textSharedInstallsSummary" />
     <item type="id" name="textSimpleVoiceChatMicrophoneStatus" />
     <item type="id" name="textSkinStatus" />
-    <item type="id" name="textSpacerNoButtons" />
-    <item type="id" name="textSpacerNoTitle" />
     <item type="id" name="textStatus" />
     <item type="id" name="textTitle" />
     <item type="id" name="textVersionCount" />
@@ -400,38 +101,33 @@
     <item type="id" name="textVersionName" />
     <item type="id" name="textVersionState" />
     <item type="id" name="textVulkanDriverDescription" />
-    <item type="id" name="text_input_end_icon" />
-    <item type="id" name="text_input_error_icon" />
-    <item type="id" name="text_input_start_icon" />
-    <item type="id" name="textinput_counter" />
-    <item type="id" name="textinput_error" />
-    <item type="id" name="textinput_helper_text" />
-    <item type="id" name="textinput_placeholder" />
-    <item type="id" name="textinput_prefix_text" />
-    <item type="id" name="textinput_suffix_text" />
-    <item type="id" name="time" />
-    <item type="id" name="title" />
-    <item type="id" name="titleDividerNoCustom" />
-    <item type="id" name="title_template" />
-    <item type="id" name="toggleContentSource" />
-    <item type="id" name="topPanel" />
-    <item type="id" name="touch_outside" />
-    <item type="id" name="transition_clip" />
-    <item type="id" name="transition_current_scene" />
-    <item type="id" name="transition_image_transform" />
-    <item type="id" name="transition_layout_save" />
-    <item type="id" name="transition_pause_alpha" />
-    <item type="id" name="transition_position" />
-    <item type="id" name="transition_scene_layoutid_cache" />
-    <item type="id" name="transition_transform" />
-    <item type="id" name="up" />
-    <item type="id" name="versionCard" />
-    <item type="id" name="view_offset_helper" />
-    <item type="id" name="view_transition" />
-    <item type="id" name="view_tree_lifecycle_owner" />
-    <item type="id" name="view_tree_on_back_pressed_dispatcher_owner" />
-    <item type="id" name="view_tree_saved_state_registry_owner" />
-    <item type="id" name="view_tree_view_model_store_owner" />
-    <item type="id" name="visible_removing_fragment_view_tag" />
-    <item type="id" name="with_icon" />
+
+    <item type="id" name="sliderAllocatedRam" />
+    <item type="id" name="sliderGameResolutionScale" />
+    <item type="id" name="switchAvoidRoundedCorners" />
+    <item type="id" name="switchDoubleTapToDrop" />
+    <item type="id" name="switchForceFullscreenMode" />
+    <item type="id" name="switchForceSdlControllerBridge" />
+    <item type="id" name="switchInstallNotifications" />
+    <item type="id" name="switchMinecraftTouchGestures" />
+    <item type="id" name="switchRemoveInheritedVanilla" />
+    <item type="id" name="switchResourceEnabled" />
+    <item type="id" name="switchShowGameLogOverlay" />
+    <item type="id" name="switchShowInGameSettingsButton" />
+    <item type="id" name="switchShowSharedInstalls" />
+    <item type="id" name="switchTouchControlsEnabled" />
+    <item type="id" name="switchUseNativeSurface" />
+    <item type="id" name="switchUseOpenGlFor26Plus" />
+    <item type="id" name="switchUseSystemVulkanDriver" />
+    <item type="id" name="spinnerRenderer" />
+    <item type="id" name="spinnerVulkanDriver" />
+
+    <item type="id" name="minecraft_surface" />
+    <item type="id" name="recyclerVersions" />
+    <item type="id" name="recyclerContentProjects" />
+    <item type="id" name="recyclerProjectVersions" />
+    <item type="id" name="recyclerResourceItems" />
+    <item type="id" name="mainContent" />
+    <item type="id" name="layoutLogOverlay" />
+    <item type="id" name="fabCreateInstance" />
 </resources>
