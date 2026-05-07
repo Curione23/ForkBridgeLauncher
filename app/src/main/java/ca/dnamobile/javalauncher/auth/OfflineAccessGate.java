@@ -9,7 +9,7 @@ import ca.dnamobile.javalauncher.data.AccountStore;
 
 /* JADX INFO: loaded from: /data/data/com.termux/files/home/jadx/classes.dex */
 public final class OfflineAccessGate {
-    private static final boolean BYPASS_LOGIN_GATE_FOR_TESTING = false;
+    private static final boolean BYPASS_LOGIN_GATE_FOR_TESTING = true;
 
     private static boolean isTestingBypassEnabled() {
         return true;
