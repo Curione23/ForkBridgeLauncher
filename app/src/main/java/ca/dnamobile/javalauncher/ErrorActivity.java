@@ -1,67 +1,64 @@
-/*
- * Copyright (c) 2026 DNA Mobile Applications.
- * All rights reserved.
- *
- * This file is DroidBridge project code.
- * It is not part of Minecraft and does not grant rights to Minecraft,
- * Mojang, Microsoft, PojavLauncher, Zalith Launcher, or any third-party project.
- *
- * Files written entirely by DNA Mobile Applications are proprietary unless
- * a file header or separate license notice states otherwise.
- */
-
 package ca.dnamobile.javalauncher;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import ca.dnamobile.javalauncher.logs.LauncherLogManager;
 
-/**
- * Clean JavaLauncher exit-message target for the native exit hook.
- * This is intentionally in ca.dnamobile.javalauncher, not com.movtery.*.
- */
+/* JADX INFO: loaded from: /data/data/com.termux/files/home/jadx/classes.dex */
 public class ErrorActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "message";
 
-    public static void showExitMessage(Context context, int exitCode, boolean isSignal) {
-        String message = isSignal
-                ? "Minecraft stopped from signal " + exitCode
-                : "Minecraft exited with code " + exitCode;
-
-        Intent intent = new Intent(context, ErrorActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(EXTRA_MESSAGE, message);
+    public static void showExitMessage(Context context, int i, boolean z) {
+        String str;
+        if (z) {
+            str = "Minecraft stopped from signal " + i;
+        } else {
+            str = "Minecraft exited with code " + i;
+        }
+        Intent intent = new Intent(context, (Class<?>) ErrorActivity.class);
+        intent.addFlags(268435456);
+        intent.putExtra(EXTRA_MESSAGE, str);
         context.startActivity(intent);
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        String message = getIntent().getStringExtra(EXTRA_MESSAGE);
-        if (message == null || message.trim().isEmpty()) {
-            message = "Minecraft exited.";
+    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        String stringExtra = getIntent().getStringExtra(EXTRA_MESSAGE);
+        if (stringExtra == null || stringExtra.trim().isEmpty()) {
+            stringExtra = "Minecraft exited.";
         }
-
         TextView textView = new TextView(this);
-        int padding = (int) (24 * getResources().getDisplayMetrics().density);
-        textView.setPadding(padding, padding, padding, padding);
-        textView.setText(message + "\n\nUse Share latestlog.txt so the crash can be checked.");
-        textView.setTextSize(16);
+        int i = (int) (getResources().getDisplayMetrics().density * 24.0f);
+        textView.setPadding(i, i, i, i);
+        textView.setText(stringExtra + "\n\nUse Share latestlog.txt so the crash can be checked.");
+        textView.setTextSize(16.0f);
         setContentView(textView);
+        new AlertDialog.Builder(this).setTitle("Game exited").setMessage(stringExtra + "\n\nShare latestlog.txt so the crash can be checked?").setPositiveButton(R.string.button_share_latest_log, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ErrorActivity$$ExternalSyntheticLambda0
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i2) {
+                this.f$0.lambda$onCreate$0(dialogInterface, i2);
+            }
+        }).setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ErrorActivity$$ExternalSyntheticLambda1
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i2) {
+                this.f$0.lambda$onCreate$1(dialogInterface, i2);
+            }
+        }).show();
+    }
 
-        final String finalMessage = message;
-        new AlertDialog.Builder(this)
-                .setTitle("Game exited")
-                .setMessage(finalMessage + "\n\nShare latestlog.txt so the crash can be checked?")
-                .setPositiveButton(R.string.button_share_latest_log, (dialog, which) -> LauncherLogManager.shareLatestLog(this))
-                .setNegativeButton(android.R.string.ok, (dialog, which) -> finish())
-                .show();
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$onCreate$0(DialogInterface dialogInterface, int i) {
+        LauncherLogManager.shareLatestLog(this);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$onCreate$1(DialogInterface dialogInterface, int i) {
+        finish();
     }
 }

@@ -1,30 +1,9 @@
-/*
- * Copyright (c) 2026 DNA Mobile Applications.
- * All rights reserved.
- *
- * This file is DroidBridge project code.
- * It is not part of Minecraft and does not grant rights to Minecraft,
- * Mojang, Microsoft, PojavLauncher, Zalith Launcher, or any third-party project.
- *
- * Files written entirely by DNA Mobile Applications are proprietary unless
- * a file header or separate license notice states otherwise.
- */
-
 package ca.dnamobile.javalauncher;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import net.kdt.pojavlaunch.Tools;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ca.dnamobile.javalauncher.feature.log.Logging;
 import ca.dnamobile.javalauncher.feature.unpack.AbstractUnpackTask;
 import ca.dnamobile.javalauncher.feature.unpack.Components;
@@ -33,120 +12,141 @@ import ca.dnamobile.javalauncher.feature.unpack.UnpackComponentsTask;
 import ca.dnamobile.javalauncher.feature.unpack.UnpackJreTask;
 import ca.dnamobile.javalauncher.feature.unpack.UnpackSingleFilesTask;
 import ca.dnamobile.javalauncher.utils.path.PathManager;
+import java.util.ArrayList;
+import java.util.List;
+import net.kdt.pojavlaunch.Tools;
 
-@SuppressLint("CustomSplashScreen")
+/* JADX INFO: loaded from: /data/data/com.termux/files/home/jadx/classes.dex */
 public class SplashActivity extends AppCompatActivity {
-    private TextView titleText;
-    private TextView statusText;
     private volatile boolean finished;
+    private TextView statusText;
+    private TextView titleText;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
         setContentView(R.layout.activity_splash);
-
-        titleText = findViewById(R.id.textTitle);
-        statusText = findViewById(R.id.textStatus);
-        titleText.setText(R.string.app_name);
-
+        this.titleText = (TextView) findViewById(R.id.textTitle);
+        this.statusText = (TextView) findViewById(R.id.textStatus);
+        this.titleText.setText(R.string.app_name);
         PathManager.initContextConstants(this);
-
         if (!Tools.checkStorageRoot()) {
             setStatus(getString(R.string.splash_screen_storage_unavailable));
-            return;
+        } else {
+            startInstallThread();
         }
-
-        startInstallThread();
     }
 
-    @Override
+    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
-        finished = true;
+        this.finished = true;
         super.onDestroy();
     }
 
     private void startInstallThread() {
-        Thread installThread = new Thread(() -> {
-            try {
-                runInstallFlow();
-                openMainActivity();
-            } catch (Throwable throwable) {
-                Logging.e("SplashActivity", "Launcher preparation failed", throwable);
-                setStatus(getString(R.string.splash_screen_failed, throwable.getMessage() != null ? throwable.getMessage() : throwable.getClass().getSimpleName()));
+        new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda2
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$startInstallThread$0();
             }
-        }, "JavaLauncher Unpack");
-        installThread.start();
+        }, "JavaLauncher Unpack").start();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$startInstallThread$0() {
+        try {
+            runInstallFlow();
+            openMainActivity();
+        } catch (Throwable th) {
+            Logging.e("SplashActivity", "Launcher preparation failed", th);
+            setStatus(getString(R.string.splash_screen_failed, new Object[]{th.getMessage() != null ? th.getMessage() : th.getClass().getSimpleName()}));
+        }
     }
 
     private void runInstallFlow() {
         setStatus(getString(R.string.splash_screen_checking));
-
-        List<TaskEntry> tasks = buildTasks();
-        int total = tasks.size();
-        int index = 0;
-
-        for (TaskEntry entry : tasks) {
-            index++;
-            setStatus(getString(R.string.splash_screen_checking_item, index, total, entry.name));
-            if (!entry.task.isNeedUnpack()) {
-                continue;
+        List<TaskEntry> listBuildTasks = buildTasks();
+        int size = listBuildTasks.size();
+        int i = 0;
+        for (TaskEntry taskEntry : listBuildTasks) {
+            i++;
+            setStatus(getString(R.string.splash_screen_checking_item, new Object[]{Integer.valueOf(i), Integer.valueOf(size), taskEntry.name}));
+            if (taskEntry.task.isNeedUnpack()) {
+                setStatus(getString(R.string.splash_screen_installing_item, new Object[]{Integer.valueOf(i), Integer.valueOf(size), taskEntry.name}));
+                taskEntry.task.run();
             }
-
-            setStatus(getString(R.string.splash_screen_installing_item, index, total, entry.name));
-            entry.task.run();
         }
-
         setStatus(getString(R.string.splash_screen_finalizing));
         new UnpackSingleFilesTask(this).run();
     }
 
-    @NonNull
     private List<TaskEntry> buildTasks() {
-        ArrayList<TaskEntry> tasks = new ArrayList<>();
-
-        for (Components component : Components.values()) {
-            UnpackComponentsTask task = new UnpackComponentsTask(this, component);
-            if (!task.isCheckFailed()) {
-                tasks.add(new TaskEntry(component.displayName, task));
+        ArrayList arrayList = new ArrayList();
+        for (Components components : Components.values()) {
+            UnpackComponentsTask unpackComponentsTask = new UnpackComponentsTask(this, components);
+            if (!unpackComponentsTask.isCheckFailed()) {
+                arrayList.add(new TaskEntry(components.displayName, unpackComponentsTask));
             }
         }
-
         for (Jre jre : Jre.values()) {
-            UnpackJreTask task = new UnpackJreTask(this, jre);
-            if (!task.isCheckFailed()) {
-                tasks.add(new TaskEntry(jre.jreName, task));
+            UnpackJreTask unpackJreTask = new UnpackJreTask(this, jre);
+            if (!unpackJreTask.isCheckFailed()) {
+                arrayList.add(new TaskEntry(jre.jreName, unpackJreTask));
             }
         }
-
-        return tasks;
+        return arrayList;
     }
 
     private void openMainActivity() {
-        if (finished) return;
-        runOnUiThread(() -> {
-            if (finished) return;
-            setStatus(getString(R.string.splash_screen_done));
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+        if (this.finished) {
+            return;
+        }
+        runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda1
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$openMainActivity$1();
+            }
         });
     }
 
-    private void setStatus(@NonNull String status) {
-        if (finished) return;
-        runOnUiThread(() -> {
-            if (!finished && statusText != null) {
-                statusText.setText(status);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$openMainActivity$1() {
+        if (this.finished) {
+            return;
+        }
+        setStatus(getString(R.string.splash_screen_done));
+        startActivity(new Intent(this, (Class<?>) MainActivity.class));
+        finish();
+    }
+
+    private void setStatus(final String str) {
+        if (this.finished) {
+            return;
+        }
+        runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda0
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$setStatus$2(str);
             }
         });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setStatus$2(String str) {
+        TextView textView;
+        if (this.finished || (textView = this.statusText) == null) {
+            return;
+        }
+        textView.setText(str);
     }
 
     private static final class TaskEntry {
         final String name;
         final AbstractUnpackTask task;
 
-        TaskEntry(@NonNull String name, @NonNull AbstractUnpackTask task) {
-            this.name = name;
-            this.task = task;
+        TaskEntry(String str, AbstractUnpackTask abstractUnpackTask) {
+            this.name = str;
+            this.task = abstractUnpackTask;
         }
     }
 }

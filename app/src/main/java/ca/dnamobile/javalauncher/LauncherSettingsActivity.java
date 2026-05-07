@@ -1,53 +1,34 @@
-/*
- * Copyright (c) 2026 DNA Mobile Applications.
- * All rights reserved.
- *
- * This file is DroidBridge project code.
- * It is not part of Minecraft and does not grant rights to Minecraft,
- * Mojang, Microsoft, PojavLauncher, Zalith Launcher, or any third-party project.
- *
- * Files written entirely by DNA Mobile Applications are proprietary unless
- * a file header or separate license notice states otherwise.
- */
-
 package ca.dnamobile.javalauncher;
 
-import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.tabs.TabLayout;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
+import androidx.core.view.GravityCompat;
 import ca.dnamobile.javalauncher.auth.MicrosoftAuthConfigPersonal;
 import ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal;
 import ca.dnamobile.javalauncher.controls.ControlsActivity;
@@ -78,41 +59,59 @@ import ca.dnamobile.javalauncher.update.LauncherUpdateDialogs;
 import ca.dnamobile.javalauncher.update.LauncherUpdatePreferences;
 import ca.dnamobile.javalauncher.utils.FullscreenUtils;
 import ca.dnamobile.javalauncher.utils.path.PathManager;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.tabs.TabLayout;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+/* JADX INFO: loaded from: /data/data/com.termux/files/home/jadx/classes.dex */
 public final class LauncherSettingsActivity extends AppCompatActivity {
-    private static final String SETTINGS_DEFAULTS_PREFS = "launcher_settings_defaults";
     private static final String SETTINGS_DEFAULTS_APPLIED_KEY = "settings_defaults_applied_2026_04_instances";
-
-    private ActivityLauncherSettingsBinding binding;
+    private static final String SETTINGS_DEFAULTS_PREFS = "launcher_settings_defaults";
     private AccountStore accountStore;
     private MicrosoftAuthManagerPersonal authManager;
-    private CustomSkinStore customSkinStore;
+    private ActivityLauncherSettingsBinding binding;
     private ActivityResultLauncher<Intent> customSkinPickerLauncher;
-    private ActivityResultLauncher<Intent> microsoftSkinPickerLauncher;
-    private ActivityResultLauncher<Intent> offlineSkinPickerLauncher;
-    private ActivityResultLauncher<String> notificationPermissionLauncher;
-    private ActivityResultLauncher<String> microphonePermissionLauncher;
-    private ActivityResultLauncher<Intent> mobileGluesFolderPickerLauncher;
-    private Uri pendingOfflineSkinUri;
-    private ImageView pendingOfflineSkinPreview;
-    private TextView pendingOfflineSkinLabel;
-    private AlertDialog offlineAccountsDialog;
-    private final List<RendererInterface> availableRenderers = new ArrayList<>();
-    private final List<Driver> availableDrivers = new ArrayList<>();
-    private boolean rendererSpinnerReady;
+    private CustomSkinStore customSkinStore;
     private boolean driverSpinnerReady;
-    private TextView textHardwareMouseDpiScale;
+    private ActivityResultLauncher<String> microphonePermissionLauncher;
+    private ActivityResultLauncher<Intent> microsoftSkinPickerLauncher;
+    private ActivityResultLauncher<Intent> mobileGluesFolderPickerLauncher;
+    private ActivityResultLauncher<String> notificationPermissionLauncher;
+    private AlertDialog offlineAccountsDialog;
+    private ActivityResultLauncher<Intent> offlineSkinPickerLauncher;
+    private TextView pendingOfflineSkinLabel;
+    private ImageView pendingOfflineSkinPreview;
+    private Uri pendingOfflineSkinUri;
+    private boolean rendererSpinnerReady;
     private SeekBar sliderHardwareMouseDpiScale;
+    private TextView textHardwareMouseDpiScale;
+    private final List<RendererInterface> availableRenderers = new ArrayList();
+    private final List<Driver> availableDrivers = new ArrayList();
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    static /* synthetic */ void lambda$registerSkinPickerLauncher$9(ActivityResult activityResult) {
+    }
+
+    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
         PathManager.initContextConstants(this);
-        binding = ActivityLauncherSettingsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        ActivityLauncherSettingsBinding activityLauncherSettingsBindingInflate = ActivityLauncherSettingsBinding.inflate(getLayoutInflater());
+        this.binding = activityLauncherSettingsBindingInflate;
+        setContentView(activityLauncherSettingsBindingInflate.getRoot());
         FullscreenUtils.enableImmersive(this);
-
-        binding.buttonSettingsBack.setOnClickListener(view -> finish());
+        this.binding.buttonSettingsBack.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda63
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$onCreate$0(view);
+            }
+        });
         applySettingsDefaultsOnce();
         setupSettingsSectionTabs();
         registerSkinPickerLauncher();
@@ -130,16 +129,21 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         setupPrivacyPolicySettings();
     }
 
-    @Override
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$onCreate$0(View view) {
+        finish();
+    }
+
+    @Override // androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onResume() {
         super.onResume();
         FullscreenUtils.enableImmersive(this);
-        if (binding != null) {
-            RendererInterface selectedRenderer = getSelectedRendererFromSpinner();
-            updateMobileGluesConfigSummary(selectedRenderer);
-            if (DriverPluginManager.isVulkanZinkRenderer(selectedRenderer)) {
+        if (this.binding != null) {
+            RendererInterface selectedRendererFromSpinner = getSelectedRendererFromSpinner();
+            updateMobileGluesConfigSummary(selectedRendererFromSpinner);
+            if (DriverPluginManager.isVulkanZinkRenderer(selectedRendererFromSpinner)) {
                 DriverPluginManager.reload(this);
-                updateVulkanDriverSettings(selectedRenderer);
+                updateVulkanDriverSettings(selectedRendererFromSpinner);
             }
             refreshControllerSettingsValues();
             updateInstallNotificationSettingsUi();
@@ -148,533 +152,649 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
+    @Override // android.app.Activity, android.view.Window.Callback
+    public void onWindowFocusChanged(boolean z) {
+        super.onWindowFocusChanged(z);
+        if (z) {
             FullscreenUtils.enableImmersive(this);
         }
     }
 
-    @Override
+    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
     protected void onDestroy() {
-        if (authManager != null && !isChangingConfigurations()) {
-            authManager.dispose();
+        if (this.authManager != null && !isChangingConfigurations()) {
+            this.authManager.dispose();
         }
         super.onDestroy();
     }
 
     private void refreshAccountUiFromStore() {
-        if (accountStore == null || binding == null) return;
-
+        AccountStore accountStore = this.accountStore;
+        if (accountStore == null || this.binding == null) {
+            return;
+        }
         try {
-            AccountStore.Account account = accountStore.load();
-            updateAccountStatus(account);
-            updateSkinUi(account);
-            updateChangeMicrosoftSkinButtonState(account);
-        } catch (Throwable throwable) {
-            Logging.e("LauncherSettings", "Unable to refresh account UI", throwable);
+            AccountStore.Account accountLoad = accountStore.load();
+            updateAccountStatus(accountLoad);
+            updateSkinUi(accountLoad);
+            updateChangeMicrosoftSkinButtonState(accountLoad);
+        } catch (Throwable th) {
+            Logging.e("LauncherSettings", "Unable to refresh account UI", th);
         }
     }
 
     private void applySettingsDefaultsOnce() {
-        android.content.SharedPreferences preferences = getSharedPreferences(SETTINGS_DEFAULTS_PREFS, MODE_PRIVATE);
-        if (preferences.getBoolean(SETTINGS_DEFAULTS_APPLIED_KEY, false)) return;
-
-        // Defaults requested for the settings screen:
-        // - Shared installs hidden/off by default.
-        // - Keep inherited/base Minecraft versions on by default.
+        SharedPreferences sharedPreferences = getSharedPreferences(SETTINGS_DEFAULTS_PREFS, 0);
+        if (sharedPreferences.getBoolean(SETTINGS_DEFAULTS_APPLIED_KEY, false)) {
+            return;
+        }
         LauncherPreferences.setShowSharedInstalls(this, false);
         LauncherPreferences.setRemoveInheritedVanillaAfterLoaderInstall(this, false);
-        preferences.edit().putBoolean(SETTINGS_DEFAULTS_APPLIED_KEY, true).apply();
+        sharedPreferences.edit().putBoolean(SETTINGS_DEFAULTS_APPLIED_KEY, true).apply();
     }
 
     private void setupSettingsSectionTabs() {
-        binding.settingsSectionTabs.removeAllTabs();
+        this.binding.settingsSectionTabs.removeAllTabs();
         addSettingsSectionTab(R.string.settings_account_title);
         addSettingsSectionTab(R.string.renderer_settings_title);
         addSettingsSectionTab(R.string.controller_settings_title);
         addSettingsSectionTab(R.string.settings_launcher_title);
         addSettingsSectionTab(R.string.settings_instance_title);
         addSettingsSectionTab("Privacy Policy");
-
-
-
-
-        binding.settingsSectionTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                scrollToSettingsSection(tab.getPosition());
-            }
-
-            @Override
+        this.binding.settingsSectionTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.1
+            @Override // com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
             public void onTabUnselected(TabLayout.Tab tab) {
             }
 
-            @Override
+            @Override // com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
+            public void onTabSelected(TabLayout.Tab tab) {
+                LauncherSettingsActivity.this.scrollToSettingsSection(tab.getPosition());
+            }
+
+            @Override // com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
             public void onTabReselected(TabLayout.Tab tab) {
-                scrollToSettingsSection(tab.getPosition());
+                LauncherSettingsActivity.this.scrollToSettingsSection(tab.getPosition());
             }
         });
     }
 
-    private void addSettingsSectionTab(int titleResId) {
-        TabLayout.Tab tab = binding.settingsSectionTabs.newTab();
-        tab.setText(titleResId);
-        binding.settingsSectionTabs.addTab(tab);
+    private void addSettingsSectionTab(int i) {
+        TabLayout.Tab tabNewTab = this.binding.settingsSectionTabs.newTab();
+        tabNewTab.setText(i);
+        this.binding.settingsSectionTabs.addTab(tabNewTab);
     }
 
-    private void addSettingsSectionTab(@NonNull String title) {
-        TabLayout.Tab tab = binding.settingsSectionTabs.newTab();
-        tab.setText(title);
-        binding.settingsSectionTabs.addTab(tab);
+    private void addSettingsSectionTab(String str) {
+        TabLayout.Tab tabNewTab = this.binding.settingsSectionTabs.newTab();
+        tabNewTab.setText(str);
+        this.binding.settingsSectionTabs.addTab(tabNewTab);
     }
 
-    private void scrollToSettingsSection(int position) {
-        View target;
-
-        switch (position) {
-            case 0:
-                target = binding.cardAccountSettings;
-                break;
-            case 1:
-                target = binding.cardRendererSettings;
-
-                break;
-            case 2:
-                target = binding.cardControllerSettings;
-
-                break;
-            case 3:
-                target = binding.cardLauncherSettings;
-                break;
-            case 4:
-                target = binding.cardInstanceSettings;
-                break;
-            case 5:
-                target = binding.cardPrivacyPolicySettings;
-                break;
-            default:
-                return;
+    /* JADX INFO: Access modifiers changed from: private */
+    public void scrollToSettingsSection(int i) {
+        final MaterialCardView materialCardView;
+        if (i == 0) {
+            materialCardView = this.binding.cardAccountSettings;
+        } else if (i == 1) {
+            materialCardView = this.binding.cardRendererSettings;
+        } else if (i == 2) {
+            materialCardView = this.binding.cardControllerSettings;
+        } else if (i == 3) {
+            materialCardView = this.binding.cardLauncherSettings;
+        } else if (i == 4) {
+            materialCardView = this.binding.cardInstanceSettings;
+        } else if (i != 5) {
+            return;
+        } else {
+            materialCardView = this.binding.cardPrivacyPolicySettings;
         }
+        this.binding.settingsScrollView.post(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda8
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$scrollToSettingsSection$1(materialCardView);
+            }
+        });
+    }
 
-        binding.settingsScrollView.post(() ->
-                binding.settingsScrollView.smoothScrollTo(0, Math.max(0, target.getTop() - dp(8)))
-        );
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$scrollToSettingsSection$1(View view) {
+        this.binding.settingsScrollView.smoothScrollTo(0, Math.max(0, view.getTop() - dp(8.0f)));
     }
 
     private void setupAccountUi() {
         try {
-            accountStore = new AccountStore(this);
-            customSkinStore = new CustomSkinStore(this);
-            authManager = new MicrosoftAuthManagerPersonal(this, accountStore);
-            authManager.setListener(new MicrosoftAuthManagerPersonal.Listener() {
-                @Override
-                public void onSignedIn(@NonNull AccountStore.Account account) {
-                    updateAccountStatus(account);
-                    updateSkinUi(account);
-                    updateChangeMicrosoftSkinButtonState(account);
-                    binding.buttonRefreshMicrosoftSkin.setEnabled(true);
+            this.accountStore = new AccountStore(this);
+            this.customSkinStore = new CustomSkinStore(this);
+            MicrosoftAuthManagerPersonal microsoftAuthManagerPersonal = new MicrosoftAuthManagerPersonal(this, this.accountStore);
+            this.authManager = microsoftAuthManagerPersonal;
+            microsoftAuthManagerPersonal.setListener(new MicrosoftAuthManagerPersonal.Listener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.2
+                @Override // ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal.Listener
+                public void onSignedIn(AccountStore.Account account) {
+                    LauncherSettingsActivity.this.updateAccountStatus(account);
+                    LauncherSettingsActivity.this.updateSkinUi(account);
+                    LauncherSettingsActivity.this.updateChangeMicrosoftSkinButtonState(account);
+                    LauncherSettingsActivity.this.binding.buttonRefreshMicrosoftSkin.setEnabled(true);
                 }
 
-                @Override
-                public void onError(@NonNull String message) {
-                    binding.textAccountStatus.setText(message);
-                    binding.buttonRefreshMicrosoftSkin.setEnabled(true);
-                    Toast.makeText(LauncherSettingsActivity.this, message, Toast.LENGTH_LONG).show();
+                @Override // ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal.Listener
+                public void onError(String str) {
+                    LauncherSettingsActivity.this.binding.textAccountStatus.setText(str);
+                    LauncherSettingsActivity.this.binding.buttonRefreshMicrosoftSkin.setEnabled(true);
+                    Toast.makeText(LauncherSettingsActivity.this, str, 1).show();
                 }
             });
-
-            AccountStore.Account account = accountStore.load();
-            updateAccountStatus(account);
-            updateSkinUi(account);
-        } catch (Throwable throwable) {
-            Logging.e("LauncherSettings", "Microsoft account UI initialization failed", throwable);
-            binding.textAccountStatus.setText(R.string.status_signed_out);
-            binding.buttonSignIn.setEnabled(false);
-            binding.buttonSignOut.setEnabled(false);
-            binding.buttonManageOfflineAccounts.setEnabled(false);
-            binding.buttonUseMicrosoftAccount.setEnabled(false);
-            binding.buttonRefreshMicrosoftSkin.setEnabled(false);
+            AccountStore.Account accountLoad = this.accountStore.load();
+            updateAccountStatus(accountLoad);
+            updateSkinUi(accountLoad);
+        } catch (Throwable th) {
+            Logging.e("LauncherSettings", "Microsoft account UI initialization failed", th);
+            this.binding.textAccountStatus.setText(R.string.status_signed_out);
+            this.binding.buttonSignIn.setEnabled(false);
+            this.binding.buttonSignOut.setEnabled(false);
+            this.binding.buttonManageOfflineAccounts.setEnabled(false);
+            this.binding.buttonUseMicrosoftAccount.setEnabled(false);
+            this.binding.buttonRefreshMicrosoftSkin.setEnabled(false);
         }
-
         setupChangeMicrosoftSkinButton();
-
-        binding.buttonSignIn.setOnClickListener(view -> {
-            if (authManager == null) return;
-            if (!MicrosoftAuthConfigPersonal.isConfigured()) {
-                binding.textAccountStatus.setText(R.string.msg_configure_client_id);
-                return;
+        this.binding.buttonSignIn.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda66
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupAccountUi$2(view);
             }
-            authManager.signIn();
         });
-
-        binding.buttonSignOut.setOnClickListener(view -> showSignOutConfirmationDialog());
-
-        binding.buttonUseMicrosoftAccount.setOnClickListener(view -> useRememberedMicrosoftAccount());
-        binding.buttonManageOfflineAccounts.setOnClickListener(view -> showOfflineAccountsDialog());
-        binding.buttonRefreshMicrosoftSkin.setOnClickListener(view -> refreshMicrosoftAccountAndSkin(true));
+        this.binding.buttonSignOut.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda68
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupAccountUi$3(view);
+            }
+        });
+        this.binding.buttonUseMicrosoftAccount.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda69
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupAccountUi$4(view);
+            }
+        });
+        this.binding.buttonManageOfflineAccounts.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda70
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupAccountUi$5(view);
+            }
+        });
+        this.binding.buttonRefreshMicrosoftSkin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda1
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupAccountUi$6(view);
+            }
+        });
+        AccountStore accountStore = this.accountStore;
         updateChangeMicrosoftSkinButtonState(accountStore != null ? accountStore.load() : null);
     }
 
-    private void setupChangeMicrosoftSkinButton() {
-        if (binding == null) return;
-
-        binding.buttonChangeMicrosoftSkin.setOnClickListener(view -> showChangeMicrosoftSkinDialog());
-    }
-
-    private void showSignOutConfirmationDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.sign_out_confirm_title)
-                .setMessage(R.string.sign_out_confirm_message)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.button_sign_out, (dialog, which) -> performMicrosoftSignOut())
-                .show();
-    }
-
-    private void performMicrosoftSignOut() {
-        if (authManager == null || accountStore == null) return;
-
-        authManager.signOut();
-
-        AccountStore.Account account = accountStore.load();
-        updateAccountStatus(account);
-        updateSkinUi(account);
-
-        if (binding.buttonRefreshMicrosoftSkin != null) {
-            binding.buttonRefreshMicrosoftSkin.setEnabled(false);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupAccountUi$2(View view) {
+        if (this.authManager == null) {
+            return;
         }
-        updateChangeMicrosoftSkinButtonState(account);
-
-        Toast.makeText(this, R.string.msg_sign_out_success, Toast.LENGTH_SHORT).show();
+        if (!MicrosoftAuthConfigPersonal.isConfigured()) {
+            this.binding.textAccountStatus.setText(R.string.msg_configure_client_id);
+        } else {
+            this.authManager.signIn();
+        }
     }
 
-    private void registerSkinPickerLauncher() {
-        customSkinPickerLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> { }
-        );
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupAccountUi$3(View view) {
+        showSignOutConfirmationDialog();
     }
 
-    private void registerMicrosoftSkinPickerLauncher() {
-        microsoftSkinPickerLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
-                    Uri uri = result.getData().getData();
-                    if (uri == null) return;
-                    prepareMicrosoftSkinUpload(uri);
-                }
-        );
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupAccountUi$4(View view) {
+        useRememberedMicrosoftAccount();
     }
 
-    private void registerOfflineSkinPickerLauncher() {
-        offlineSkinPickerLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
-                    Uri uri = result.getData().getData();
-                    if (uri == null) return;
-                    pendingOfflineSkinUri = uri;
-                    if (pendingOfflineSkinPreview != null) {
-                        updatePendingOfflineSkinPreview(uri);
-                    }
-                    if (pendingOfflineSkinLabel != null) {
-                        pendingOfflineSkinLabel.setText(R.string.offline_account_skin_selected);
-                    }
-                }
-        );
-    }
-
-    private void openCustomSkinPicker() {
-        // Kept for old callers. Custom skins are now managed per offline profile.
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupAccountUi$5(View view) {
         showOfflineAccountsDialog();
     }
 
-    private void handleCustomSkinResult(@NonNull Uri uri) {
-        // Kept for old callers. Custom skins are now managed per offline profile.
-        pendingOfflineSkinUri = uri;
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupAccountUi$6(View view) {
+        refreshMicrosoftAccountAndSkin(true);
     }
 
-    private void updateSkinUi(@Nullable AccountStore.Account account) {
-        boolean offlineUnlocked = accountStore != null && accountStore.hasMicrosoftLoginCompletedOnce();
-        boolean activeOfflineSkin = account != null && account.isOfflineAccount() && account.hasOfflineSkin();
-        boolean microsoftSkin = account != null && account.isMicrosoftAccount() && !isNullOrBlank(account.skinUrl);
-        boolean rememberedMicrosoft = accountStore != null && accountStore.hasStoredMicrosoftAccount();
-
-        if (activeOfflineSkin) {
-            binding.textSkinStatus.setText(getString(R.string.offline_account_skin_active, account.getBestDisplayName()));
-        } else if (microsoftSkin) {
-            binding.textSkinStatus.setText(R.string.custom_skin_status_microsoft);
-        } else if (rememberedMicrosoft) {
-            binding.textSkinStatus.setText(R.string.microsoft_skin_needs_refresh);
-        } else if (!offlineUnlocked) {
-            binding.textSkinStatus.setText(R.string.custom_skin_status_locked);
-        } else {
-            binding.textSkinStatus.setText(R.string.custom_skin_status_none);
+    private void setupChangeMicrosoftSkinButton() {
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null) {
+            return;
         }
+        activityLauncherSettingsBinding.buttonChangeMicrosoftSkin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda52
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupChangeMicrosoftSkinButton$7(view);
+            }
+        });
+    }
 
-        PlayerHeadLoader.loadInto(this, binding.imagePlayerHead, account, null);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupChangeMicrosoftSkinButton$7(View view) {
+        showChangeMicrosoftSkinDialog();
+    }
+
+    private void showSignOutConfirmationDialog() {
+        new AlertDialog.Builder(this).setTitle(R.string.sign_out_confirm_title).setMessage(R.string.sign_out_confirm_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_sign_out, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda54
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                this.f$0.lambda$showSignOutConfirmationDialog$8(dialogInterface, i);
+            }
+        }).show();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showSignOutConfirmationDialog$8(DialogInterface dialogInterface, int i) {
+        performMicrosoftSignOut();
+    }
+
+    private void performMicrosoftSignOut() {
+        MicrosoftAuthManagerPersonal microsoftAuthManagerPersonal = this.authManager;
+        if (microsoftAuthManagerPersonal == null || this.accountStore == null) {
+            return;
+        }
+        microsoftAuthManagerPersonal.signOut();
+        AccountStore.Account accountLoad = this.accountStore.load();
+        updateAccountStatus(accountLoad);
+        updateSkinUi(accountLoad);
+        if (this.binding.buttonRefreshMicrosoftSkin != null) {
+            this.binding.buttonRefreshMicrosoftSkin.setEnabled(false);
+        }
+        updateChangeMicrosoftSkinButtonState(accountLoad);
+        Toast.makeText(this, R.string.msg_sign_out_success, 0).show();
+    }
+
+    private void registerSkinPickerLauncher() {
+        this.customSkinPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda64
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                LauncherSettingsActivity.lambda$registerSkinPickerLauncher$9((ActivityResult) obj);
+            }
+        });
+    }
+
+    private void registerMicrosoftSkinPickerLauncher() {
+        this.microsoftSkinPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda61
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                this.f$0.lambda$registerMicrosoftSkinPickerLauncher$10((ActivityResult) obj);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$registerMicrosoftSkinPickerLauncher$10(ActivityResult activityResult) {
+        Uri data;
+        if (activityResult.getResultCode() != -1 || activityResult.getData() == null || (data = activityResult.getData().getData()) == null) {
+            return;
+        }
+        prepareMicrosoftSkinUpload(data);
+    }
+
+    private void registerOfflineSkinPickerLauncher() {
+        this.offlineSkinPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda3
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                this.f$0.lambda$registerOfflineSkinPickerLauncher$11((ActivityResult) obj);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$registerOfflineSkinPickerLauncher$11(ActivityResult activityResult) {
+        Uri data;
+        if (activityResult.getResultCode() != -1 || activityResult.getData() == null || (data = activityResult.getData().getData()) == null) {
+            return;
+        }
+        this.pendingOfflineSkinUri = data;
+        if (this.pendingOfflineSkinPreview != null) {
+            updatePendingOfflineSkinPreview(data);
+        }
+        TextView textView = this.pendingOfflineSkinLabel;
+        if (textView != null) {
+            textView.setText(R.string.offline_account_skin_selected);
+        }
+    }
+
+    private void openCustomSkinPicker() {
+        showOfflineAccountsDialog();
+    }
+
+    private void handleCustomSkinResult(Uri uri) {
+        this.pendingOfflineSkinUri = uri;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateSkinUi(AccountStore.Account account) {
+        AccountStore accountStore = this.accountStore;
+        boolean z = accountStore != null && accountStore.hasMicrosoftLoginCompletedOnce();
+        boolean z2 = account != null && account.isOfflineAccount() && account.hasOfflineSkin();
+        boolean z3 = (account == null || !account.isMicrosoftAccount() || isNullOrBlank(account.skinUrl)) ? false : true;
+        AccountStore accountStore2 = this.accountStore;
+        boolean z4 = accountStore2 != null && accountStore2.hasStoredMicrosoftAccount();
+        if (z2) {
+            this.binding.textSkinStatus.setText(getString(R.string.offline_account_skin_active, new Object[]{account.getBestDisplayName()}));
+        } else if (z3) {
+            this.binding.textSkinStatus.setText(R.string.custom_skin_status_microsoft);
+        } else if (z4) {
+            this.binding.textSkinStatus.setText(R.string.microsoft_skin_needs_refresh);
+        } else if (!z) {
+            this.binding.textSkinStatus.setText(R.string.custom_skin_status_locked);
+        } else {
+            this.binding.textSkinStatus.setText(R.string.custom_skin_status_none);
+        }
+        PlayerHeadLoader.loadInto(this, this.binding.imagePlayerHead, account, null);
         updateChangeMicrosoftSkinButtonState(account);
     }
 
     private void setupInstanceSettings() {
-        binding.textFolder.setText(getString(R.string.launcher_folder_value, PathManager.DIR_MINECRAFT_HOME));
-
-        boolean showSharedInstalls = LauncherPreferences.isShowSharedInstalls(this);
-        binding.switchShowSharedInstalls.setChecked(showSharedInstalls);
-        updateSharedInstallsSwitchText(showSharedInstalls);
-        binding.switchShowSharedInstalls.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setShowSharedInstalls(this, isChecked);
-            updateSharedInstallsSwitchText(isChecked);
+        this.binding.textFolder.setText(getString(R.string.launcher_folder_value, new Object[]{PathManager.DIR_MINECRAFT_HOME}));
+        boolean zIsShowSharedInstalls = LauncherPreferences.isShowSharedInstalls(this);
+        this.binding.switchShowSharedInstalls.setChecked(zIsShowSharedInstalls);
+        updateSharedInstallsSwitchText(zIsShowSharedInstalls);
+        this.binding.switchShowSharedInstalls.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda13
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupInstanceSettings$12(compoundButton, z);
+            }
         });
-
-        // Checked = remove the inherited/base Minecraft version after the loader profile is flattened.
-        // Unchecked = keep/install the inherited/base version.
-        boolean removeInheritedVanilla = LauncherPreferences.isRemoveInheritedVanillaAfterLoaderInstall(this);
-        binding.switchRemoveInheritedVanilla.setChecked(removeInheritedVanilla);
-        updateRemoveInheritedVanillaSwitchText(removeInheritedVanilla);
-        binding.switchRemoveInheritedVanilla.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setRemoveInheritedVanillaAfterLoaderInstall(this, isChecked);
-            updateRemoveInheritedVanillaSwitchText(isChecked);
+        boolean zIsRemoveInheritedVanillaAfterLoaderInstall = LauncherPreferences.isRemoveInheritedVanillaAfterLoaderInstall(this);
+        this.binding.switchRemoveInheritedVanilla.setChecked(zIsRemoveInheritedVanillaAfterLoaderInstall);
+        updateRemoveInheritedVanillaSwitchText(zIsRemoveInheritedVanillaAfterLoaderInstall);
+        this.binding.switchRemoveInheritedVanilla.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda14
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupInstanceSettings$13(compoundButton, z);
+            }
         });
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupInstanceSettings$12(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setShowSharedInstalls(this, z);
+        updateSharedInstallsSwitchText(z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupInstanceSettings$13(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setRemoveInheritedVanillaAfterLoaderInstall(this, z);
+        updateRemoveInheritedVanillaSwitchText(z);
+    }
+
     private void setupRendererSettings() {
-        binding.spinnerRenderer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
-                if (!rendererSpinnerReady || position < 0 || position >= availableRenderers.size()) return;
-                RendererInterface renderer = availableRenderers.get(position);
-                LauncherPreferences.setSelectedRendererIdentifier(LauncherSettingsActivity.this, renderer.getUniqueIdentifier());
-                Renderers.setCurrentRenderer(LauncherSettingsActivity.this, renderer.getUniqueIdentifier(), true);
-                updateRendererDescription(renderer);
-                updateRendererPluginButtons(renderer);
-                updateVulkanDriverSettings(renderer);
+        this.binding.spinnerRenderer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.3
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long j) {
+                if (!LauncherSettingsActivity.this.rendererSpinnerReady || i < 0 || i >= LauncherSettingsActivity.this.availableRenderers.size()) {
+                    return;
+                }
+                RendererInterface rendererInterface = (RendererInterface) LauncherSettingsActivity.this.availableRenderers.get(i);
+                LauncherPreferences.setSelectedRendererIdentifier(LauncherSettingsActivity.this, rendererInterface.getUniqueIdentifier());
+                Renderers.setCurrentRenderer(LauncherSettingsActivity.this, rendererInterface.getUniqueIdentifier(), true);
+                LauncherSettingsActivity.this.updateRendererDescription(rendererInterface);
+                LauncherSettingsActivity.this.updateRendererPluginButtons(rendererInterface);
+                LauncherSettingsActivity.this.updateVulkanDriverSettings(rendererInterface);
             }
         });
+        this.binding.spinnerVulkanDriver.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.4
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
 
-        binding.spinnerVulkanDriver.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
-                if (!driverSpinnerReady || position < 0 || position >= availableDrivers.size()) return;
-                Driver driver = availableDrivers.get(position);
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long j) {
+                if (!LauncherSettingsActivity.this.driverSpinnerReady || i < 0 || i >= LauncherSettingsActivity.this.availableDrivers.size()) {
+                    return;
+                }
+                Driver driver = (Driver) LauncherSettingsActivity.this.availableDrivers.get(i);
                 LauncherPreferences.setSelectedVulkanDriverName(LauncherSettingsActivity.this, driver.getName());
-                updateVulkanDriverDescription(driver);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                LauncherSettingsActivity.this.updateVulkanDriverDescription(driver);
             }
         });
-
-        binding.buttonImportRendererPlugin.setOnClickListener(view -> openSelectedRendererPluginSettings());
-        binding.buttonGrantRendererStorageAccess.setOnClickListener(view -> openJavaLauncherStorageAccessSettings());
-        binding.buttonClearRendererPluginCache.setOnClickListener(view -> clearRendererPluginCache());
-        binding.buttonRefreshRenderers.setOnClickListener(view -> {
-            Renderers.reload(this);
-            DriverPluginManager.reload(this);
-            refreshRendererList();
+        this.binding.buttonImportRendererPlugin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda19
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupRendererSettings$14(view);
+            }
         });
-
-        boolean useSystemVulkanDriver = LauncherPreferences.isUseSystemVulkanDriver(this);
-        binding.switchUseSystemVulkanDriver.setChecked(useSystemVulkanDriver);
-        updateSystemVulkanDriverSwitchText(useSystemVulkanDriver);
-        binding.switchUseSystemVulkanDriver.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setUseSystemVulkanDriver(this, isChecked);
-            updateSystemVulkanDriverSwitchText(isChecked);
-            updateVulkanDriverSettings(getSelectedRendererFromSpinner());
+        this.binding.buttonGrantRendererStorageAccess.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda20
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupRendererSettings$15(view);
+            }
         });
-
-        boolean useOpenGl26Plus = LauncherPreferences.isUseOpenGlForMinecraft26Plus(this);
-        binding.switchUseOpenGlFor26Plus.setChecked(useOpenGl26Plus);
-        updateOpenGl26PlusSwitchText(useOpenGl26Plus);
-        binding.switchUseOpenGlFor26Plus.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setUseOpenGlForMinecraft26Plus(this, isChecked);
-            updateOpenGl26PlusSwitchText(isChecked);
+        this.binding.buttonClearRendererPluginCache.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda21
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupRendererSettings$16(view);
+            }
         });
-
+        this.binding.buttonRefreshRenderers.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda23
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupRendererSettings$17(view);
+            }
+        });
+        boolean zIsUseSystemVulkanDriver = LauncherPreferences.isUseSystemVulkanDriver(this);
+        this.binding.switchUseSystemVulkanDriver.setChecked(zIsUseSystemVulkanDriver);
+        updateSystemVulkanDriverSwitchText(zIsUseSystemVulkanDriver);
+        this.binding.switchUseSystemVulkanDriver.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda24
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupRendererSettings$18(compoundButton, z);
+            }
+        });
+        boolean zIsUseOpenGlForMinecraft26Plus = LauncherPreferences.isUseOpenGlForMinecraft26Plus(this);
+        this.binding.switchUseOpenGlFor26Plus.setChecked(zIsUseOpenGlForMinecraft26Plus);
+        updateOpenGl26PlusSwitchText(zIsUseOpenGlForMinecraft26Plus);
+        this.binding.switchUseOpenGlFor26Plus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda25
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupRendererSettings$19(compoundButton, z);
+            }
+        });
         Renderers.reload(this);
         refreshRendererList();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$14(View view) {
+        openSelectedRendererPluginSettings();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$15(View view) {
+        openJavaLauncherStorageAccessSettings();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$16(View view) {
+        clearRendererPluginCache();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$17(View view) {
+        Renderers.reload(this);
+        DriverPluginManager.reload(this);
+        refreshRendererList();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$18(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setUseSystemVulkanDriver(this, z);
+        updateSystemVulkanDriverSwitchText(z);
+        updateVulkanDriverSettings(getSelectedRendererFromSpinner());
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRendererSettings$19(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setUseOpenGlForMinecraft26Plus(this, z);
+        updateOpenGl26PlusSwitchText(z);
+    }
+
     private void refreshRendererList() {
-        rendererSpinnerReady = false;
-        availableRenderers.clear();
-        availableRenderers.addAll(Renderers.getCompatibleRenderers(this));
-
-        ArrayList<String> names = new ArrayList<>();
-        for (RendererInterface renderer : availableRenderers) {
-            names.add(renderer.getRendererName() + (renderer.isExternalPlugin() ? "  •  Plugin" : ""));
+        this.rendererSpinnerReady = false;
+        this.availableRenderers.clear();
+        this.availableRenderers.addAll(Renderers.getCompatibleRenderers(this));
+        ArrayList arrayList = new ArrayList();
+        for (RendererInterface rendererInterface : this.availableRenderers) {
+            arrayList.add(rendererInterface.getRendererName() + (rendererInterface.isExternalPlugin() ? "  •  Plugin" : ""));
         }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spinnerRenderer.setAdapter(adapter);
-
-        if (availableRenderers.isEmpty()) {
-            binding.textRendererDescription.setText(R.string.renderer_none_found);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.binding.spinnerRenderer.setAdapter((SpinnerAdapter) arrayAdapter);
+        if (this.availableRenderers.isEmpty()) {
+            this.binding.textRendererDescription.setText(R.string.renderer_none_found);
             updateRendererPluginButtons(null);
             updateMobileGluesConfigSummary(null);
             updateVulkanDriverSettings(null);
             return;
         }
-
-        int selectedIndex = Renderers.indexOfRenderer(availableRenderers, LauncherPreferences.getSelectedRendererIdentifier(this));
-        binding.spinnerRenderer.setSelection(selectedIndex, false);
-        updateRendererDescription(availableRenderers.get(selectedIndex));
-        updateRendererPluginButtons(availableRenderers.get(selectedIndex));
-        updateVulkanDriverSettings(availableRenderers.get(selectedIndex));
-        rendererSpinnerReady = true;
+        int iIndexOfRenderer = Renderers.indexOfRenderer(this.availableRenderers, LauncherPreferences.getSelectedRendererIdentifier(this));
+        this.binding.spinnerRenderer.setSelection(iIndexOfRenderer, false);
+        updateRendererDescription(this.availableRenderers.get(iIndexOfRenderer));
+        updateRendererPluginButtons(this.availableRenderers.get(iIndexOfRenderer));
+        updateVulkanDriverSettings(this.availableRenderers.get(iIndexOfRenderer));
+        this.rendererSpinnerReady = true;
     }
 
-    private void updateVulkanDriverSettings(@Nullable RendererInterface renderer) {
-        boolean show = DriverPluginManager.isVulkanZinkRenderer(renderer)
-                && !LauncherPreferences.isUseSystemVulkanDriver(this);
-        binding.layoutVulkanDriverSettings.setVisibility(show ? View.VISIBLE : View.GONE);
-        if (!show) {
-            driverSpinnerReady = false;
-            availableDrivers.clear();
-            binding.spinnerVulkanDriver.setAdapter(null);
-            binding.textVulkanDriverDescription.setText("");
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateVulkanDriverSettings(RendererInterface rendererInterface) {
+        boolean z = DriverPluginManager.isVulkanZinkRenderer(rendererInterface) && !LauncherPreferences.isUseSystemVulkanDriver(this);
+        this.binding.layoutVulkanDriverSettings.setVisibility(z ? 0 : 8);
+        if (!z) {
+            this.driverSpinnerReady = false;
+            this.availableDrivers.clear();
+            this.binding.spinnerVulkanDriver.setAdapter((SpinnerAdapter) null);
+            this.binding.textVulkanDriverDescription.setText("");
             return;
         }
-
         refreshVulkanDriverList();
     }
 
     private void refreshVulkanDriverList() {
-        driverSpinnerReady = false;
-        availableDrivers.clear();
-        availableDrivers.addAll(DriverPluginManager.getDrivers(this));
-
-        ArrayList<String> names = new ArrayList<>();
-        for (Driver driver : availableDrivers) {
-            names.add(driver.getName());
+        this.driverSpinnerReady = false;
+        this.availableDrivers.clear();
+        this.availableDrivers.addAll(DriverPluginManager.getDrivers(this));
+        ArrayList arrayList = new ArrayList();
+        Iterator<Driver> it = this.availableDrivers.iterator();
+        while (it.hasNext()) {
+            arrayList.add(it.next().getName());
         }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, names);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spinnerVulkanDriver.setAdapter(adapter);
-
-        if (availableDrivers.isEmpty()) {
-            binding.textVulkanDriverDescription.setText("");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.binding.spinnerVulkanDriver.setAdapter((SpinnerAdapter) arrayAdapter);
+        if (this.availableDrivers.isEmpty()) {
+            this.binding.textVulkanDriverDescription.setText("");
             return;
         }
-
-        int selectedIndex = DriverPluginManager.indexOfDriver(this, LauncherPreferences.getSelectedVulkanDriverName(this));
-        binding.spinnerVulkanDriver.setSelection(selectedIndex, false);
-        updateVulkanDriverDescription(availableDrivers.get(selectedIndex));
-        driverSpinnerReady = true;
+        int iIndexOfDriver = DriverPluginManager.indexOfDriver(this, LauncherPreferences.getSelectedVulkanDriverName(this));
+        this.binding.spinnerVulkanDriver.setSelection(iIndexOfDriver, false);
+        updateVulkanDriverDescription(this.availableDrivers.get(iIndexOfDriver));
+        this.driverSpinnerReady = true;
     }
 
-    private void updateVulkanDriverDescription(@NonNull Driver driver) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateVulkanDriverDescription(Driver driver) {
         String description = driver.getDescription();
         if (description == null || description.trim().isEmpty()) {
             description = "Uses the selected Vulkan driver for Vulkan/Zink rendering.";
         }
-
-        binding.textVulkanDriverDescription.setText(getString(
-                R.string.vulkan_driver_description_value,
-                driver.getName(),
-                description
-        ));
+        this.binding.textVulkanDriverDescription.setText(getString(R.string.vulkan_driver_description_value, new Object[]{driver.getName(), description}));
     }
 
-    private void updateRendererDescription(@NonNull RendererInterface renderer) {
-        binding.textRendererDescription.setText(buildFriendlyRendererDescription(renderer));
-        updateMobileGluesConfigSummary(renderer);
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateRendererDescription(RendererInterface rendererInterface) {
+        this.binding.textRendererDescription.setText(buildFriendlyRendererDescription(rendererInterface));
+        updateMobileGluesConfigSummary(rendererInterface);
     }
 
-    @NonNull
-    private String buildFriendlyRendererDescription(@NonNull RendererInterface renderer) {
-        String name = renderer.getRendererName();
-        String lookup = (
-                renderer.getRendererName() + " "
-                        + renderer.getRendererId() + " "
-                        + renderer.getUniqueIdentifier() + " "
-                        + renderer.getRendererLibrary()
-        ).toLowerCase();
-
-        if (lookup.contains("mobileglues") || lookup.contains("mobile glues")) {
-            return name + "\nRecommended for most Android devices. Good balance of compatibility and performance for modern Minecraft versions.";
+    private String buildFriendlyRendererDescription(RendererInterface rendererInterface) {
+        String rendererName = rendererInterface.getRendererName();
+        String lowerCase = (rendererInterface.getRendererName() + " " + rendererInterface.getRendererId() + " " + rendererInterface.getUniqueIdentifier() + " " + rendererInterface.getRendererLibrary()).toLowerCase();
+        if (lowerCase.contains("mobileglues") || lowerCase.contains("mobile glues")) {
+            return rendererName + "\nRecommended for most Android devices. Good balance of compatibility and performance for modern Minecraft versions.";
         }
-
-        if (lookup.contains("vulkan") || lookup.contains("zink")) {
-            return name + "\nUses Vulkan/Zink rendering. Best for devices with strong Vulkan support, and useful for newer Minecraft versions or Vulkan-focused testing.";
+        if (lowerCase.contains("vulkan") || lowerCase.contains("zink")) {
+            return rendererName + "\nUses Vulkan/Zink rendering. Best for devices with strong Vulkan support, and useful for newer Minecraft versions or Vulkan-focused testing.";
         }
-
-        if (lookup.contains("gl4es") || lookup.contains("opengles")) {
-            return name + "\nClassic OpenGL ES compatibility renderer. Useful for older Minecraft versions or devices that do not work well with Vulkan.";
+        if (lowerCase.contains("gl4es") || lowerCase.contains("opengles")) {
+            return rendererName + "\nClassic OpenGL ES compatibility renderer. Useful for older Minecraft versions or devices that do not work well with Vulkan.";
         }
-
-        if (lookup.contains("virgl")) {
-            return name + "\nCompatibility renderer for specific devices and setups. Try this if the recommended renderer does not work correctly.";
+        if (lowerCase.contains("virgl")) {
+            return rendererName + "\nCompatibility renderer for specific devices and setups. Try this if the recommended renderer does not work correctly.";
         }
-
-        String description = renderer.getRendererDescription();
-        if (description != null && !description.trim().isEmpty()) {
-            return name + "\n" + description.trim();
+        String rendererDescription = rendererInterface.getRendererDescription();
+        if (rendererDescription != null && !rendererDescription.trim().isEmpty()) {
+            return rendererName + "\n" + rendererDescription.trim();
         }
-
-        return name + "\nRuns Minecraft using this renderer.";
+        return rendererName + "\nRuns Minecraft using this renderer.";
     }
 
-    private void updateMobileGluesConfigSummary(@Nullable RendererInterface renderer) {
-        boolean mobileGlues = MobileGluesConfigHelper.isMobileGluesRenderer(renderer);
-
-        if (!mobileGlues) {
-            binding.textRendererPluginConfig.setText("");
-            binding.textRendererPluginConfig.setVisibility(View.GONE);
-            binding.buttonGrantRendererStorageAccess.setVisibility(View.GONE);
+    private void updateMobileGluesConfigSummary(RendererInterface rendererInterface) {
+        String str;
+        if (!MobileGluesConfigHelper.isMobileGluesRenderer(rendererInterface)) {
+            this.binding.textRendererPluginConfig.setText("");
+            this.binding.textRendererPluginConfig.setVisibility(8);
+            this.binding.buttonGrantRendererStorageAccess.setVisibility(8);
             return;
         }
-
-        binding.textRendererPluginConfig.setText(MobileGluesConfigHelper.buildSettingsSummary(this, renderer));
-        binding.textRendererPluginConfig.setVisibility(View.VISIBLE);
-
-        boolean hasAccess = MobileGluesConfigHelper.hasStorageAccess(this);
-        binding.buttonGrantRendererStorageAccess.setVisibility(View.VISIBLE);
-        binding.buttonGrantRendererStorageAccess.setEnabled(true);
-        binding.buttonGrantRendererStorageAccess.setText(hasAccess
-                ? "Choose MobileGlues folder again"
-                : "Choose MobileGlues folder");
+        this.binding.textRendererPluginConfig.setText(MobileGluesConfigHelper.buildSettingsSummary(this, rendererInterface));
+        this.binding.textRendererPluginConfig.setVisibility(0);
+        boolean zHasStorageAccess = MobileGluesConfigHelper.hasStorageAccess(this);
+        this.binding.buttonGrantRendererStorageAccess.setVisibility(0);
+        this.binding.buttonGrantRendererStorageAccess.setEnabled(true);
+        MaterialButton materialButton = this.binding.buttonGrantRendererStorageAccess;
+        if (zHasStorageAccess) {
+            str = "Choose MobileGlues folder again";
+        } else {
+            str = "Choose MobileGlues folder";
+        }
+        materialButton.setText(str);
     }
 
-    private void updateRendererPluginButtons(@Nullable RendererInterface renderer) {
-        boolean externalPlugin = renderer != null && renderer.isExternalPlugin();
-        binding.buttonImportRendererPlugin.setEnabled(externalPlugin);
-        binding.buttonClearRendererPluginCache.setEnabled(RendererPluginManager.hasImportedOrCachedRendererPlugins(this));
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateRendererPluginButtons(RendererInterface rendererInterface) {
+        this.binding.buttonImportRendererPlugin.setEnabled(rendererInterface != null && rendererInterface.isExternalPlugin());
+        this.binding.buttonClearRendererPluginCache.setEnabled(RendererPluginManager.hasImportedOrCachedRendererPlugins(this));
     }
 
     private void openSelectedRendererPluginSettings() {
-        RendererInterface renderer = getSelectedRendererFromSpinner();
-        if (renderer == null || !renderer.isExternalPlugin()) {
+        RendererInterface selectedRendererFromSpinner = getSelectedRendererFromSpinner();
+        if (selectedRendererFromSpinner == null || !selectedRendererFromSpinner.isExternalPlugin()) {
             return;
         }
-
-        RendererPluginManager.openPluginApp(this, renderer);
+        RendererPluginManager.openPluginApp(this, selectedRendererFromSpinner);
     }
 
     private void openJavaLauncherStorageAccessSettings() {
-        if (mobileGluesFolderPickerLauncher == null) return;
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
-        mobileGluesFolderPickerLauncher.launch(intent);
+        if (this.mobileGluesFolderPickerLauncher == null) {
+            return;
+        }
+        Intent intent = new Intent("android.intent.action.OPEN_DOCUMENT_TREE");
+        intent.addFlags(1);
+        intent.addFlags(2);
+        intent.addFlags(64);
+        intent.addFlags(128);
+        this.mobileGluesFolderPickerLauncher.launch(intent);
     }
 
-    @Nullable
     private RendererInterface getSelectedRendererFromSpinner() {
-        int position = binding.spinnerRenderer.getSelectedItemPosition();
-        if (position < 0 || position >= availableRenderers.size()) return null;
-        return availableRenderers.get(position);
+        int selectedItemPosition = this.binding.spinnerRenderer.getSelectedItemPosition();
+        if (selectedItemPosition < 0 || selectedItemPosition >= this.availableRenderers.size()) {
+            return null;
+        }
+        return this.availableRenderers.get(selectedItemPosition);
     }
 
     private void clearRendererPluginCache() {
@@ -684,326 +804,423 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
     }
 
     private void setupRenderSurfaceSettings() {
-        boolean useNativeSurfaceView = LauncherPreferences.isUseNativeSurfaceView(this);
-        binding.switchUseNativeSurface.setChecked(useNativeSurfaceView);
-        updateRenderSurfaceSwitchText(useNativeSurfaceView);
-        binding.switchUseNativeSurface.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setUseNativeSurfaceView(this, isChecked);
-            updateRenderSurfaceSwitchText(isChecked);
+        boolean zIsUseNativeSurfaceView = LauncherPreferences.isUseNativeSurfaceView(this);
+        this.binding.switchUseNativeSurface.setChecked(zIsUseNativeSurfaceView);
+        updateRenderSurfaceSwitchText(zIsUseNativeSurfaceView);
+        this.binding.switchUseNativeSurface.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda10
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupRenderSurfaceSettings$20(compoundButton, z);
+            }
         });
-
         setupGameDisplaySettings();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupRenderSurfaceSettings$20(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setUseNativeSurfaceView(this, z);
+        updateRenderSurfaceSwitchText(z);
+    }
+
     private void setupGameDisplaySettings() {
-        int currentScale = LauncherPreferences.getGameResolutionScalePercent(this);
-        binding.sliderGameResolutionScale.setMax(
-                LauncherPreferences.MAX_GAME_RESOLUTION_SCALE_PERCENT
-                        - LauncherPreferences.MIN_GAME_RESOLUTION_SCALE_PERCENT
-        );
-        updateResolutionScaleUi(currentScale);
-
-        binding.sliderGameResolutionScale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (!fromUser) return;
-                int percent = LauncherPreferences.MIN_GAME_RESOLUTION_SCALE_PERCENT + progress;
-                LauncherPreferences.setGameResolutionScalePercent(LauncherSettingsActivity.this, percent);
-                updateResolutionScaleText(percent);
-            }
-
-            @Override
+        int gameResolutionScalePercent = LauncherPreferences.getGameResolutionScalePercent(this);
+        this.binding.sliderGameResolutionScale.setMax(175);
+        updateResolutionScaleUi(gameResolutionScalePercent);
+        this.binding.sliderGameResolutionScale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.5
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
-            @Override
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            public void onProgressChanged(SeekBar seekBar, int i, boolean z) {
+                if (z) {
+                    int i2 = i + 25;
+                    LauncherPreferences.setGameResolutionScalePercent(LauncherSettingsActivity.this, i2);
+                    LauncherSettingsActivity.this.updateResolutionScaleText(i2);
+                }
+            }
+
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int percent = LauncherPreferences.MIN_GAME_RESOLUTION_SCALE_PERCENT + seekBar.getProgress();
-                percent = LauncherPreferences.clampGameResolutionScalePercent(percent);
-                LauncherPreferences.setGameResolutionScalePercent(LauncherSettingsActivity.this, percent);
-                updateResolutionScaleUi(percent);
+                int iClampGameResolutionScalePercent = LauncherPreferences.clampGameResolutionScalePercent(seekBar.getProgress() + 25);
+                LauncherPreferences.setGameResolutionScalePercent(LauncherSettingsActivity.this, iClampGameResolutionScalePercent);
+                LauncherSettingsActivity.this.updateResolutionScaleUi(iClampGameResolutionScalePercent);
             }
         });
-
-        binding.textGameResolutionScale.setOnClickListener(view -> openResolutionScaleInputDialog());
-
-        boolean forceFullscreen = LauncherPreferences.isForceFullscreenMode(this);
-        binding.switchForceFullscreenMode.setChecked(forceFullscreen);
-        updateForceFullscreenSwitchText(forceFullscreen);
-        binding.switchForceFullscreenMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setForceFullscreenMode(this, isChecked);
-            updateForceFullscreenSwitchText(isChecked);
+        this.binding.textGameResolutionScale.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda41
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupGameDisplaySettings$21(view);
+            }
         });
-
-        boolean avoidRoundedCorners = LauncherPreferences.isAvoidRoundedDisplayCorners(this);
-        binding.switchAvoidRoundedCorners.setChecked(avoidRoundedCorners);
-        updateAvoidRoundedCornersSwitchText(avoidRoundedCorners);
-        binding.switchAvoidRoundedCorners.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setAvoidRoundedDisplayCorners(this, isChecked);
-            updateAvoidRoundedCornersSwitchText(isChecked);
+        boolean zIsForceFullscreenMode = LauncherPreferences.isForceFullscreenMode(this);
+        this.binding.switchForceFullscreenMode.setChecked(zIsForceFullscreenMode);
+        updateForceFullscreenSwitchText(zIsForceFullscreenMode);
+        this.binding.switchForceFullscreenMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda42
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupGameDisplaySettings$22(compoundButton, z);
+            }
         });
+        boolean zIsAvoidRoundedDisplayCorners = LauncherPreferences.isAvoidRoundedDisplayCorners(this);
+        this.binding.switchAvoidRoundedCorners.setChecked(zIsAvoidRoundedDisplayCorners);
+        updateAvoidRoundedCornersSwitchText(zIsAvoidRoundedDisplayCorners);
+        this.binding.switchAvoidRoundedCorners.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda43
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupGameDisplaySettings$23(compoundButton, z);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupGameDisplaySettings$21(View view) {
+        openResolutionScaleInputDialog();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupGameDisplaySettings$22(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setForceFullscreenMode(this, z);
+        updateForceFullscreenSwitchText(z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupGameDisplaySettings$23(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setAvoidRoundedDisplayCorners(this, z);
+        updateAvoidRoundedCornersSwitchText(z);
     }
 
     private void openResolutionScaleInputDialog() {
-        int currentScale = LauncherPreferences.getGameResolutionScalePercent(this);
-
-        EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input.setSingleLine(true);
-        input.setSelectAllOnFocus(true);
-        input.setText(String.valueOf(currentScale));
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.settings_renderer_resolution_scale_title)
-                .setMessage(getString(
-                        R.string.settings_renderer_resolution_scale_dialog_message,
-                        LauncherPreferences.MIN_GAME_RESOLUTION_SCALE_PERCENT,
-                        LauncherPreferences.MAX_GAME_RESOLUTION_SCALE_PERCENT
-                ))
-                .setView(input)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, null)
-                .create();
-
-        dialog.setOnShowListener(dialogInterface -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
-            int percent = parseResolutionScaleInput(input.getText() == null ? "" : input.getText().toString());
-            percent = LauncherPreferences.clampGameResolutionScalePercent(percent);
-            LauncherPreferences.setGameResolutionScalePercent(this, percent);
-            updateResolutionScaleUi(percent);
-            dialog.dismiss();
-        }));
-
-        dialog.show();
+        int gameResolutionScalePercent = LauncherPreferences.getGameResolutionScalePercent(this);
+        final EditText editText = new EditText(this);
+        editText.setInputType(2);
+        editText.setSingleLine(true);
+        editText.setSelectAllOnFocus(true);
+        editText.setText(String.valueOf(gameResolutionScalePercent));
+        final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setTitle(R.string.settings_renderer_resolution_scale_title).setMessage(getString(R.string.settings_renderer_resolution_scale_dialog_message, new Object[]{25, 200})).setView(editText).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(android.R.string.ok, (DialogInterface.OnClickListener) null).create();
+        alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda28
+            @Override // android.content.DialogInterface.OnShowListener
+            public final void onShow(DialogInterface dialogInterface) {
+                this.f$0.lambda$openResolutionScaleInputDialog$25(alertDialogCreate, editText, dialogInterface);
+            }
+        });
+        alertDialogCreate.show();
     }
 
-    private int parseResolutionScaleInput(@NonNull String value) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$openResolutionScaleInputDialog$25(final AlertDialog alertDialog, final EditText editText, DialogInterface dialogInterface) {
+        alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda9
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$openResolutionScaleInputDialog$24(editText, alertDialog, view);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$openResolutionScaleInputDialog$24(EditText editText, AlertDialog alertDialog, View view) {
+        int iClampGameResolutionScalePercent = LauncherPreferences.clampGameResolutionScalePercent(parseResolutionScaleInput(editText.getText() == null ? "" : editText.getText().toString()));
+        LauncherPreferences.setGameResolutionScalePercent(this, iClampGameResolutionScalePercent);
+        updateResolutionScaleUi(iClampGameResolutionScalePercent);
+        alertDialog.dismiss();
+    }
+
+    private int parseResolutionScaleInput(String str) {
         try {
-            return Integer.parseInt(value.trim());
-        } catch (Throwable ignored) {
+            return Integer.parseInt(str.trim());
+        } catch (Throwable unused) {
             return LauncherPreferences.getGameResolutionScalePercent(this);
         }
     }
 
-    private void updateResolutionScaleUi(int percent) {
-        int safePercent = LauncherPreferences.clampGameResolutionScalePercent(percent);
-        binding.sliderGameResolutionScale.setProgress(
-                safePercent - LauncherPreferences.MIN_GAME_RESOLUTION_SCALE_PERCENT
-        );
-        updateResolutionScaleText(safePercent);
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateResolutionScaleUi(int i) {
+        int iClampGameResolutionScalePercent = LauncherPreferences.clampGameResolutionScalePercent(i);
+        this.binding.sliderGameResolutionScale.setProgress(iClampGameResolutionScalePercent - 25);
+        updateResolutionScaleText(iClampGameResolutionScalePercent);
     }
 
-    private void updateResolutionScaleText(int percent) {
-        binding.textGameResolutionScale.setText(getString(
-                R.string.settings_renderer_resolution_scale_value,
-                LauncherPreferences.clampGameResolutionScalePercent(percent)
-        ));
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateResolutionScaleText(int i) {
+        this.binding.textGameResolutionScale.setText(getString(R.string.settings_renderer_resolution_scale_value, new Object[]{Integer.valueOf(LauncherPreferences.clampGameResolutionScalePercent(i))}));
     }
 
     private void setupControllerSettings() {
-        binding.buttonEditBuiltInController.setOnClickListener(view ->
-                GamepadMappingDialog.show(this, () -> runOnUiThread(() -> FullscreenUtils.enableImmersive(this)))
-        );
-
-        binding.buttonManageTouchControls.setOnClickListener(view ->
-                startActivity(new Intent(this, ControlsActivity.class))
-        );
-
+        this.binding.buttonEditBuiltInController.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda30
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupControllerSettings$28(view);
+            }
+        });
+        this.binding.buttonManageTouchControls.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda31
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupControllerSettings$29(view);
+            }
+        });
         setupHardwareMouseDpiScaleSettings();
         refreshControllerSettingsValues();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupControllerSettings$26() {
+        FullscreenUtils.enableImmersive(this);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupControllerSettings$27() {
+        runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda36
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$setupControllerSettings$26();
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupControllerSettings$28(View view) {
+        GamepadMappingDialog.show(this, new GamepadMappingDialog.OnSettingsSavedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda55
+            @Override // ca.dnamobile.javalauncher.input.GamepadMappingDialog.OnSettingsSavedListener
+            public final void onSettingsSaved() {
+                this.f$0.lambda$setupControllerSettings$27();
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupControllerSettings$29(View view) {
+        startActivity(new Intent(this, (Class<?>) ControlsActivity.class));
+    }
 
     private void setupHardwareMouseDpiScaleSettings() {
-        if (binding == null || binding.layoutControllerSettings == null) return;
-        if (binding.layoutControllerSettings.findViewWithTag("hardware_mouse_dpi_scale") != null) return;
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null || activityLauncherSettingsBinding.layoutControllerSettings == null || this.binding.layoutControllerSettings.findViewWithTag("hardware_mouse_dpi_scale") != null) {
+            return;
+        }
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setTag("hardware_mouse_dpi_scale");
+        linearLayout.setOrientation(1);
+        linearLayout.setPadding(0, dp(14.0f), 0, 0);
+        View view = new View(this);
+        view.setBackgroundColor(855638016);
+        linearLayout.addView(view, new LinearLayout.LayoutParams(-1, Math.max(1, dp(1.0f))));
+        TextView textView = new TextView(this);
+        textView.setText("Hardware mouse DPI scale");
+        textView.setTextSize(16.0f);
+        textView.setTypeface(textView.getTypeface(), 1);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(12.0f);
+        linearLayout.addView(textView, layoutParams);
+        TextView textView2 = new TextView(this);
+        textView2.setText("Adjusts real mouse / captured-pointer speed using a Zalith-style relative pointer multiplier. Touch camera movement, hotbar taps, and absolute menu taps are not scaled.");
+        textView2.setTextSize(13.0f);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams2.topMargin = dp(2.0f);
+        linearLayout.addView(textView2, layoutParams2);
+        TextView textView3 = new TextView(this);
+        this.textHardwareMouseDpiScale = textView3;
+        textView3.setTextSize(14.0f);
+        TextView textView4 = this.textHardwareMouseDpiScale;
+        textView4.setTypeface(textView4.getTypeface(), 1);
+        LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams3.topMargin = dp(8.0f);
+        linearLayout.addView(this.textHardwareMouseDpiScale, layoutParams3);
+        SeekBar seekBar = new SeekBar(this);
+        this.sliderHardwareMouseDpiScale = seekBar;
+        seekBar.setMax(275);
+        this.sliderHardwareMouseDpiScale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.6
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            public void onStartTrackingTouch(SeekBar seekBar2) {
+            }
 
-        LinearLayout container = new LinearLayout(this);
-        container.setTag("hardware_mouse_dpi_scale");
-        container.setOrientation(LinearLayout.VERTICAL);
-        container.setPadding(0, dp(14), 0, 0);
-
-        View divider = new View(this);
-        divider.setBackgroundColor(0x33000000);
-        container.addView(divider, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                Math.max(1, dp(1))
-        ));
-
-        TextView title = new TextView(this);
-        title.setText("Hardware mouse DPI scale");
-        title.setTextSize(16f);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
-        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        titleParams.topMargin = dp(12);
-        container.addView(title, titleParams);
-
-        TextView summary = new TextView(this);
-        summary.setText("Adjusts real mouse / captured-pointer speed using a Zalith-style relative pointer multiplier. Touch camera movement, hotbar taps, and absolute menu taps are not scaled.");
-        summary.setTextSize(13f);
-        LinearLayout.LayoutParams summaryParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        summaryParams.topMargin = dp(2);
-        container.addView(summary, summaryParams);
-
-        textHardwareMouseDpiScale = new TextView(this);
-        textHardwareMouseDpiScale.setTextSize(14f);
-        textHardwareMouseDpiScale.setTypeface(textHardwareMouseDpiScale.getTypeface(), android.graphics.Typeface.BOLD);
-        LinearLayout.LayoutParams valueParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        valueParams.topMargin = dp(8);
-        container.addView(textHardwareMouseDpiScale, valueParams);
-
-        sliderHardwareMouseDpiScale = new SeekBar(this);
-        sliderHardwareMouseDpiScale.setMax(GamepadMappingStore.MAX_MOUSE_DPI_SCALE - GamepadMappingStore.MIN_MOUSE_DPI_SCALE);
-        sliderHardwareMouseDpiScale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int percent = GamepadMappingStore.MIN_MOUSE_DPI_SCALE + progress;
-                updateHardwareMouseDpiScaleText(percent);
-                if (fromUser) {
-                    GamepadMappingStore.get(LauncherSettingsActivity.this).setHardwareMouseDpiScale(percent);
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            public void onProgressChanged(SeekBar seekBar2, int i, boolean z) {
+                int i2 = i + 25;
+                LauncherSettingsActivity.this.updateHardwareMouseDpiScaleText(i2);
+                if (z) {
+                    GamepadMappingStore.get(LauncherSettingsActivity.this).setHardwareMouseDpiScale(i2);
                 }
             }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                int percent = GamepadMappingStore.MIN_MOUSE_DPI_SCALE + seekBar.getProgress();
-                GamepadMappingStore.get(LauncherSettingsActivity.this).setHardwareMouseDpiScale(percent);
-                updateHardwareMouseDpiScaleUi(percent);
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            public void onStopTrackingTouch(SeekBar seekBar2) {
+                int progress = seekBar2.getProgress() + 25;
+                GamepadMappingStore.get(LauncherSettingsActivity.this).setHardwareMouseDpiScale(progress);
+                LauncherSettingsActivity.this.updateHardwareMouseDpiScaleUi(progress);
             }
         });
-        container.addView(sliderHardwareMouseDpiScale, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        binding.layoutControllerSettings.addView(container);
+        linearLayout.addView(this.sliderHardwareMouseDpiScale, new LinearLayout.LayoutParams(-1, -2));
+        this.binding.layoutControllerSettings.addView(linearLayout);
     }
 
     private void refreshControllerSettingsValues() {
-        if (binding == null) return;
-
-        boolean touchControlsEnabled = ControlsPreferences.isTouchControlsEnabled(this);
-        binding.switchTouchControlsEnabled.setOnCheckedChangeListener(null);
-        binding.switchTouchControlsEnabled.setChecked(touchControlsEnabled);
-        updateTouchControlsSwitchText(touchControlsEnabled);
-        binding.switchTouchControlsEnabled.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            ControlsPreferences.setTouchControlsEnabled(this, isChecked);
-            updateTouchControlsSwitchText(isChecked);
+        if (this.binding == null) {
+            return;
+        }
+        boolean zIsTouchControlsEnabled = ControlsPreferences.isTouchControlsEnabled(this);
+        this.binding.switchTouchControlsEnabled.setOnCheckedChangeListener(null);
+        this.binding.switchTouchControlsEnabled.setChecked(zIsTouchControlsEnabled);
+        updateTouchControlsSwitchText(zIsTouchControlsEnabled);
+        this.binding.switchTouchControlsEnabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda34
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$refreshControllerSettingsValues$30(compoundButton, z);
+            }
         });
-
         updateMinecraftTouchGestureSettingsUi();
         updateHardwareMouseDpiScaleUi(GamepadMappingStore.get(this).getHardwareMouseDpiScale());
-
-        boolean forceSdl = LauncherPreferences.isForceSdlControllerBridge(this);
-        binding.switchForceSdlControllerBridge.setOnCheckedChangeListener(null);
-        binding.switchForceSdlControllerBridge.setChecked(forceSdl);
-        updateForceSdlControllerBridgeSwitchText(forceSdl);
-        binding.switchForceSdlControllerBridge.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setForceSdlControllerBridge(this, isChecked);
-            updateForceSdlControllerBridgeSwitchText(isChecked);
+        boolean zIsForceSdlControllerBridge = LauncherPreferences.isForceSdlControllerBridge(this);
+        this.binding.switchForceSdlControllerBridge.setOnCheckedChangeListener(null);
+        this.binding.switchForceSdlControllerBridge.setChecked(zIsForceSdlControllerBridge);
+        updateForceSdlControllerBridgeSwitchText(zIsForceSdlControllerBridge);
+        this.binding.switchForceSdlControllerBridge.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda35
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$refreshControllerSettingsValues$31(compoundButton, z);
+            }
         });
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$refreshControllerSettingsValues$30(CompoundButton compoundButton, boolean z) {
+        ControlsPreferences.setTouchControlsEnabled(this, z);
+        updateTouchControlsSwitchText(z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$refreshControllerSettingsValues$31(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setForceSdlControllerBridge(this, z);
+        updateForceSdlControllerBridgeSwitchText(z);
+    }
 
     private void updateMinecraftTouchGestureSettingsUi() {
-        boolean gesturesEnabled = ControlsPreferences.isMinecraftTouchGesturesEnabled(this);
-        binding.switchMinecraftTouchGestures.setOnCheckedChangeListener(null);
-        binding.switchMinecraftTouchGestures.setChecked(gesturesEnabled);
-        updateMinecraftTouchGesturesSwitchText(gesturesEnabled);
-        binding.switchMinecraftTouchGestures.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            ControlsPreferences.setMinecraftTouchGesturesEnabled(this, isChecked);
-            updateMinecraftTouchGesturesSwitchText(isChecked);
-            updateDoubleTapToDropEnabledState(isChecked);
+        boolean zIsMinecraftTouchGesturesEnabled = ControlsPreferences.isMinecraftTouchGesturesEnabled(this);
+        this.binding.switchMinecraftTouchGestures.setOnCheckedChangeListener(null);
+        this.binding.switchMinecraftTouchGestures.setChecked(zIsMinecraftTouchGesturesEnabled);
+        updateMinecraftTouchGesturesSwitchText(zIsMinecraftTouchGesturesEnabled);
+        this.binding.switchMinecraftTouchGestures.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda38
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$updateMinecraftTouchGestureSettingsUi$32(compoundButton, z);
+            }
         });
-
-        boolean doubleTapToDrop = ControlsPreferences.isDoubleTapToDropEnabled(this);
-        binding.switchDoubleTapToDrop.setOnCheckedChangeListener(null);
-        binding.switchDoubleTapToDrop.setChecked(doubleTapToDrop);
-        updateDoubleTapToDropSwitchText(doubleTapToDrop);
-        updateDoubleTapToDropEnabledState(gesturesEnabled);
-        binding.switchDoubleTapToDrop.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            ControlsPreferences.setDoubleTapToDropEnabled(this, isChecked);
-            updateDoubleTapToDropSwitchText(isChecked);
+        boolean zIsDoubleTapToDropEnabled = ControlsPreferences.isDoubleTapToDropEnabled(this);
+        this.binding.switchDoubleTapToDrop.setOnCheckedChangeListener(null);
+        this.binding.switchDoubleTapToDrop.setChecked(zIsDoubleTapToDropEnabled);
+        updateDoubleTapToDropSwitchText(zIsDoubleTapToDropEnabled);
+        updateDoubleTapToDropEnabledState(zIsMinecraftTouchGesturesEnabled);
+        this.binding.switchDoubleTapToDrop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda39
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$updateMinecraftTouchGestureSettingsUi$33(compoundButton, z);
+            }
         });
     }
 
-    private void updateMinecraftTouchGesturesSwitchText(boolean enabled) {
-        binding.switchMinecraftTouchGestures.setText(enabled
-                ? R.string.controller_minecraft_touch_gestures_on
-                : R.string.controller_minecraft_touch_gestures_off);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$updateMinecraftTouchGestureSettingsUi$32(CompoundButton compoundButton, boolean z) {
+        ControlsPreferences.setMinecraftTouchGesturesEnabled(this, z);
+        updateMinecraftTouchGesturesSwitchText(z);
+        updateDoubleTapToDropEnabledState(z);
     }
 
-    private void updateDoubleTapToDropSwitchText(boolean enabled) {
-        binding.switchDoubleTapToDrop.setText(enabled
-                ? R.string.controller_double_tap_to_drop_on
-                : R.string.controller_double_tap_to_drop_off);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$updateMinecraftTouchGestureSettingsUi$33(CompoundButton compoundButton, boolean z) {
+        ControlsPreferences.setDoubleTapToDropEnabled(this, z);
+        updateDoubleTapToDropSwitchText(z);
     }
 
-    private void updateDoubleTapToDropEnabledState(boolean gesturesEnabled) {
-        binding.switchDoubleTapToDrop.setEnabled(gesturesEnabled);
-        binding.textDoubleTapToDropSummary.setAlpha(gesturesEnabled ? 1.0f : 0.55f);
-    }
-
-    private void updateHardwareMouseDpiScaleUi(int percent) {
-        int safePercent = Math.max(
-                GamepadMappingStore.MIN_MOUSE_DPI_SCALE,
-                Math.min(GamepadMappingStore.MAX_MOUSE_DPI_SCALE, percent)
-        );
-        if (sliderHardwareMouseDpiScale != null) {
-            sliderHardwareMouseDpiScale.setProgress(safePercent - GamepadMappingStore.MIN_MOUSE_DPI_SCALE);
+    private void updateMinecraftTouchGesturesSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchMinecraftTouchGestures;
+        if (z) {
+            i = R.string.controller_minecraft_touch_gestures_on;
+        } else {
+            i = R.string.controller_minecraft_touch_gestures_off;
         }
-        updateHardwareMouseDpiScaleText(safePercent);
+        switchMaterial.setText(i);
     }
 
-    private void updateHardwareMouseDpiScaleText(int percent) {
-        if (textHardwareMouseDpiScale != null) {
-            textHardwareMouseDpiScale.setText("Mouse DPI scale: " + percent + "%");
+    private void updateDoubleTapToDropSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchDoubleTapToDrop;
+        if (z) {
+            i = R.string.controller_double_tap_to_drop_on;
+        } else {
+            i = R.string.controller_double_tap_to_drop_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateDoubleTapToDropEnabledState(boolean z) {
+        this.binding.switchDoubleTapToDrop.setEnabled(z);
+        this.binding.textDoubleTapToDropSummary.setAlpha(z ? 1.0f : 0.55f);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateHardwareMouseDpiScaleUi(int i) {
+        int iMax = Math.max(25, Math.min(300, i));
+        SeekBar seekBar = this.sliderHardwareMouseDpiScale;
+        if (seekBar != null) {
+            seekBar.setProgress(iMax - 25);
+        }
+        updateHardwareMouseDpiScaleText(iMax);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateHardwareMouseDpiScaleText(int i) {
+        TextView textView = this.textHardwareMouseDpiScale;
+        if (textView != null) {
+            textView.setText("Mouse DPI scale: " + i + "%");
         }
     }
 
-    private void updateTouchControlsSwitchText(boolean enabled) {
-        binding.switchTouchControlsEnabled.setText(enabled
-                ? R.string.controller_touch_controls_enabled_on
-                : R.string.controller_touch_controls_enabled_off);
+    private void updateTouchControlsSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchTouchControlsEnabled;
+        if (z) {
+            i = R.string.controller_touch_controls_enabled_on;
+        } else {
+            i = R.string.controller_touch_controls_enabled_off;
+        }
+        switchMaterial.setText(i);
     }
 
-    private void updateForceSdlControllerBridgeSwitchText(boolean enabled) {
-        binding.switchForceSdlControllerBridge.setText(enabled
-                ? R.string.controller_force_sdl_on
-                : R.string.controller_force_sdl_off);
+    private void updateForceSdlControllerBridgeSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchForceSdlControllerBridge;
+        if (z) {
+            i = R.string.controller_force_sdl_on;
+        } else {
+            i = R.string.controller_force_sdl_off;
+        }
+        switchMaterial.setText(i);
     }
 
     private void registerNotificationPermissionLauncher() {
-        notificationPermissionLauncher = registerForActivityResult(
-                new ActivityResultContracts.RequestPermission(),
-                granted -> {
-                    LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, granted);
-                    updateInstallNotificationSettingsUi();
-                    Toast.makeText(
-                            this,
-                            granted
-                                    ? R.string.notification_permission_enabled_toast
-                                    : R.string.notification_permission_denied_toast,
-                            granted ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG
-                    ).show();
+        this.notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda15
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                this.f$0.lambda$registerNotificationPermissionLauncher$34((Boolean) obj);
+            }
+        });
+    }
 
-                    if (!granted && LauncherNotificationPermissionHelper.requiresRuntimePermission()) {
-                        showNotificationDeniedSettingsDialog();
-                    }
-                }
-        );
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$registerNotificationPermissionLauncher$34(Boolean bool) {
+        int i;
+        LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, bool.booleanValue());
+        updateInstallNotificationSettingsUi();
+        if (bool.booleanValue()) {
+            i = R.string.notification_permission_enabled_toast;
+        } else {
+            i = R.string.notification_permission_denied_toast;
+        }
+        Toast.makeText(this, i, !bool.booleanValue() ? 1 : 0).show();
+        if (bool.booleanValue() || !LauncherNotificationPermissionHelper.requiresRuntimePermission()) {
+            return;
+        }
+        showNotificationDeniedSettingsDialog();
     }
 
     private void setupInstallNotificationSettings() {
@@ -1011,1266 +1228,1403 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
     }
 
     private void updateInstallNotificationSettingsUi() {
-        if (binding == null || binding.switchInstallNotifications == null) return;
-
-        boolean permissionGranted = LauncherNotificationPermissionHelper.hasPostNotificationsPermission(this);
-        boolean enabled = LauncherNotificationPermissionHelper.isBackgroundInstallNotificationsEnabled(this) && permissionGranted;
-
-        binding.switchInstallNotifications.setOnCheckedChangeListener(null);
-        binding.switchInstallNotifications.setChecked(enabled);
-        binding.switchInstallNotifications.setText(enabled
-                ? R.string.install_notifications_on
-                : R.string.install_notifications_off);
-
-        if (!LauncherNotificationPermissionHelper.requiresRuntimePermission()) {
-            binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_old_android);
-        } else if (permissionGranted) {
-            binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_enabled);
-        } else {
-            binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_permission_needed);
+        int i;
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null || activityLauncherSettingsBinding.switchInstallNotifications == null) {
+            return;
         }
-
-        binding.switchInstallNotifications.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (!isChecked) {
-                LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, false);
-                updateInstallNotificationSettingsUi();
-                return;
+        boolean zHasPostNotificationsPermission = LauncherNotificationPermissionHelper.hasPostNotificationsPermission(this);
+        boolean z = LauncherNotificationPermissionHelper.isBackgroundInstallNotificationsEnabled(this) && zHasPostNotificationsPermission;
+        this.binding.switchInstallNotifications.setOnCheckedChangeListener(null);
+        this.binding.switchInstallNotifications.setChecked(z);
+        SwitchMaterial switchMaterial = this.binding.switchInstallNotifications;
+        if (z) {
+            i = R.string.install_notifications_on;
+        } else {
+            i = R.string.install_notifications_off;
+        }
+        switchMaterial.setText(i);
+        if (!LauncherNotificationPermissionHelper.requiresRuntimePermission()) {
+            this.binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_old_android);
+        } else if (zHasPostNotificationsPermission) {
+            this.binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_enabled);
+        } else {
+            this.binding.textInstallNotificationsSummary.setText(R.string.install_notifications_summary_permission_needed);
+        }
+        this.binding.switchInstallNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda51
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z2) {
+                this.f$0.lambda$updateInstallNotificationSettingsUi$35(compoundButton, z2);
             }
+        });
+    }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$updateInstallNotificationSettingsUi$35(CompoundButton compoundButton, boolean z) {
+        if (!z) {
+            LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, false);
+            updateInstallNotificationSettingsUi();
+        } else {
             if (LauncherNotificationPermissionHelper.hasPostNotificationsPermission(this)) {
                 LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, true);
                 updateInstallNotificationSettingsUi();
                 return;
             }
-
             LauncherNotificationPermissionHelper.setBackgroundInstallNotificationsEnabled(this, true);
-            if (notificationPermissionLauncher != null) {
-                LauncherNotificationPermissionHelper.requestPostNotificationsPermission(notificationPermissionLauncher);
+            ActivityResultLauncher<String> activityResultLauncher = this.notificationPermissionLauncher;
+            if (activityResultLauncher != null) {
+                LauncherNotificationPermissionHelper.requestPostNotificationsPermission(activityResultLauncher);
+            }
+        }
+    }
+
+    private void showNotificationDeniedSettingsDialog() {
+        new AlertDialog.Builder(this).setTitle(R.string.notification_permission_denied_title).setMessage(R.string.notification_permission_denied_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.notification_permission_open_settings, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda29
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                this.f$0.lambda$showNotificationDeniedSettingsDialog$36(dialogInterface, i);
+            }
+        }).show();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showNotificationDeniedSettingsDialog$36(DialogInterface dialogInterface, int i) {
+        LauncherNotificationPermissionHelper.openAppNotificationSettings(this);
+    }
+
+    private void registerMicrophonePermissionLauncher() {
+        this.microphonePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda50
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                this.f$0.lambda$registerMicrophonePermissionLauncher$37((Boolean) obj);
             }
         });
     }
 
-    private void showNotificationDeniedSettingsDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.notification_permission_denied_title)
-                .setMessage(R.string.notification_permission_denied_message)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.notification_permission_open_settings, (dialog, which) ->
-                        LauncherNotificationPermissionHelper.openAppNotificationSettings(this))
-                .show();
-    }
-
-    private void registerMicrophonePermissionLauncher() {
-        microphonePermissionLauncher = registerForActivityResult(
-                new ActivityResultContracts.RequestPermission(),
-                granted -> {
-                    updateSimpleVoiceChatPermissionUi();
-                    Toast.makeText(
-                            this,
-                            granted
-                                    ? R.string.simple_voice_chat_permission_granted_toast
-                                    : R.string.simple_voice_chat_permission_denied_toast,
-                            granted ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG
-                    ).show();
-
-                    if (!granted) {
-                        showSimpleVoiceChatPermissionDeniedDialog();
-                    }
-                }
-        );
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$registerMicrophonePermissionLauncher$37(Boolean bool) {
+        int i;
+        updateSimpleVoiceChatPermissionUi();
+        if (bool.booleanValue()) {
+            i = R.string.simple_voice_chat_permission_granted_toast;
+        } else {
+            i = R.string.simple_voice_chat_permission_denied_toast;
+        }
+        Toast.makeText(this, i, !bool.booleanValue() ? 1 : 0).show();
+        if (bool.booleanValue()) {
+            return;
+        }
+        showSimpleVoiceChatPermissionDeniedDialog();
     }
 
     private void registerMobileGluesFolderPickerLauncher() {
-        mobileGluesFolderPickerLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() != RESULT_OK || result.getData() == null) return;
-                    Uri treeUri = result.getData().getData();
-                    if (treeUri == null) return;
-                    try {
-                        final int flags = result.getData().getFlags()
-                                & (Intent.FLAG_GRANT_READ_URI_PERMISSION
-                                | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                        getContentResolver().takePersistableUriPermission(treeUri, flags);
-                    } catch (Throwable ignored) {
-                    }
-                    MobileGluesConfigHelper.setSelectedConfigTreeUri(this, treeUri);
-                    RendererInterface renderer = getSelectedRendererFromSpinner();
-                    updateMobileGluesConfigSummary(renderer);
-                    Toast.makeText(this, "MobileGlues folder saved.", Toast.LENGTH_SHORT).show();
-                }
-        );
+        this.mobileGluesFolderPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda44
+            @Override // androidx.activity.result.ActivityResultCallback
+            public final void onActivityResult(Object obj) {
+                this.f$0.lambda$registerMobileGluesFolderPickerLauncher$38((ActivityResult) obj);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$registerMobileGluesFolderPickerLauncher$38(ActivityResult activityResult) {
+        Uri data;
+        if (activityResult.getResultCode() != -1 || activityResult.getData() == null || (data = activityResult.getData().getData()) == null) {
+            return;
+        }
+        try {
+            getContentResolver().takePersistableUriPermission(data, activityResult.getData().getFlags() & 3);
+        } catch (Throwable unused) {
+        }
+        MobileGluesConfigHelper.setSelectedConfigTreeUri(this, data);
+        updateMobileGluesConfigSummary(getSelectedRendererFromSpinner());
+        Toast.makeText(this, "MobileGlues folder saved.", 0).show();
     }
 
     private void setupSimpleVoiceChatSettings() {
         updateSimpleVoiceChatPermissionUi();
-        binding.buttonSimpleVoiceChatMicrophonePermission.setOnClickListener(view -> {
-            if (AndroidMicrophonePermission.isGranted(this)) {
-                showSimpleVoiceChatPermissionGrantedDialog();
-                return;
-            }
-
-            if (microphonePermissionLauncher != null) {
-                microphonePermissionLauncher.launch(Manifest.permission.RECORD_AUDIO);
-            } else {
-                AndroidMicrophonePermission.showRequestDialog(this);
+        this.binding.buttonSimpleVoiceChatMicrophonePermission.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda62
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupSimpleVoiceChatSettings$39(view);
             }
         });
     }
 
-    private void updateSimpleVoiceChatPermissionUi() {
-        if (binding == null
-                || binding.buttonSimpleVoiceChatMicrophonePermission == null
-                || binding.textSimpleVoiceChatMicrophoneStatus == null) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupSimpleVoiceChatSettings$39(View view) {
+        if (AndroidMicrophonePermission.isGranted(this)) {
+            showSimpleVoiceChatPermissionGrantedDialog();
             return;
         }
+        ActivityResultLauncher<String> activityResultLauncher = this.microphonePermissionLauncher;
+        if (activityResultLauncher != null) {
+            activityResultLauncher.launch("android.permission.RECORD_AUDIO");
+        } else {
+            AndroidMicrophonePermission.showRequestDialog(this);
+        }
+    }
 
-        boolean granted = AndroidMicrophonePermission.isGranted(this);
-        binding.textSimpleVoiceChatMicrophoneStatus.setText(granted
-                ? R.string.simple_voice_chat_microphone_status_granted
-                : R.string.simple_voice_chat_microphone_status_missing);
-        binding.buttonSimpleVoiceChatMicrophonePermission.setText(granted
-                ? R.string.simple_voice_chat_microphone_button_enabled
-                : R.string.simple_voice_chat_microphone_button_enable);
+    private void updateSimpleVoiceChatPermissionUi() {
+        int i;
+        int i2;
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null || activityLauncherSettingsBinding.buttonSimpleVoiceChatMicrophonePermission == null || this.binding.textSimpleVoiceChatMicrophoneStatus == null) {
+            return;
+        }
+        boolean zIsGranted = AndroidMicrophonePermission.isGranted(this);
+        TextView textView = this.binding.textSimpleVoiceChatMicrophoneStatus;
+        if (zIsGranted) {
+            i = R.string.simple_voice_chat_microphone_status_granted;
+        } else {
+            i = R.string.simple_voice_chat_microphone_status_missing;
+        }
+        textView.setText(i);
+        MaterialButton materialButton = this.binding.buttonSimpleVoiceChatMicrophonePermission;
+        if (zIsGranted) {
+            i2 = R.string.simple_voice_chat_microphone_button_enabled;
+        } else {
+            i2 = R.string.simple_voice_chat_microphone_button_enable;
+        }
+        materialButton.setText(i2);
     }
 
     private void showSimpleVoiceChatPermissionGrantedDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.simple_voice_chat_microphone_title)
-                .setMessage(R.string.simple_voice_chat_microphone_already_granted)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
+        new AlertDialog.Builder(this).setTitle(R.string.simple_voice_chat_microphone_title).setMessage(R.string.simple_voice_chat_microphone_already_granted).setPositiveButton(android.R.string.ok, (DialogInterface.OnClickListener) null).show();
     }
 
     private void showSimpleVoiceChatPermissionDeniedDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.simple_voice_chat_microphone_title)
-                .setMessage(R.string.simple_voice_chat_microphone_denied_message)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.simple_voice_chat_open_app_settings, (dialog, which) ->
-                        AndroidMicrophonePermission.openAppSettings(this))
-                .show();
+        new AlertDialog.Builder(this).setTitle(R.string.simple_voice_chat_microphone_title).setMessage(R.string.simple_voice_chat_microphone_denied_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.simple_voice_chat_open_app_settings, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda40
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                this.f$0.lambda$showSimpleVoiceChatPermissionDeniedDialog$40(dialogInterface, i);
+            }
+        }).show();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showSimpleVoiceChatPermissionDeniedDialog$40(DialogInterface dialogInterface, int i) {
+        AndroidMicrophonePermission.openAppSettings(this);
     }
 
     private void setupLauncherSettings() {
         setupMemorySettings();
         setupInstallNotificationSettings();
         setupSimpleVoiceChatSettings();
-
-        binding.checkKeepLogs.setChecked(LauncherLogManager.isKeepLogHistoryEnabled(this));
-        binding.checkKeepLogs.setOnCheckedChangeListener((buttonView, isChecked) ->
-                LauncherLogManager.setKeepLogHistoryEnabled(this, isChecked));
-
-        boolean showInGameSettingsButton = LauncherPreferences.isShowInGameSettingsButton(this);
-        binding.switchShowInGameSettingsButton.setChecked(showInGameSettingsButton);
-        updateInGameSettingsButtonSwitchText(showInGameSettingsButton);
-        binding.switchShowInGameSettingsButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setShowInGameSettingsButton(this, isChecked);
-            updateInGameSettingsButtonSwitchText(isChecked);
+        this.binding.checkKeepLogs.setChecked(LauncherLogManager.isKeepLogHistoryEnabled(this));
+        this.binding.checkKeepLogs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda57
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupLauncherSettings$41(compoundButton, z);
+            }
         });
-
-        boolean showGameLogOverlay = LauncherPreferences.isShowGameLogOverlay(this);
-        binding.switchShowGameLogOverlay.setChecked(showGameLogOverlay);
-        updateGameLogOverlaySwitchText(showGameLogOverlay);
-        binding.switchShowGameLogOverlay.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            LauncherPreferences.setShowGameLogOverlay(this, isChecked);
-            updateGameLogOverlaySwitchText(isChecked);
+        boolean zIsShowInGameSettingsButton = LauncherPreferences.isShowInGameSettingsButton(this);
+        this.binding.switchShowInGameSettingsButton.setChecked(zIsShowInGameSettingsButton);
+        updateInGameSettingsButtonSwitchText(zIsShowInGameSettingsButton);
+        this.binding.switchShowInGameSettingsButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda58
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupLauncherSettings$42(compoundButton, z);
+            }
         });
-
+        boolean zIsShowGameLogOverlay = LauncherPreferences.isShowGameLogOverlay(this);
+        this.binding.switchShowGameLogOverlay.setChecked(zIsShowGameLogOverlay);
+        updateGameLogOverlaySwitchText(zIsShowGameLogOverlay);
+        this.binding.switchShowGameLogOverlay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda59
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupLauncherSettings$43(compoundButton, z);
+            }
+        });
         setupFloatingGameOverlaySettings();
-
-        binding.buttonShareLatestLog.setOnClickListener(view -> LauncherLogManager.shareLatestLog(this));
+        this.binding.buttonShareLatestLog.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda60
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupLauncherSettings$44(view);
+            }
+        });
         setupUpdateCheckerSettings();
     }
 
-
-    private void setupFloatingGameOverlaySettings() {
-        if (binding == null || binding.switchShowInGameSettingsButton == null) return;
-        if (!(binding.switchShowInGameSettingsButton.getParent() instanceof ViewGroup)) return;
-
-        ViewGroup parent = (ViewGroup) binding.switchShowInGameSettingsButton.getParent();
-        if (parent.findViewWithTag("floating_game_overlay_settings") != null) return;
-
-        LinearLayout container = new LinearLayout(this);
-        container.setTag("floating_game_overlay_settings");
-        container.setOrientation(LinearLayout.VERTICAL);
-        container.setPadding(0, dp(12), 0, 0);
-        parent.addView(container, new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-
-        View divider = new View(this);
-        divider.setBackgroundColor(0x33000000);
-        container.addView(divider, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                Math.max(1, dp(1))
-        ));
-
-        TextView title = new TextView(this);
-        title.setText("In-game overlay");
-        title.setTextSize(16f);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
-        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        titleParams.topMargin = dp(12);
-        container.addView(title, titleParams);
-
-        com.google.android.material.switchmaterial.SwitchMaterial showFps =
-                new com.google.android.material.switchmaterial.SwitchMaterial(this);
-        showFps.setChecked(GameOverlayPreferences.isShowGameFpsCounter(this));
-        updateFloatingFpsSwitchText(showFps, showFps.isChecked());
-        showFps.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            GameOverlayPreferences.setShowGameFpsCounter(this, isChecked);
-            updateFloatingFpsSwitchText(showFps, isChecked);
-        });
-        container.addView(showFps, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView fpsSummary = new TextView(this);
-        fpsSummary.setText("Shows real-time FPS on the floating settings button while Minecraft is running.");
-        fpsSummary.setTextSize(13f);
-        LinearLayout.LayoutParams fpsSummaryParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        fpsSummaryParams.topMargin = dp(2);
-        container.addView(fpsSummary, fpsSummaryParams);
-
-        TextView placementTitle = new TextView(this);
-        placementTitle.setText("Floating settings button position");
-        placementTitle.setTextSize(15f);
-        placementTitle.setTypeface(placementTitle.getTypeface(), android.graphics.Typeface.BOLD);
-        LinearLayout.LayoutParams placementTitleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        placementTitleParams.topMargin = dp(12);
-        container.addView(placementTitle, placementTitleParams);
-
-        android.widget.Spinner placementSpinner = new android.widget.Spinner(this);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_item,
-                GameOverlayPreferences.getPlacementLabels()
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        placementSpinner.setAdapter(adapter);
-        placementSpinner.setSelection(GameOverlayPreferences.indexOfPlacement(
-                GameOverlayPreferences.getGameSettingsButtonPlacement(this)
-        ), false);
-        placementSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            private boolean ready;
-
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
-                if (!ready) {
-                    ready = true;
-                    return;
-                }
-                String placement = GameOverlayPreferences.placementValueForIndex(position);
-                GameOverlayPreferences.setGameSettingsButtonPlacement(LauncherSettingsActivity.this, placement);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });
-        LinearLayout.LayoutParams spinnerParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        spinnerParams.topMargin = dp(6);
-        container.addView(placementSpinner, spinnerParams);
-
-        TextView placementSummary = new TextView(this);
-        placementSummary.setText("This controls the default corner. Dragging the button in game saves a custom position until you reset it or pick a new corner.");
-        placementSummary.setTextSize(13f);
-        LinearLayout.LayoutParams placementSummaryParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        placementSummaryParams.topMargin = dp(2);
-        container.addView(placementSummary, placementSummaryParams);
-
-        MaterialButton resetPosition = new MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
-        resetPosition.setText("Reset floating button position");
-        resetPosition.setAllCaps(false);
-        resetPosition.setOnClickListener(view -> GameOverlayPreferences.resetGameSettingsButtonCustomPosition(this));
-        LinearLayout.LayoutParams resetParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        resetParams.topMargin = dp(8);
-        container.addView(resetPosition, resetParams);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupLauncherSettings$41(CompoundButton compoundButton, boolean z) {
+        LauncherLogManager.setKeepLogHistoryEnabled(this, z);
     }
 
-    private void updateFloatingFpsSwitchText(@NonNull android.widget.CompoundButton switchView, boolean enabled) {
-        switchView.setText(enabled ? "Show FPS counter: On" : "Show FPS counter: Off");
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupLauncherSettings$42(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setShowInGameSettingsButton(this, z);
+        updateInGameSettingsButtonSwitchText(z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupLauncherSettings$43(CompoundButton compoundButton, boolean z) {
+        LauncherPreferences.setShowGameLogOverlay(this, z);
+        updateGameLogOverlaySwitchText(z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupLauncherSettings$44(View view) {
+        LauncherLogManager.shareLatestLog(this);
+    }
+
+    private void setupFloatingGameOverlaySettings() {
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null || activityLauncherSettingsBinding.switchShowInGameSettingsButton == null || !(this.binding.switchShowInGameSettingsButton.getParent() instanceof ViewGroup)) {
+            return;
+        }
+        ViewGroup viewGroup = (ViewGroup) this.binding.switchShowInGameSettingsButton.getParent();
+        if (viewGroup.findViewWithTag("floating_game_overlay_settings") != null) {
+            return;
+        }
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setTag("floating_game_overlay_settings");
+        linearLayout.setOrientation(1);
+        linearLayout.setPadding(0, dp(12.0f), 0, 0);
+        viewGroup.addView(linearLayout, new ViewGroup.LayoutParams(-1, -2));
+        View view = new View(this);
+        view.setBackgroundColor(855638016);
+        linearLayout.addView(view, new LinearLayout.LayoutParams(-1, Math.max(1, dp(1.0f))));
+        TextView textView = new TextView(this);
+        textView.setText("In-game overlay");
+        textView.setTextSize(16.0f);
+        textView.setTypeface(textView.getTypeface(), 1);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(12.0f);
+        linearLayout.addView(textView, layoutParams);
+        final SwitchMaterial switchMaterial = new SwitchMaterial(this);
+        switchMaterial.setChecked(GameOverlayPreferences.isShowGameFpsCounter(this));
+        updateFloatingFpsSwitchText(switchMaterial, switchMaterial.isChecked());
+        switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda17
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupFloatingGameOverlaySettings$45(switchMaterial, compoundButton, z);
+            }
+        });
+        linearLayout.addView(switchMaterial, new LinearLayout.LayoutParams(-1, -2));
+        TextView textView2 = new TextView(this);
+        textView2.setText("Shows real-time FPS on the floating settings button while Minecraft is running.");
+        textView2.setTextSize(13.0f);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams2.topMargin = dp(2.0f);
+        linearLayout.addView(textView2, layoutParams2);
+        TextView textView3 = new TextView(this);
+        textView3.setText("Floating settings button position");
+        textView3.setTextSize(15.0f);
+        textView3.setTypeface(textView3.getTypeface(), 1);
+        LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams3.topMargin = dp(12.0f);
+        linearLayout.addView(textView3, layoutParams3);
+        Spinner spinner = new Spinner(this);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, GameOverlayPreferences.getPlacementLabels());
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter((SpinnerAdapter) arrayAdapter);
+        spinner.setSelection(GameOverlayPreferences.indexOfPlacement(GameOverlayPreferences.getGameSettingsButtonPlacement(this)), false);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.7
+            private boolean ready;
+
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+
+            @Override // android.widget.AdapterView.OnItemSelectedListener
+            public void onItemSelected(AdapterView<?> adapterView, View view2, int i, long j) {
+                if (!this.ready) {
+                    this.ready = true;
+                } else {
+                    GameOverlayPreferences.setGameSettingsButtonPlacement(LauncherSettingsActivity.this, GameOverlayPreferences.placementValueForIndex(i));
+                }
+            }
+        });
+        LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams4.topMargin = dp(6.0f);
+        linearLayout.addView(spinner, layoutParams4);
+        TextView textView4 = new TextView(this);
+        textView4.setText("This controls the default corner. Dragging the button in game saves a custom position until you reset it or pick a new corner.");
+        textView4.setTextSize(13.0f);
+        LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams5.topMargin = dp(2.0f);
+        linearLayout.addView(textView4, layoutParams5);
+        MaterialButton materialButton = new MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
+        materialButton.setText("Reset floating button position");
+        materialButton.setAllCaps(false);
+        materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda18
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view2) {
+                this.f$0.lambda$setupFloatingGameOverlaySettings$46(view2);
+            }
+        });
+        LinearLayout.LayoutParams layoutParams6 = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams6.topMargin = dp(8.0f);
+        linearLayout.addView(materialButton, layoutParams6);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupFloatingGameOverlaySettings$45(SwitchMaterial switchMaterial, CompoundButton compoundButton, boolean z) {
+        GameOverlayPreferences.setShowGameFpsCounter(this, z);
+        updateFloatingFpsSwitchText(switchMaterial, z);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupFloatingGameOverlaySettings$46(View view) {
+        GameOverlayPreferences.resetGameSettingsButtonCustomPosition(this);
+    }
+
+    private void updateFloatingFpsSwitchText(CompoundButton compoundButton, boolean z) {
+        compoundButton.setText(z ? "Show FPS counter: On" : "Show FPS counter: Off");
     }
 
     private void setupUpdateCheckerSettings() {
-        if (binding == null || binding.buttonShareLatestLog == null) return;
-        if (!(binding.buttonShareLatestLog.getParent() instanceof ViewGroup)) return;
+        ActivityLauncherSettingsBinding activityLauncherSettingsBinding = this.binding;
+        if (activityLauncherSettingsBinding == null || activityLauncherSettingsBinding.buttonShareLatestLog == null || !(this.binding.buttonShareLatestLog.getParent() instanceof ViewGroup)) {
+            return;
+        }
+        ViewGroup viewGroup = (ViewGroup) this.binding.buttonShareLatestLog.getParent();
+        if (viewGroup.findViewWithTag("update_checker_settings") != null) {
+            return;
+        }
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setTag("update_checker_settings");
+        linearLayout.setOrientation(1);
+        linearLayout.setPadding(0, dp(12.0f), 0, 0);
+        viewGroup.addView(linearLayout, new ViewGroup.LayoutParams(-1, -2));
+        TextView textView = new TextView(this);
+        textView.setText("Launcher updates");
+        textView.setTextSize(16.0f);
+        textView.setGravity(GravityCompat.START);
+        linearLayout.addView(textView, new LinearLayout.LayoutParams(-1, -2));
+        TextView textView2 = new TextView(this);
+        textView2.setText("Checks GitHub releases for newer DroidBridge builds.");
+        textView2.setTextSize(13.0f);
+        textView2.setPadding(0, dp(2.0f), 0, dp(6.0f));
+        linearLayout.addView(textView2, new LinearLayout.LayoutParams(-1, -2));
+        CheckBox checkBox = new CheckBox(this);
+        checkBox.setText("Check for updates on startup");
+        checkBox.setChecked(LauncherUpdatePreferences.isAutoCheckEnabled(this));
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda26
+            @Override // android.widget.CompoundButton.OnCheckedChangeListener
+            public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+                this.f$0.lambda$setupUpdateCheckerSettings$47(compoundButton, z);
+            }
+        });
+        linearLayout.addView(checkBox, new LinearLayout.LayoutParams(-1, -2));
+        MaterialButton materialButton = new MaterialButton(this);
+        materialButton.setText("Check for updates");
+        materialButton.setAllCaps(false);
+        materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda27
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupUpdateCheckerSettings$48(view);
+            }
+        });
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(6.0f);
+        linearLayout.addView(materialButton, layoutParams);
+    }
 
-        ViewGroup parent = (ViewGroup) binding.buttonShareLatestLog.getParent();
-        if (parent.findViewWithTag("update_checker_settings") != null) return;
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupUpdateCheckerSettings$47(CompoundButton compoundButton, boolean z) {
+        LauncherUpdatePreferences.setAutoCheckEnabled(this, z);
+    }
 
-        LinearLayout container = new LinearLayout(this);
-        container.setTag("update_checker_settings");
-        container.setOrientation(LinearLayout.VERTICAL);
-        container.setPadding(0, dp(12), 0, 0);
-        parent.addView(container, new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView title = new TextView(this);
-        title.setText("Launcher updates");
-        title.setTextSize(16f);
-        title.setGravity(Gravity.START);
-        container.addView(title, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView summary = new TextView(this);
-        summary.setText("Checks GitHub releases for newer DroidBridge builds.");
-        summary.setTextSize(13f);
-        summary.setPadding(0, dp(2), 0, dp(6));
-        container.addView(summary, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        CheckBox autoCheck = new CheckBox(this);
-        autoCheck.setText("Check for updates on startup");
-        autoCheck.setChecked(LauncherUpdatePreferences.isAutoCheckEnabled(this));
-        autoCheck.setOnCheckedChangeListener((buttonView, isChecked) ->
-                LauncherUpdatePreferences.setAutoCheckEnabled(this, isChecked));
-        container.addView(autoCheck, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        MaterialButton checkNow = new MaterialButton(this);
-        checkNow.setText("Check for updates");
-        checkNow.setAllCaps(false);
-        checkNow.setOnClickListener(view -> LauncherUpdateDialogs.checkManually(this));
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        buttonParams.topMargin = dp(6);
-        container.addView(checkNow, buttonParams);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupUpdateCheckerSettings$48(View view) {
+        LauncherUpdateDialogs.checkManually(this);
     }
 
     private void setupPrivacyPolicySettings() {
-        setupLegalLinkButton(
-                binding.buttonOpenMinecraftEula,
-                LegalLinks.MINECRAFT_EULA_URL,
-                "Minecraft EULA link is not configured."
-        );
-        setupLegalLinkButton(
-                binding.buttonOpenPrivacyPolicy,
-                LegalLinks.DROIDBRIDGE_PRIVACY_POLICY_URL,
-                "Privacy Policy link is not available yet."
-        );
-        setupLegalLinkButton(
-                binding.buttonOpenDroidBridgeTerms,
-                LegalLinks.DROIDBRIDGE_TERMS_URL,
-                "DroidBridge Terms of Service link is not available yet."
-        );
-        setupLegalLinkButton(
-                binding.buttonOpenDroidBridgeLicense,
-                LegalLinks.DROIDBRIDGE_LICENSING,
-                "DroidBridge Terms of Service link is not available yet."
-        );
+        setupLegalLinkButton(this.binding.buttonOpenMinecraftEula, LegalLinks.MINECRAFT_EULA_URL, "Minecraft EULA link is not configured.");
+        setupLegalLinkButton(this.binding.buttonOpenPrivacyPolicy, LegalLinks.DROIDBRIDGE_PRIVACY_POLICY_URL, "Privacy Policy link is not available yet.");
+        setupLegalLinkButton(this.binding.buttonOpenDroidBridgeTerms, LegalLinks.DROIDBRIDGE_TERMS_URL, "DroidBridge Terms of Service link is not available yet.");
+        setupLegalLinkButton(this.binding.buttonOpenDroidBridgeLicense, LegalLinks.DROIDBRIDGE_LICENSING, "DroidBridge Terms of Service link is not available yet.");
     }
 
-    private void setupLegalLinkButton(
-            @NonNull MaterialButton button,
-            @Nullable String url,
-            @NonNull String unavailableMessage
-    ) {
-        boolean available = !isNullOrBlank(url);
-        button.setEnabled(available);
-        button.setOnClickListener(view -> {
-            if (!available || !LegalLinks.open(this, url)) {
-                Toast.makeText(this, unavailableMessage, Toast.LENGTH_LONG).show();
+    private void setupLegalLinkButton(MaterialButton materialButton, final String str, final String str2) {
+        final boolean z = !isNullOrBlank(str);
+        materialButton.setEnabled(z);
+        materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda37
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupLegalLinkButton$49(z, str, str2, view);
             }
         });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupLegalLinkButton$49(boolean z, String str, String str2, View view) {
+        if (z && LegalLinks.open(this, str)) {
+            return;
+        }
+        Toast.makeText(this, str2, 1).show();
     }
 
     private void setupMemorySettings() {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int currentMemoryMb = MemoryAllocationUtils.resolveAllocatedMemoryMb(this);
-
-        updateMemorySeekBarBounds(currentMemoryMb);
-        updateMemoryText(currentMemoryMb);
-        updateAvailableMemorySummary(maxMemoryMb);
-
-        binding.sliderAllocatedRam.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (!fromUser) return;
-
-                int memoryMb = memoryFromSeekBarProgress(progress);
-                LauncherPreferences.setAllocatedMemoryMb(LauncherSettingsActivity.this, memoryMb);
-                updateMemoryText(memoryMb);
-            }
-
-            @Override
+        int maxAllocatableMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
+        int iResolveAllocatedMemoryMb = MemoryAllocationUtils.resolveAllocatedMemoryMb(this);
+        updateMemorySeekBarBounds(iResolveAllocatedMemoryMb);
+        updateMemoryText(iResolveAllocatedMemoryMb);
+        updateAvailableMemorySummary(maxAllocatableMemoryMb);
+        this.binding.sliderAllocatedRam.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity.8
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
-            @Override
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
+            public void onProgressChanged(SeekBar seekBar, int i, boolean z) {
+                if (z) {
+                    int iMemoryFromSeekBarProgress = LauncherSettingsActivity.this.memoryFromSeekBarProgress(i);
+                    LauncherPreferences.setAllocatedMemoryMb(LauncherSettingsActivity.this, iMemoryFromSeekBarProgress);
+                    LauncherSettingsActivity.this.updateMemoryText(iMemoryFromSeekBarProgress);
+                }
+            }
+
+            @Override // android.widget.SeekBar.OnSeekBarChangeListener
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int memoryMb = memoryFromSeekBarProgress(seekBar.getProgress());
-                int safeMemoryMb = MemoryAllocationUtils.clampToAllowedRam(LauncherSettingsActivity.this, memoryMb);
-                LauncherPreferences.setAllocatedMemoryMb(LauncherSettingsActivity.this, safeMemoryMb);
-                updateMemorySlider(safeMemoryMb);
+                int iClampToAllowedRam = MemoryAllocationUtils.clampToAllowedRam(LauncherSettingsActivity.this, LauncherSettingsActivity.this.memoryFromSeekBarProgress(seekBar.getProgress()));
+                LauncherPreferences.setAllocatedMemoryMb(LauncherSettingsActivity.this, iClampToAllowedRam);
+                LauncherSettingsActivity.this.updateMemorySlider(iClampToAllowedRam);
             }
         });
+        this.binding.textAllocatedRam.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda2
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$setupMemorySettings$50(view);
+            }
+        });
+    }
 
-        binding.textAllocatedRam.setOnClickListener(view -> openMemoryInputDialog());
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$setupMemorySettings$50(View view) {
+        openMemoryInputDialog();
     }
 
     private void openMemoryInputDialog() {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int currentMemoryMb = MemoryAllocationUtils.resolveAllocatedMemoryMb(this);
-
-        EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input.setSingleLine(true);
-        input.setSelectAllOnFocus(true);
-        input.setText(String.valueOf(currentMemoryMb));
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.memory_dialog_title)
-                .setMessage(getString(R.string.memory_dialog_message, maxMemoryMb))
-                .setView(input)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, null)
-                .create();
-
-        dialog.setOnShowListener(dialogInterface -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
-            int requestedMb = parseMemoryInput(input.getText() == null ? "" : input.getText().toString());
-            int memoryMb = MemoryAllocationUtils.clampToAllowedRam(this, requestedMb);
-            LauncherPreferences.setAllocatedMemoryMb(this, memoryMb);
-            updateMemorySlider(memoryMb);
-            dialog.dismiss();
-        }));
-
-        dialog.show();
+        int maxAllocatableMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
+        int iResolveAllocatedMemoryMb = MemoryAllocationUtils.resolveAllocatedMemoryMb(this);
+        final EditText editText = new EditText(this);
+        editText.setInputType(2);
+        editText.setSingleLine(true);
+        editText.setSelectAllOnFocus(true);
+        editText.setText(String.valueOf(iResolveAllocatedMemoryMb));
+        final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setTitle(R.string.memory_dialog_title).setMessage(getString(R.string.memory_dialog_message, new Object[]{Integer.valueOf(maxAllocatableMemoryMb)})).setView(editText).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(android.R.string.ok, (DialogInterface.OnClickListener) null).create();
+        alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda53
+            @Override // android.content.DialogInterface.OnShowListener
+            public final void onShow(DialogInterface dialogInterface) {
+                this.f$0.lambda$openMemoryInputDialog$52(alertDialogCreate, editText, dialogInterface);
+            }
+        });
+        alertDialogCreate.show();
     }
 
-    private int parseMemoryInput(@NonNull String value) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$openMemoryInputDialog$52(final AlertDialog alertDialog, final EditText editText, DialogInterface dialogInterface) {
+        alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda56
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$openMemoryInputDialog$51(editText, alertDialog, view);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$openMemoryInputDialog$51(EditText editText, AlertDialog alertDialog, View view) {
+        int iClampToAllowedRam = MemoryAllocationUtils.clampToAllowedRam(this, parseMemoryInput(editText.getText() == null ? "" : editText.getText().toString()));
+        LauncherPreferences.setAllocatedMemoryMb(this, iClampToAllowedRam);
+        updateMemorySlider(iClampToAllowedRam);
+        alertDialog.dismiss();
+    }
+
+    private int parseMemoryInput(String str) {
         try {
-            return Integer.parseInt(value.trim());
-        } catch (Throwable ignored) {
+            return Integer.parseInt(str.trim());
+        } catch (Throwable unused) {
             return MemoryAllocationUtils.resolveAllocatedMemoryMb(this);
         }
     }
 
-    private void updateMemorySlider(int memoryMb) {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int safeMemoryMb = MemoryAllocationUtils.clampToAllowedRam(this, memoryMb);
-
-        updateMemorySeekBarBounds(safeMemoryMb);
-        updateMemoryText(safeMemoryMb);
-        updateAvailableMemorySummary(maxMemoryMb);
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateMemorySlider(int i) {
+        int maxAllocatableMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
+        int iClampToAllowedRam = MemoryAllocationUtils.clampToAllowedRam(this, i);
+        updateMemorySeekBarBounds(iClampToAllowedRam);
+        updateMemoryText(iClampToAllowedRam);
+        updateAvailableMemorySummary(maxAllocatableMemoryMb);
     }
 
-    private void updateMemorySeekBarBounds(int memoryMb) {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int minMemoryMb = MemoryAllocationUtils.getMinimumMemoryMb(maxMemoryMb);
-        int safeMemoryMb = MemoryAllocationUtils.clampToAllowedRam(this, memoryMb);
-        int steps = Math.max(1, (maxMemoryMb - minMemoryMb) / MemoryAllocationUtils.RAM_STEP_MB);
-
-        binding.sliderAllocatedRam.setMax(steps);
-        binding.sliderAllocatedRam.setProgress(progressFromMemory(safeMemoryMb));
+    private void updateMemorySeekBarBounds(int i) {
+        int maxAllocatableMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
+        int minimumMemoryMb = MemoryAllocationUtils.getMinimumMemoryMb(maxAllocatableMemoryMb);
+        int iClampToAllowedRam = MemoryAllocationUtils.clampToAllowedRam(this, i);
+        this.binding.sliderAllocatedRam.setMax(Math.max(1, (maxAllocatableMemoryMb - minimumMemoryMb) / 256));
+        this.binding.sliderAllocatedRam.setProgress(progressFromMemory(iClampToAllowedRam));
     }
 
-    private int progressFromMemory(int memoryMb) {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int minMemoryMb = MemoryAllocationUtils.getMinimumMemoryMb(maxMemoryMb);
-        int safeMemoryMb = MemoryAllocationUtils.clampToAllowedRam(this, memoryMb);
-        return Math.max(0, (safeMemoryMb - minMemoryMb) / MemoryAllocationUtils.RAM_STEP_MB);
+    private int progressFromMemory(int i) {
+        return Math.max(0, (MemoryAllocationUtils.clampToAllowedRam(this, i) - MemoryAllocationUtils.getMinimumMemoryMb(MemoryAllocationUtils.getMaxAllocatableMemoryMb(this))) / 256);
     }
 
-    private int memoryFromSeekBarProgress(int progress) {
-        int maxMemoryMb = MemoryAllocationUtils.getMaxAllocatableMemoryMb(this);
-        int minMemoryMb = MemoryAllocationUtils.getMinimumMemoryMb(maxMemoryMb);
-        int requestedMb = minMemoryMb + (Math.max(0, progress) * MemoryAllocationUtils.RAM_STEP_MB);
-        return MemoryAllocationUtils.clampToAllowedRam(this, requestedMb);
+    /* JADX INFO: Access modifiers changed from: private */
+    public int memoryFromSeekBarProgress(int i) {
+        return MemoryAllocationUtils.clampToAllowedRam(this, MemoryAllocationUtils.getMinimumMemoryMb(MemoryAllocationUtils.getMaxAllocatableMemoryMb(this)) + (Math.max(0, i) * 256));
     }
 
-    private void updateMemoryText(int memoryMb) {
-        binding.textAllocatedRam.setText(getString(R.string.memory_allocated_value, memoryMb, memoryMb / 1024f));
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateMemoryText(int i) {
+        this.binding.textAllocatedRam.setText(getString(R.string.memory_allocated_value, new Object[]{Integer.valueOf(i), Float.valueOf(i / 1024.0f)}));
     }
 
-    private void updateAvailableMemorySummary(int maxMemoryMb) {
+    private void updateAvailableMemorySummary(int i) {
         int totalMemoryMb = MemoryAllocationUtils.getTotalMemoryMb(this);
-        binding.textAvailableRamSummary.setText(getString(
-                R.string.memory_available_summary,
-                maxMemoryMb,
-                maxMemoryMb / 1024f,
-                totalMemoryMb,
-                totalMemoryMb / 1024f
-        ));
+        this.binding.textAvailableRamSummary.setText(getString(R.string.memory_available_summary, new Object[]{Integer.valueOf(i), Float.valueOf(i / 1024.0f), Integer.valueOf(totalMemoryMb), Float.valueOf(totalMemoryMb / 1024.0f)}));
     }
 
-    private void updateSharedInstallsSwitchText(boolean showSharedInstalls) {
-        binding.switchShowSharedInstalls.setText(
-                showSharedInstalls
-                        ? R.string.shared_installs_show
-                        : R.string.shared_installs_hide
-        );
-    }
-
-    private void updateRemoveInheritedVanillaSwitchText(boolean removeInheritedVanilla) {
-        binding.switchRemoveInheritedVanilla.setText(
-                removeInheritedVanilla
-                        ? R.string.inherited_vanilla_remove_on
-                        : R.string.inherited_vanilla_remove_off
-        );
-    }
-
-    private void updateRenderSurfaceSwitchText(boolean useNativeSurfaceView) {
-        binding.switchUseNativeSurface.setText(
-                useNativeSurfaceView
-                        ? R.string.render_surface_surface_view
-                        : R.string.render_surface_texture_view
-        );
-    }
-
-    private void updateForceFullscreenSwitchText(boolean forceFullscreen) {
-        binding.switchForceFullscreenMode.setText(
-                forceFullscreen
-                        ? R.string.settings_renderer_full_screen_on
-                        : R.string.settings_renderer_full_screen_off
-        );
-    }
-
-    private void updateAvoidRoundedCornersSwitchText(boolean avoidRoundedCorners) {
-        binding.switchAvoidRoundedCorners.setText(
-                avoidRoundedCorners
-                        ? R.string.settings_renderer_avoid_rounded_corners_on
-                        : R.string.settings_renderer_avoid_rounded_corners_off
-        );
-    }
-
-    private void updateSystemVulkanDriverSwitchText(boolean useSystemVulkanDriver) {
-        binding.switchUseSystemVulkanDriver.setText(
-                useSystemVulkanDriver
-                        ? R.string.use_system_vulkan_driver_on
-                        : R.string.use_system_vulkan_driver_off
-        );
-    }
-
-    private void updateOpenGl26PlusSwitchText(boolean useOpenGl26Plus) {
-        binding.switchUseOpenGlFor26Plus.setText(
-                useOpenGl26Plus
-                        ? R.string.use_opengl_26_plus_on
-                        : R.string.use_opengl_26_plus_off
-        );
-    }
-
-    private void updateInGameSettingsButtonSwitchText(boolean showInGameSettingsButton) {
-        binding.switchShowInGameSettingsButton.setText(
-                showInGameSettingsButton
-                        ? R.string.game_settings_button_on
-                        : R.string.game_settings_button_off
-        );
-    }
-
-    private void updateGameLogOverlaySwitchText(boolean showGameLogOverlay) {
-        binding.switchShowGameLogOverlay.setText(
-                showGameLogOverlay
-                        ? R.string.game_log_overlay_on
-                        : R.string.game_log_overlay_off
-        );
-    }
-
-    private void updateAccountStatus(@Nullable AccountStore.Account account) {
-        boolean hasRememberedMicrosoft = accountStore != null && accountStore.hasStoredMicrosoftAccount();
-        boolean offlineUnlocked = accountStore != null && accountStore.hasMicrosoftLoginCompletedOnce();
-        boolean activeOffline = account != null && account.isOfflineAccount();
-        boolean activeMicrosoft = account != null && account.isMicrosoftAccount();
-
-        binding.buttonSignIn.setVisibility(hasRememberedMicrosoft ? View.GONE : View.VISIBLE);
-        binding.buttonSignOut.setVisibility((hasRememberedMicrosoft || account != null) ? View.VISIBLE : View.GONE);
-        binding.buttonManageOfflineAccounts.setVisibility(offlineUnlocked ? View.VISIBLE : View.GONE);
-        binding.buttonManageOfflineAccounts.setEnabled(offlineUnlocked);
-        binding.buttonUseMicrosoftAccount.setVisibility(hasRememberedMicrosoft && activeOffline ? View.VISIBLE : View.GONE);
-        binding.buttonRefreshMicrosoftSkin.setVisibility(hasRememberedMicrosoft ? View.VISIBLE : View.GONE);
-        binding.buttonRefreshMicrosoftSkin.setEnabled(hasRememberedMicrosoft);
-
-        if (activeOffline) {
-            String microsoftName = "Microsoft account";
-            AccountStore.Account remembered = accountStore != null ? accountStore.loadLastMicrosoftAccount() : null;
-            if (remembered != null) microsoftName = remembered.getBestDisplayName();
-            binding.textAccountStatus.setText(getString(R.string.status_offline_account_with_microsoft, account.getBestDisplayName(), microsoftName));
-            return;
-        }
-
-        if (activeMicrosoft) {
-            binding.textAccountStatus.setText(getString(R.string.status_signed_in, account.getBestDisplayName()));
-            return;
-        }
-
-        if (hasRememberedMicrosoft) {
-            AccountStore.Account remembered = accountStore.loadLastMicrosoftAccount();
-            String name = remembered != null ? remembered.getBestDisplayName() : "Microsoft Player";
-            binding.textAccountStatus.setText(getString(R.string.status_microsoft_remembered, name));
-            return;
-        }
-
-        if (offlineUnlocked) {
-            binding.textAccountStatus.setText(R.string.status_signed_out_offline_unlocked);
+    private void updateSharedInstallsSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchShowSharedInstalls;
+        if (z) {
+            i = R.string.shared_installs_show;
         } else {
-            binding.textAccountStatus.setText(R.string.status_signed_out);
+            i = R.string.shared_installs_hide;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateRemoveInheritedVanillaSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchRemoveInheritedVanilla;
+        if (z) {
+            i = R.string.inherited_vanilla_remove_on;
+        } else {
+            i = R.string.inherited_vanilla_remove_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateRenderSurfaceSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchUseNativeSurface;
+        if (z) {
+            i = R.string.render_surface_surface_view;
+        } else {
+            i = R.string.render_surface_texture_view;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateForceFullscreenSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchForceFullscreenMode;
+        if (z) {
+            i = R.string.settings_renderer_full_screen_on;
+        } else {
+            i = R.string.settings_renderer_full_screen_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateAvoidRoundedCornersSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchAvoidRoundedCorners;
+        if (z) {
+            i = R.string.settings_renderer_avoid_rounded_corners_on;
+        } else {
+            i = R.string.settings_renderer_avoid_rounded_corners_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateSystemVulkanDriverSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchUseSystemVulkanDriver;
+        if (z) {
+            i = R.string.use_system_vulkan_driver_on;
+        } else {
+            i = R.string.use_system_vulkan_driver_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateOpenGl26PlusSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchUseOpenGlFor26Plus;
+        if (z) {
+            i = R.string.use_opengl_26_plus_on;
+        } else {
+            i = R.string.use_opengl_26_plus_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateInGameSettingsButtonSwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchShowInGameSettingsButton;
+        if (z) {
+            i = R.string.game_settings_button_on;
+        } else {
+            i = R.string.game_settings_button_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    private void updateGameLogOverlaySwitchText(boolean z) {
+        int i;
+        SwitchMaterial switchMaterial = this.binding.switchShowGameLogOverlay;
+        if (z) {
+            i = R.string.game_log_overlay_on;
+        } else {
+            i = R.string.game_log_overlay_off;
+        }
+        switchMaterial.setText(i);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateAccountStatus(AccountStore.Account account) {
+        AccountStore accountStore = this.accountStore;
+        boolean z = accountStore != null && accountStore.hasStoredMicrosoftAccount();
+        AccountStore accountStore2 = this.accountStore;
+        boolean z2 = accountStore2 != null && accountStore2.hasMicrosoftLoginCompletedOnce();
+        boolean z3 = account != null && account.isOfflineAccount();
+        boolean z4 = account != null && account.isMicrosoftAccount();
+        this.binding.buttonSignIn.setVisibility(z ? 8 : 0);
+        this.binding.buttonSignOut.setVisibility((z || account != null) ? 0 : 8);
+        this.binding.buttonManageOfflineAccounts.setVisibility(z2 ? 0 : 8);
+        this.binding.buttonManageOfflineAccounts.setEnabled(z2);
+        this.binding.buttonUseMicrosoftAccount.setVisibility((z && z3) ? 0 : 8);
+        this.binding.buttonRefreshMicrosoftSkin.setVisibility(z ? 0 : 8);
+        this.binding.buttonRefreshMicrosoftSkin.setEnabled(z);
+        if (z3) {
+            AccountStore accountStore3 = this.accountStore;
+            AccountStore.Account accountLoadLastMicrosoftAccount = accountStore3 != null ? accountStore3.loadLastMicrosoftAccount() : null;
+            this.binding.textAccountStatus.setText(getString(R.string.status_offline_account_with_microsoft, new Object[]{account.getBestDisplayName(), accountLoadLastMicrosoftAccount != null ? accountLoadLastMicrosoftAccount.getBestDisplayName() : "Microsoft account"}));
+        } else {
+            if (z4) {
+                this.binding.textAccountStatus.setText(getString(R.string.status_signed_in, new Object[]{account.getBestDisplayName()}));
+                return;
+            }
+            if (z) {
+                AccountStore.Account accountLoadLastMicrosoftAccount2 = this.accountStore.loadLastMicrosoftAccount();
+                this.binding.textAccountStatus.setText(getString(R.string.status_microsoft_remembered, new Object[]{accountLoadLastMicrosoftAccount2 != null ? accountLoadLastMicrosoftAccount2.getBestDisplayName() : "Microsoft Player"}));
+            } else if (z2) {
+                this.binding.textAccountStatus.setText(R.string.status_signed_out_offline_unlocked);
+            } else {
+                this.binding.textAccountStatus.setText(R.string.status_signed_out);
+            }
         }
     }
 
     private void useRememberedMicrosoftAccount() {
-        if (accountStore == null) return;
+        AccountStore accountStore = this.accountStore;
+        if (accountStore == null) {
+            return;
+        }
         try {
             accountStore.useLastMicrosoftAccount();
-            AccountStore.Account account = accountStore.load();
-            updateAccountStatus(account);
-            updateSkinUi(account);
-            Toast.makeText(this, R.string.microsoft_account_restored, Toast.LENGTH_SHORT).show();
-        } catch (Throwable throwable) {
-            Toast.makeText(this, throwable.getMessage() != null ? throwable.getMessage() : throwable.toString(), Toast.LENGTH_LONG).show();
+            AccountStore.Account accountLoad = this.accountStore.load();
+            updateAccountStatus(accountLoad);
+            updateSkinUi(accountLoad);
+            Toast.makeText(this, R.string.microsoft_account_restored, 0).show();
+        } catch (Throwable th) {
+            Toast.makeText(this, th.getMessage() != null ? th.getMessage() : th.toString(), 1).show();
         }
     }
 
     private void showOfflineAccountsDialog() {
+        AccountStore accountStore = this.accountStore;
         if (accountStore == null || !accountStore.hasMicrosoftLoginCompletedOnce()) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.offline_locked_title)
-                    .setMessage(R.string.offline_locked_message)
-                    .setPositiveButton(android.R.string.ok, null)
-                    .show();
+            new AlertDialog.Builder(this).setTitle(R.string.offline_locked_title).setMessage(R.string.offline_locked_message).setPositiveButton(android.R.string.ok, (DialogInterface.OnClickListener) null).show();
             return;
         }
-
         ScrollView scrollView = new ScrollView(this);
         scrollView.setFillViewport(false);
-
-        LinearLayout root = new LinearLayout(this);
-        root.setOrientation(LinearLayout.VERTICAL);
-        int padding = dp(24);
-        root.setPadding(padding, dp(18), padding, dp(4));
-        scrollView.addView(root, new ScrollView.LayoutParams(
-                ScrollView.LayoutParams.MATCH_PARENT,
-                ScrollView.LayoutParams.WRAP_CONTENT
-        ));
-
-        root.addView(buildDialogHeader(
-                R.drawable.ic_player_head_placeholder,
-                R.string.offline_accounts_title,
-                R.string.offline_accounts_dialog_summary
-        ));
-
-        TextView sectionTitle = new TextView(this);
-        sectionTitle.setText(R.string.offline_accounts_section_title);
-        sectionTitle.setTextAppearance(android.R.style.TextAppearance_Material_Medium);
-        sectionTitle.setTypeface(sectionTitle.getTypeface(), android.graphics.Typeface.BOLD);
-        LinearLayout.LayoutParams sectionParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        sectionParams.topMargin = dp(18);
-        root.addView(sectionTitle, sectionParams);
-
-        ArrayList<AccountStore.Account> accounts = accountStore.listOfflineAccounts();
-        if (accounts.isEmpty()) {
-            root.addView(buildEmptyOfflineAccountCard());
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(1);
+        int iDp = dp(24.0f);
+        linearLayout.setPadding(iDp, dp(18.0f), iDp, dp(4.0f));
+        scrollView.addView(linearLayout, new FrameLayout.LayoutParams(-1, -2));
+        linearLayout.addView(buildDialogHeader(R.drawable.ic_player_head_placeholder, R.string.offline_accounts_title, R.string.offline_accounts_dialog_summary));
+        TextView textView = new TextView(this);
+        textView.setText(R.string.offline_accounts_section_title);
+        textView.setTextAppearance(android.R.style.TextAppearance.Material.Medium);
+        textView.setTypeface(textView.getTypeface(), 1);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(18.0f);
+        linearLayout.addView(textView, layoutParams);
+        ArrayList<AccountStore.Account> arrayListListOfflineAccounts = this.accountStore.listOfflineAccounts();
+        if (arrayListListOfflineAccounts.isEmpty()) {
+            linearLayout.addView(buildEmptyOfflineAccountCard());
         } else {
-            AccountStore.Account active = accountStore.load();
-            for (AccountStore.Account offline : accounts) {
-                root.addView(buildOfflineAccountRow(offline, active));
+            AccountStore.Account accountLoad = this.accountStore.load();
+            Iterator<AccountStore.Account> it = arrayListListOfflineAccounts.iterator();
+            while (it.hasNext()) {
+                linearLayout.addView(buildOfflineAccountRow(it.next(), accountLoad));
             }
         }
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(scrollView)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.offline_account_add, null)
-                .create();
-
-        dialog.setOnShowListener(dialogInterface -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
-            dialog.dismiss();
-            showEditOfflineAccountDialog(null);
-        }));
-        offlineAccountsDialog = dialog;
-        dialog.setOnDismissListener(d -> { if (offlineAccountsDialog == dialog) offlineAccountsDialog = null; });
-        dialog.show();
+        final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setView(scrollView).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.offline_account_add, (DialogInterface.OnClickListener) null).create();
+        alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda0
+            @Override // android.content.DialogInterface.OnShowListener
+            public final void onShow(DialogInterface dialogInterface) {
+                this.f$0.lambda$showOfflineAccountsDialog$54(alertDialogCreate, dialogInterface);
+            }
+        });
+        this.offlineAccountsDialog = alertDialogCreate;
+        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda11
+            @Override // android.content.DialogInterface.OnDismissListener
+            public final void onDismiss(DialogInterface dialogInterface) {
+                this.f$0.lambda$showOfflineAccountsDialog$55(alertDialogCreate, dialogInterface);
+            }
+        });
+        alertDialogCreate.show();
     }
 
-    @NonNull
-    private View buildOfflineAccountRow(@NonNull AccountStore.Account offline, @Nullable AccountStore.Account active) {
-        boolean isActive = active != null && active.isOfflineAccount() && offline.accountId.equals(active.accountId);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showOfflineAccountsDialog$54(final AlertDialog alertDialog, DialogInterface dialogInterface) {
+        alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda12
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$showOfflineAccountsDialog$53(alertDialog, view);
+            }
+        });
+    }
 
-        MaterialCardView card = new MaterialCardView(this);
-        card.setRadius(dp(18));
-        card.setCardElevation(dp(1));
-        card.setStrokeWidth(dp(1));
-        card.setStrokeColor(isActive ? 0xFF68C995 : 0x22000000);
-        card.setCardBackgroundColor(isActive ? 0xFFE9F8EF : 0xFFFFFFFF);
-        card.setUseCompatPadding(true);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showOfflineAccountsDialog$53(AlertDialog alertDialog, View view) {
+        alertDialog.dismiss();
+        showEditOfflineAccountDialog(null);
+    }
 
-        LinearLayout row = new LinearLayout(this);
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setPadding(dp(14), dp(12), dp(14), dp(12));
-        card.addView(row, new android.widget.FrameLayout.LayoutParams(
-                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
-                android.widget.FrameLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        ImageView avatar = new ImageView(this);
-        avatar.setAdjustViewBounds(true);
-        avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        avatar.setBackgroundResource(R.drawable.bg_player_head_preview);
-        avatar.setPadding(dp(4), dp(4), dp(4), dp(4));
-        avatar.setImageResource(R.drawable.ic_player_head_placeholder);
-        PlayerHeadLoader.loadInto(this, avatar, offline, null);
-        LinearLayout.LayoutParams avatarParams = new LinearLayout.LayoutParams(dp(58), dp(58));
-        avatarParams.rightMargin = dp(14);
-        row.addView(avatar, avatarParams);
-
-        LinearLayout labels = new LinearLayout(this);
-        labels.setOrientation(LinearLayout.VERTICAL);
-        labels.setGravity(Gravity.CENTER_VERTICAL);
-        row.addView(labels, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        TextView title = new TextView(this);
-        title.setText(offline.getBestDisplayName());
-        title.setTextAppearance(android.R.style.TextAppearance_Material_Medium);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
-        labels.addView(title, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView subtitle = new TextView(this);
-        subtitle.setText(offline.hasOfflineSkin()
-                ? getString(R.string.offline_account_row_skin, offline.offlineSkinModel)
-                : getString(R.string.offline_account_row_no_skin));
-        subtitle.setTextAppearance(android.R.style.TextAppearance_Material_Small);
-        LinearLayout.LayoutParams subtitleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        subtitleParams.topMargin = dp(2);
-        labels.addView(subtitle, subtitleParams);
-
-        if (isActive) {
-            TextView activeBadge = new TextView(this);
-            activeBadge.setText(R.string.offline_account_active_badge);
-            activeBadge.setTextAppearance(android.R.style.TextAppearance_Material_Small);
-            activeBadge.setTextColor(0xFF168A49);
-            activeBadge.setTypeface(activeBadge.getTypeface(), android.graphics.Typeface.BOLD);
-            LinearLayout.LayoutParams badgeParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            badgeParams.topMargin = dp(4);
-            labels.addView(activeBadge, badgeParams);
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showOfflineAccountsDialog$55(AlertDialog alertDialog, DialogInterface dialogInterface) {
+        if (this.offlineAccountsDialog == alertDialog) {
+            this.offlineAccountsDialog = null;
         }
-
-        LinearLayout actions = new LinearLayout(this);
-        actions.setOrientation(LinearLayout.VERTICAL);
-        actions.setGravity(Gravity.CENTER_VERTICAL);
-        LinearLayout.LayoutParams actionsParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        actionsParams.leftMargin = dp(12);
-        row.addView(actions, actionsParams);
-
-        MaterialButton use = buildCompactDialogButton(isActive ? R.string.offline_account_active_button : R.string.offline_account_use);
-        use.setEnabled(!isActive);
-        use.setOnClickListener(v -> {
-            if (offlineAccountsDialog != null) offlineAccountsDialog.dismiss();
-            accountStore.activateOfflineAccount(offline.accountId);
-            AccountStore.Account account = accountStore.load();
-            updateAccountStatus(account);
-            updateSkinUi(account);
-            Toast.makeText(this, getString(R.string.offline_account_enabled, offline.getBestDisplayName()), Toast.LENGTH_SHORT).show();
-        });
-        addButtonWithTopMargin(actions, use, 0);
-
-        MaterialButton edit = buildCompactDialogButton(R.string.offline_account_edit_button);
-        edit.setOnClickListener(v -> {
-            if (offlineAccountsDialog != null) offlineAccountsDialog.dismiss();
-            showEditOfflineAccountDialog(offline);
-        });
-        addButtonWithTopMargin(actions, edit, dp(6));
-
-        MaterialButton delete = buildCompactDialogButton(R.string.offline_account_delete_button);
-        delete.setOnClickListener(v -> {
-            if (offlineAccountsDialog != null) offlineAccountsDialog.dismiss();
-            confirmDeleteOfflineAccount(offline);
-        });
-        addButtonWithTopMargin(actions, delete, dp(6));
-
-        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        cardParams.topMargin = dp(10);
-        card.setLayoutParams(cardParams);
-        return card;
     }
 
-    private void showEditOfflineAccountDialog(@Nullable AccountStore.Account existing) {
-        if (accountStore == null) return;
+    private View buildOfflineAccountRow(final AccountStore.Account account, AccountStore.Account account2) {
+        String string;
+        boolean z = account2 != null && account2.isOfflineAccount() && account.accountId.equals(account2.accountId);
+        MaterialCardView materialCardView = new MaterialCardView(this);
+        materialCardView.setRadius(dp(18.0f));
+        materialCardView.setCardElevation(dp(1.0f));
+        materialCardView.setStrokeWidth(dp(1.0f));
+        materialCardView.setStrokeColor(z ? -9909867 : 570425344);
+        materialCardView.setCardBackgroundColor(z ? -1443601 : -1);
+        materialCardView.setUseCompatPadding(true);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(0);
+        linearLayout.setGravity(16);
+        linearLayout.setPadding(dp(14.0f), dp(12.0f), dp(14.0f), dp(12.0f));
+        materialCardView.addView(linearLayout, new FrameLayout.LayoutParams(-1, -2));
+        ImageView imageView = new ImageView(this);
+        imageView.setAdjustViewBounds(true);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setBackgroundResource(R.drawable.bg_player_head_preview);
+        imageView.setPadding(dp(4.0f), dp(4.0f), dp(4.0f), dp(4.0f));
+        imageView.setImageResource(R.drawable.ic_player_head_placeholder);
+        PlayerHeadLoader.loadInto(this, imageView, account, null);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dp(58.0f), dp(58.0f));
+        layoutParams.rightMargin = dp(14.0f);
+        linearLayout.addView(imageView, layoutParams);
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.setOrientation(1);
+        linearLayout2.setGravity(16);
+        linearLayout.addView(linearLayout2, new LinearLayout.LayoutParams(0, -2, 1.0f));
+        TextView textView = new TextView(this);
+        textView.setText(account.getBestDisplayName());
+        textView.setTextAppearance(android.R.style.TextAppearance.Material.Medium);
+        textView.setTypeface(textView.getTypeface(), 1);
+        linearLayout2.addView(textView, new LinearLayout.LayoutParams(-1, -2));
+        TextView textView2 = new TextView(this);
+        if (account.hasOfflineSkin()) {
+            string = getString(R.string.offline_account_row_skin, new Object[]{account.offlineSkinModel});
+        } else {
+            string = getString(R.string.offline_account_row_no_skin);
+        }
+        textView2.setText(string);
+        textView2.setTextAppearance(android.R.style.TextAppearance.Material.Small);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams2.topMargin = dp(2.0f);
+        linearLayout2.addView(textView2, layoutParams2);
+        if (z) {
+            TextView textView3 = new TextView(this);
+            textView3.setText(R.string.offline_account_active_badge);
+            textView3.setTextAppearance(android.R.style.TextAppearance.Material.Small);
+            textView3.setTextColor(-15300023);
+            textView3.setTypeface(textView3.getTypeface(), 1);
+            LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(-1, -2);
+            layoutParams3.topMargin = dp(4.0f);
+            linearLayout2.addView(textView3, layoutParams3);
+        }
+        LinearLayout linearLayout3 = new LinearLayout(this);
+        linearLayout3.setOrientation(1);
+        linearLayout3.setGravity(16);
+        LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(-2, -2);
+        layoutParams4.leftMargin = dp(12.0f);
+        linearLayout.addView(linearLayout3, layoutParams4);
+        MaterialButton materialButtonBuildCompactDialogButton = buildCompactDialogButton(z ? R.string.offline_account_active_button : R.string.offline_account_use);
+        materialButtonBuildCompactDialogButton.setEnabled(!z);
+        materialButtonBuildCompactDialogButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda45
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$buildOfflineAccountRow$56(account, view);
+            }
+        });
+        addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton, 0);
+        MaterialButton materialButtonBuildCompactDialogButton2 = buildCompactDialogButton(R.string.offline_account_edit_button);
+        materialButtonBuildCompactDialogButton2.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda46
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$buildOfflineAccountRow$57(account, view);
+            }
+        });
+        addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton2, dp(6.0f));
+        MaterialButton materialButtonBuildCompactDialogButton3 = buildCompactDialogButton(R.string.offline_account_delete_button);
+        materialButtonBuildCompactDialogButton3.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda47
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$buildOfflineAccountRow$58(account, view);
+            }
+        });
+        addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton3, dp(6.0f));
+        LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams5.topMargin = dp(10.0f);
+        materialCardView.setLayoutParams(layoutParams5);
+        return materialCardView;
+    }
 
-        pendingOfflineSkinUri = null;
-        pendingOfflineSkinPreview = null;
-        pendingOfflineSkinLabel = null;
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$buildOfflineAccountRow$56(AccountStore.Account account, View view) {
+        AlertDialog alertDialog = this.offlineAccountsDialog;
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+        }
+        this.accountStore.activateOfflineAccount(account.accountId);
+        AccountStore.Account accountLoad = this.accountStore.load();
+        updateAccountStatus(accountLoad);
+        updateSkinUi(accountLoad);
+        Toast.makeText(this, getString(R.string.offline_account_enabled, new Object[]{account.getBestDisplayName()}), 0).show();
+    }
 
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$buildOfflineAccountRow$57(AccountStore.Account account, View view) {
+        AlertDialog alertDialog = this.offlineAccountsDialog;
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+        }
+        showEditOfflineAccountDialog(account);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$buildOfflineAccountRow$58(AccountStore.Account account, View view) {
+        AlertDialog alertDialog = this.offlineAccountsDialog;
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+        }
+        confirmDeleteOfflineAccount(account);
+    }
+
+    private void showEditOfflineAccountDialog(final AccountStore.Account account) {
+        String string;
+        if (this.accountStore == null) {
+            return;
+        }
+        this.pendingOfflineSkinUri = null;
+        this.pendingOfflineSkinPreview = null;
+        this.pendingOfflineSkinLabel = null;
         ScrollView scrollView = new ScrollView(this);
-        LinearLayout root = new LinearLayout(this);
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setPadding(dp(24), dp(18), dp(24), dp(4));
-        scrollView.addView(root, new ScrollView.LayoutParams(
-                ScrollView.LayoutParams.MATCH_PARENT,
-                ScrollView.LayoutParams.WRAP_CONTENT
-        ));
-
-        root.addView(buildDialogHeader(
-                R.drawable.ic_player_head_placeholder,
-                existing == null ? R.string.offline_account_create_title : R.string.offline_account_edit_title,
-                R.string.offline_account_edit_summary
-        ));
-
-        MaterialCardView card = new MaterialCardView(this);
-        card.setRadius(dp(18));
-        card.setCardElevation(dp(1));
-        card.setStrokeWidth(dp(1));
-        card.setStrokeColor(0x22000000);
-        card.setCardBackgroundColor(0xFFFFFFFF);
-        card.setUseCompatPadding(true);
-        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        cardParams.topMargin = dp(16);
-        root.addView(card, cardParams);
-
-        LinearLayout row = new LinearLayout(this);
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setPadding(dp(14), dp(14), dp(14), dp(14));
-        card.addView(row, new android.widget.FrameLayout.LayoutParams(
-                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
-                android.widget.FrameLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        ImageView preview = new ImageView(this);
-        preview.setAdjustViewBounds(true);
-        preview.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        preview.setBackgroundResource(R.drawable.bg_player_head_preview);
-        preview.setPadding(dp(6), dp(6), dp(6), dp(6));
-        preview.setImageResource(R.drawable.ic_player_head_placeholder);
-        LinearLayout.LayoutParams previewParams = new LinearLayout.LayoutParams(dp(88), dp(88));
-        previewParams.rightMargin = dp(14);
-        row.addView(preview, previewParams);
-        pendingOfflineSkinPreview = preview;
-
-        if (existing != null && existing.hasOfflineSkin()) {
-            PlayerHeadLoader.loadInto(this, preview, existing, null);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(1);
+        linearLayout.setPadding(dp(24.0f), dp(18.0f), dp(24.0f), dp(4.0f));
+        scrollView.addView(linearLayout, new FrameLayout.LayoutParams(-1, -2));
+        linearLayout.addView(buildDialogHeader(R.drawable.ic_player_head_placeholder, account == null ? R.string.offline_account_create_title : R.string.offline_account_edit_title, R.string.offline_account_edit_summary));
+        MaterialCardView materialCardView = new MaterialCardView(this);
+        materialCardView.setRadius(dp(18.0f));
+        materialCardView.setCardElevation(dp(1.0f));
+        materialCardView.setStrokeWidth(dp(1.0f));
+        materialCardView.setStrokeColor(570425344);
+        materialCardView.setCardBackgroundColor(-1);
+        materialCardView.setUseCompatPadding(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(16.0f);
+        linearLayout.addView(materialCardView, layoutParams);
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.setOrientation(0);
+        linearLayout2.setGravity(16);
+        linearLayout2.setPadding(dp(14.0f), dp(14.0f), dp(14.0f), dp(14.0f));
+        materialCardView.addView(linearLayout2, new FrameLayout.LayoutParams(-1, -2));
+        final ImageView imageView = new ImageView(this);
+        imageView.setAdjustViewBounds(true);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setBackgroundResource(R.drawable.bg_player_head_preview);
+        imageView.setPadding(dp(6.0f), dp(6.0f), dp(6.0f), dp(6.0f));
+        imageView.setImageResource(R.drawable.ic_player_head_placeholder);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(dp(88.0f), dp(88.0f));
+        layoutParams2.rightMargin = dp(14.0f);
+        linearLayout2.addView(imageView, layoutParams2);
+        this.pendingOfflineSkinPreview = imageView;
+        if (account != null && account.hasOfflineSkin()) {
+            PlayerHeadLoader.loadInto(this, imageView, account, null);
         }
-
-        LinearLayout form = new LinearLayout(this);
-        form.setOrientation(LinearLayout.VERTICAL);
-        row.addView(form, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        input.setSingleLine(true);
-        input.setSelectAllOnFocus(true);
-        input.setHint(R.string.offline_account_name_hint);
-        input.setText(existing != null ? existing.getBestDisplayName() : "Player");
-        form.addView(input, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView skinLabel = new TextView(this);
-        skinLabel.setText(existing != null && existing.hasOfflineSkin()
-                ? getString(R.string.offline_account_skin_current, existing.offlineSkinModel)
-                : getString(R.string.offline_account_skin_none));
-        skinLabel.setTextAppearance(android.R.style.TextAppearance_Material_Small);
-        LinearLayout.LayoutParams skinLabelParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        skinLabelParams.topMargin = dp(6);
-        form.addView(skinLabel, skinLabelParams);
-        pendingOfflineSkinLabel = skinLabel;
-
-        LinearLayout skinActions = new LinearLayout(this);
-        skinActions.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams skinActionsParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        skinActionsParams.topMargin = dp(8);
-        form.addView(skinActions, skinActionsParams);
-
-        MaterialButton chooseSkin = buildCompactDialogButton(R.string.offline_account_choose_skin);
-        chooseSkin.setOnClickListener(v -> openOfflineSkinPicker());
-        skinActions.addView(chooseSkin, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        final boolean[] clearSkin = new boolean[]{false};
-        MaterialButton clearSkinButton = buildCompactDialogButton(R.string.offline_account_clear_skin);
-        clearSkinButton.setOnClickListener(v -> {
-            pendingOfflineSkinUri = null;
-            clearSkin[0] = true;
-            preview.setImageResource(R.drawable.ic_player_head_placeholder);
-            skinLabel.setText(R.string.offline_account_skin_none);
-        });
-        LinearLayout.LayoutParams clearParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-        clearParams.leftMargin = dp(8);
-        skinActions.addView(clearSkinButton, clearParams);
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(scrollView)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(existing == null ? R.string.offline_account_create : R.string.offline_account_save, null)
-                .create();
-
-        dialog.setOnShowListener(dialogInterface -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
-            String name = sanitizeOfflineName(input.getText() == null ? "" : input.getText().toString());
-            if (!isValidOfflineName(name)) {
-                input.setError(getString(R.string.offline_account_invalid));
-                return;
+        LinearLayout linearLayout3 = new LinearLayout(this);
+        linearLayout3.setOrientation(1);
+        linearLayout2.addView(linearLayout3, new LinearLayout.LayoutParams(0, -2, 1.0f));
+        final EditText editText = new EditText(this);
+        editText.setInputType(1);
+        editText.setSingleLine(true);
+        editText.setSelectAllOnFocus(true);
+        editText.setHint(R.string.offline_account_name_hint);
+        editText.setText(account != null ? account.getBestDisplayName() : "Player");
+        linearLayout3.addView(editText, new LinearLayout.LayoutParams(-1, -2));
+        final TextView textView = new TextView(this);
+        if (account != null && account.hasOfflineSkin()) {
+            string = getString(R.string.offline_account_skin_current, new Object[]{account.offlineSkinModel});
+        } else {
+            string = getString(R.string.offline_account_skin_none);
+        }
+        textView.setText(string);
+        textView.setTextAppearance(android.R.style.TextAppearance.Material.Small);
+        LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams3.topMargin = dp(6.0f);
+        linearLayout3.addView(textView, layoutParams3);
+        this.pendingOfflineSkinLabel = textView;
+        LinearLayout linearLayout4 = new LinearLayout(this);
+        linearLayout4.setOrientation(0);
+        LinearLayout.LayoutParams layoutParams4 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams4.topMargin = dp(8.0f);
+        linearLayout3.addView(linearLayout4, layoutParams4);
+        MaterialButton materialButtonBuildCompactDialogButton = buildCompactDialogButton(R.string.offline_account_choose_skin);
+        materialButtonBuildCompactDialogButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda4
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$showEditOfflineAccountDialog$59(view);
             }
-
-            try {
-                AccountStore.Account account = accountStore.saveOrUpdateOfflineAccount(
-                        existing != null ? existing.accountId : null,
-                        name,
-                        pendingOfflineSkinUri,
-                        clearSkin[0]
-                );
-                updateAccountStatus(account);
-                updateSkinUi(account);
-                Toast.makeText(this, getString(R.string.offline_account_enabled, account.getBestDisplayName()), Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            } catch (Throwable throwable) {
-                input.setError(throwable.getMessage() != null ? throwable.getMessage() : throwable.toString());
-            }
-        }));
-
-        dialog.setOnDismissListener(dialogInterface -> {
-            pendingOfflineSkinUri = null;
-            pendingOfflineSkinPreview = null;
-            pendingOfflineSkinLabel = null;
         });
-        dialog.show();
+        linearLayout4.addView(materialButtonBuildCompactDialogButton, new LinearLayout.LayoutParams(0, -2, 1.0f));
+        final boolean[] zArr = {false};
+        MaterialButton materialButtonBuildCompactDialogButton2 = buildCompactDialogButton(R.string.offline_account_clear_skin);
+        materialButtonBuildCompactDialogButton2.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda5
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$showEditOfflineAccountDialog$60(zArr, imageView, textView, view);
+            }
+        });
+        LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams(0, -2, 1.0f);
+        layoutParams5.leftMargin = dp(8.0f);
+        linearLayout4.addView(materialButtonBuildCompactDialogButton2, layoutParams5);
+        final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setView(scrollView).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(account == null ? R.string.offline_account_create : R.string.offline_account_save, (DialogInterface.OnClickListener) null).create();
+        alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda6
+            @Override // android.content.DialogInterface.OnShowListener
+            public final void onShow(DialogInterface dialogInterface) {
+                this.f$0.lambda$showEditOfflineAccountDialog$62(alertDialogCreate, editText, account, zArr, dialogInterface);
+            }
+        });
+        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda7
+            @Override // android.content.DialogInterface.OnDismissListener
+            public final void onDismiss(DialogInterface dialogInterface) {
+                this.f$0.lambda$showEditOfflineAccountDialog$63(dialogInterface);
+            }
+        });
+        alertDialogCreate.show();
     }
 
-    @NonNull
-    private View buildDialogHeader(int iconResId, int titleResId, int summaryResId) {
-        LinearLayout header = new LinearLayout(this);
-        header.setOrientation(LinearLayout.HORIZONTAL);
-        header.setGravity(Gravity.CENTER_VERTICAL);
-
-        ImageView icon = new ImageView(this);
-        icon.setImageResource(iconResId);
-        icon.setBackgroundResource(R.drawable.bg_player_head_preview);
-        icon.setPadding(dp(10), dp(10), dp(10), dp(10));
-        icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(dp(72), dp(72));
-        iconParams.rightMargin = dp(16);
-        header.addView(icon, iconParams);
-
-        LinearLayout text = new LinearLayout(this);
-        text.setOrientation(LinearLayout.VERTICAL);
-        header.addView(text, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        TextView title = new TextView(this);
-        title.setText(titleResId);
-        title.setTextAppearance(android.R.style.TextAppearance_Material_Large);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
-        text.addView(title, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        TextView summary = new TextView(this);
-        summary.setText(summaryResId);
-        summary.setTextAppearance(android.R.style.TextAppearance_Material_Small);
-        LinearLayout.LayoutParams summaryParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        summaryParams.topMargin = dp(4);
-        text.addView(summary, summaryParams);
-
-        return header;
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showEditOfflineAccountDialog$59(View view) {
+        openOfflineSkinPicker();
     }
 
-    @NonNull
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showEditOfflineAccountDialog$60(boolean[] zArr, ImageView imageView, TextView textView, View view) {
+        this.pendingOfflineSkinUri = null;
+        zArr[0] = true;
+        imageView.setImageResource(R.drawable.ic_player_head_placeholder);
+        textView.setText(R.string.offline_account_skin_none);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showEditOfflineAccountDialog$62(final AlertDialog alertDialog, final EditText editText, final AccountStore.Account account, final boolean[] zArr, DialogInterface dialogInterface) {
+        alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda48
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                this.f$0.lambda$showEditOfflineAccountDialog$61(editText, account, zArr, alertDialog, view);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showEditOfflineAccountDialog$61(EditText editText, AccountStore.Account account, boolean[] zArr, AlertDialog alertDialog, View view) {
+        String strSanitizeOfflineName = sanitizeOfflineName(editText.getText() == null ? "" : editText.getText().toString());
+        if (!isValidOfflineName(strSanitizeOfflineName)) {
+            editText.setError(getString(R.string.offline_account_invalid));
+            return;
+        }
+        try {
+            AccountStore.Account accountSaveOrUpdateOfflineAccount = this.accountStore.saveOrUpdateOfflineAccount(account != null ? account.accountId : null, strSanitizeOfflineName, this.pendingOfflineSkinUri, zArr[0]);
+            updateAccountStatus(accountSaveOrUpdateOfflineAccount);
+            updateSkinUi(accountSaveOrUpdateOfflineAccount);
+            Toast.makeText(this, getString(R.string.offline_account_enabled, new Object[]{accountSaveOrUpdateOfflineAccount.getBestDisplayName()}), 0).show();
+            alertDialog.dismiss();
+        } catch (Throwable th) {
+            editText.setError(th.getMessage() != null ? th.getMessage() : th.toString());
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showEditOfflineAccountDialog$63(DialogInterface dialogInterface) {
+        this.pendingOfflineSkinUri = null;
+        this.pendingOfflineSkinPreview = null;
+        this.pendingOfflineSkinLabel = null;
+    }
+
+    private View buildDialogHeader(int i, int i2, int i3) {
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(0);
+        linearLayout.setGravity(16);
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(i);
+        imageView.setBackgroundResource(R.drawable.bg_player_head_preview);
+        imageView.setPadding(dp(10.0f), dp(10.0f), dp(10.0f), dp(10.0f));
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dp(72.0f), dp(72.0f));
+        layoutParams.rightMargin = dp(16.0f);
+        linearLayout.addView(imageView, layoutParams);
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.setOrientation(1);
+        linearLayout.addView(linearLayout2, new LinearLayout.LayoutParams(0, -2, 1.0f));
+        TextView textView = new TextView(this);
+        textView.setText(i2);
+        textView.setTextAppearance(android.R.style.TextAppearance.Material.Large);
+        textView.setTypeface(textView.getTypeface(), 1);
+        linearLayout2.addView(textView, new LinearLayout.LayoutParams(-1, -2));
+        TextView textView2 = new TextView(this);
+        textView2.setText(i3);
+        textView2.setTextAppearance(android.R.style.TextAppearance.Material.Small);
+        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams2.topMargin = dp(4.0f);
+        linearLayout2.addView(textView2, layoutParams2);
+        return linearLayout;
+    }
+
     private View buildEmptyOfflineAccountCard() {
-        MaterialCardView card = new MaterialCardView(this);
-        card.setRadius(dp(18));
-        card.setCardElevation(dp(1));
-        card.setStrokeWidth(dp(1));
-        card.setStrokeColor(0x22000000);
-        card.setCardBackgroundColor(0xFFFFFFFF);
-        card.setUseCompatPadding(true);
-
-        TextView empty = new TextView(this);
-        empty.setText(R.string.offline_accounts_empty);
-        empty.setGravity(Gravity.CENTER);
-        empty.setPadding(dp(18), dp(22), dp(18), dp(22));
-        empty.setTextAppearance(android.R.style.TextAppearance_Material_Small);
-        card.addView(empty, new android.widget.FrameLayout.LayoutParams(
-                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
-                android.widget.FrameLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.topMargin = dp(10);
-        card.setLayoutParams(params);
-        return card;
+        MaterialCardView materialCardView = new MaterialCardView(this);
+        materialCardView.setRadius(dp(18.0f));
+        materialCardView.setCardElevation(dp(1.0f));
+        materialCardView.setStrokeWidth(dp(1.0f));
+        materialCardView.setStrokeColor(570425344);
+        materialCardView.setCardBackgroundColor(-1);
+        materialCardView.setUseCompatPadding(true);
+        TextView textView = new TextView(this);
+        textView.setText(R.string.offline_accounts_empty);
+        textView.setGravity(17);
+        textView.setPadding(dp(18.0f), dp(22.0f), dp(18.0f), dp(22.0f));
+        textView.setTextAppearance(android.R.style.TextAppearance.Material.Small);
+        materialCardView.addView(textView, new FrameLayout.LayoutParams(-1, -2));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = dp(10.0f);
+        materialCardView.setLayoutParams(layoutParams);
+        return materialCardView;
     }
 
-    @NonNull
-    private MaterialButton buildCompactDialogButton(int textResId) {
-        MaterialButton button = new MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
-        button.setText(textResId);
-        button.setAllCaps(false);
-        button.setMinHeight(0);
-        button.setMinWidth(0);
-        button.setMinimumHeight(0);
-        button.setMinimumWidth(0);
-        button.setInsetTop(0);
-        button.setInsetBottom(0);
-        button.setPadding(dp(12), 0, dp(12), 0);
-        return button;
+    private MaterialButton buildCompactDialogButton(int i) {
+        MaterialButton materialButton = new MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
+        materialButton.setText(i);
+        materialButton.setAllCaps(false);
+        materialButton.setMinHeight(0);
+        materialButton.setMinWidth(0);
+        materialButton.setMinimumHeight(0);
+        materialButton.setMinimumWidth(0);
+        materialButton.setInsetTop(0);
+        materialButton.setInsetBottom(0);
+        materialButton.setPadding(dp(12.0f), 0, dp(12.0f), 0);
+        return materialButton;
     }
 
-    private void addButtonWithTopMargin(@NonNull LinearLayout parent, @NonNull View child, int topMargin) {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.topMargin = topMargin;
-        parent.addView(child, params);
+    private void addButtonWithTopMargin(LinearLayout linearLayout, View view, int i) {
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
+        layoutParams.topMargin = i;
+        linearLayout.addView(view, layoutParams);
     }
 
-    private void updatePendingOfflineSkinPreview(@NonNull Uri uri) {
-        if (pendingOfflineSkinPreview == null) return;
-        File previewFile = new File(getCacheDir(), "pending_offline_skin_preview.png");
-        try (InputStream input = getContentResolver().openInputStream(uri);
-             FileOutputStream output = new FileOutputStream(previewFile)) {
-            if (input == null) throw new IllegalStateException("Unable to open selected skin.");
-            byte[] buffer = new byte[8192];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
+    private void updatePendingOfflineSkinPreview(Uri uri) {
+        if (this.pendingOfflineSkinPreview == null) {
+            return;
+        }
+        File file = new File(getCacheDir(), "pending_offline_skin_preview.png");
+        try {
+            InputStream inputStreamOpenInputStream = getContentResolver().openInputStream(uri);
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                try {
+                    if (inputStreamOpenInputStream == null) {
+                        throw new IllegalStateException("Unable to open selected skin.");
+                    }
+                    byte[] bArr = new byte[8192];
+                    while (true) {
+                        int i = inputStreamOpenInputStream.read(bArr);
+                        if (i == -1) {
+                            break;
+                        } else {
+                            fileOutputStream.write(bArr, 0, i);
+                        }
+                    }
+                    Bitmap bitmapLoadHeadFromSkinFile = PlayerHeadLoader.loadHeadFromSkinFile(file);
+                    if (bitmapLoadHeadFromSkinFile != null) {
+                        this.pendingOfflineSkinPreview.setImageBitmap(bitmapLoadHeadFromSkinFile);
+                    } else {
+                        this.pendingOfflineSkinPreview.setImageResource(R.drawable.ic_player_head_placeholder);
+                    }
+                    fileOutputStream.close();
+                    if (inputStreamOpenInputStream != null) {
+                        inputStreamOpenInputStream.close();
+                    }
+                } finally {
+                }
+            } finally {
             }
-            android.graphics.Bitmap head = PlayerHeadLoader.loadHeadFromSkinFile(previewFile);
-            if (head != null) pendingOfflineSkinPreview.setImageBitmap(head);
-            else pendingOfflineSkinPreview.setImageResource(R.drawable.ic_player_head_placeholder);
-        } catch (Throwable ignored) {
-            pendingOfflineSkinPreview.setImageResource(R.drawable.ic_player_head_placeholder);
+        } catch (Throwable unused) {
+            this.pendingOfflineSkinPreview.setImageResource(R.drawable.ic_player_head_placeholder);
         }
     }
 
     private void openOfflineSkinPicker() {
-        if (offlineSkinPickerLauncher == null) return;
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image/png");
-        offlineSkinPickerLauncher.launch(intent);
-    }
-
-    private void confirmDeleteOfflineAccount(@NonNull AccountStore.Account account) {
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.offline_account_delete_title, account.getBestDisplayName()))
-                .setMessage(R.string.offline_account_delete_message)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.offline_account_delete_button, (dialog, which) -> {
-                    accountStore.deleteOfflineAccount(account.accountId);
-                    AccountStore.Account active = accountStore.load();
-                    updateAccountStatus(active);
-                    updateSkinUi(active);
-                    showOfflineAccountsDialog();
-                })
-                .show();
-    }
-
-    private void updateChangeMicrosoftSkinButtonState(@Nullable AccountStore.Account activeAccount) {
-        if (binding == null) return;
-
-        AccountStore.Account microsoft = getMicrosoftSkinTargetAccount(activeAccount);
-        boolean canChange = microsoft != null && microsoft.isMicrosoftAccount() && microsoft.hasMinecraftSession();
-        binding.buttonChangeMicrosoftSkin.setVisibility(canChange ? View.VISIBLE : View.GONE);
-        binding.buttonChangeMicrosoftSkin.setEnabled(canChange);
-    }
-
-    @Nullable
-    private AccountStore.Account getMicrosoftSkinTargetAccount(@Nullable AccountStore.Account activeAccount) {
-        if (activeAccount != null && activeAccount.isMicrosoftAccount() && activeAccount.hasMinecraftSession()) {
-            return activeAccount;
+        if (this.offlineSkinPickerLauncher == null) {
+            return;
         }
-        if (accountStore == null) return null;
-        AccountStore.Account remembered = accountStore.loadLastMicrosoftAccount();
-        if (remembered != null && remembered.isMicrosoftAccount() && remembered.hasMinecraftSession()) {
-            return remembered;
+        Intent intent = new Intent("android.intent.action.OPEN_DOCUMENT");
+        intent.addCategory("android.intent.category.OPENABLE");
+        intent.setType("image/png");
+        this.offlineSkinPickerLauncher.launch(intent);
+    }
+
+    private void confirmDeleteOfflineAccount(final AccountStore.Account account) {
+        new AlertDialog.Builder(this).setTitle(getString(R.string.offline_account_delete_title, new Object[]{account.getBestDisplayName()})).setMessage(R.string.offline_account_delete_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.offline_account_delete_button, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda49
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                this.f$0.lambda$confirmDeleteOfflineAccount$64(account, dialogInterface, i);
+            }
+        }).show();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$confirmDeleteOfflineAccount$64(AccountStore.Account account, DialogInterface dialogInterface, int i) {
+        this.accountStore.deleteOfflineAccount(account.accountId);
+        AccountStore.Account accountLoad = this.accountStore.load();
+        updateAccountStatus(accountLoad);
+        updateSkinUi(accountLoad);
+        showOfflineAccountsDialog();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void updateChangeMicrosoftSkinButtonState(AccountStore.Account account) {
+        if (this.binding == null) {
+            return;
+        }
+        AccountStore.Account microsoftSkinTargetAccount = getMicrosoftSkinTargetAccount(account);
+        boolean z = microsoftSkinTargetAccount != null && microsoftSkinTargetAccount.isMicrosoftAccount() && microsoftSkinTargetAccount.hasMinecraftSession();
+        this.binding.buttonChangeMicrosoftSkin.setVisibility(z ? 0 : 8);
+        this.binding.buttonChangeMicrosoftSkin.setEnabled(z);
+    }
+
+    private AccountStore.Account getMicrosoftSkinTargetAccount(AccountStore.Account account) {
+        AccountStore.Account accountLoadLastMicrosoftAccount;
+        if (account != null && account.isMicrosoftAccount() && account.hasMinecraftSession()) {
+            return account;
+        }
+        AccountStore accountStore = this.accountStore;
+        if (accountStore != null && (accountLoadLastMicrosoftAccount = accountStore.loadLastMicrosoftAccount()) != null && accountLoadLastMicrosoftAccount.isMicrosoftAccount() && accountLoadLastMicrosoftAccount.hasMinecraftSession()) {
+            return accountLoadLastMicrosoftAccount;
         }
         return null;
     }
 
     private void showChangeMicrosoftSkinDialog() {
-        AccountStore.Account account = getMicrosoftSkinTargetAccount(accountStore != null ? accountStore.load() : null);
-        if (account == null) {
-            Toast.makeText(this, R.string.microsoft_skin_requires_account, Toast.LENGTH_LONG).show();
-            return;
+        AccountStore accountStore = this.accountStore;
+        AccountStore.Account microsoftSkinTargetAccount = getMicrosoftSkinTargetAccount(accountStore != null ? accountStore.load() : null);
+        if (microsoftSkinTargetAccount == null) {
+            Toast.makeText(this, R.string.microsoft_skin_requires_account, 1).show();
+        } else {
+            new AlertDialog.Builder(this).setTitle(R.string.microsoft_skin_change_title).setMessage(getString(R.string.microsoft_skin_change_message, new Object[]{microsoftSkinTargetAccount.getBestDisplayName()})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.microsoft_skin_pick, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda16
+                @Override // android.content.DialogInterface.OnClickListener
+                public final void onClick(DialogInterface dialogInterface, int i) {
+                    this.f$0.lambda$showChangeMicrosoftSkinDialog$65(dialogInterface, i);
+                }
+            }).show();
         }
+    }
 
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.microsoft_skin_change_title)
-                .setMessage(getString(R.string.microsoft_skin_change_message, account.getBestDisplayName()))
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.microsoft_skin_pick, (dialog, which) -> openMicrosoftSkinPicker())
-                .show();
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showChangeMicrosoftSkinDialog$65(DialogInterface dialogInterface, int i) {
+        openMicrosoftSkinPicker();
     }
 
     private void openMicrosoftSkinPicker() {
-        if (microsoftSkinPickerLauncher == null) return;
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image/png");
-        microsoftSkinPickerLauncher.launch(intent);
-    }
-
-    private void prepareMicrosoftSkinUpload(@NonNull Uri uri) {
-        File tempFile = new File(getCacheDir(), "pending_microsoft_account_skin.png");
-        try {
-            copyUriToFile(uri, tempFile);
-            if (!CustomSkinStore.isSkinValid(tempFile)) {
-                //noinspection ResultOfMethodCallIgnored
-                tempFile.delete();
-                Toast.makeText(this, R.string.microsoft_skin_invalid, Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            SkinModelType detectedModel = CustomSkinStore.getSkinModel(tempFile);
-            showConfirmMicrosoftSkinUploadDialog(tempFile, detectedModel);
-        } catch (Throwable throwable) {
-            Toast.makeText(this, throwable.getMessage() != null ? throwable.getMessage() : throwable.toString(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void showConfirmMicrosoftSkinUploadDialog(@NonNull File skinFile, @NonNull SkinModelType detectedModel) {
-        final SkinModelType[] selectedModel = new SkinModelType[]{
-                detectedModel == SkinModelType.SLIM ? SkinModelType.SLIM : SkinModelType.CLASSIC
-        };
-        String[] choices = new String[]{
-                getString(R.string.microsoft_skin_variant_classic),
-                getString(R.string.microsoft_skin_variant_slim)
-        };
-        int checked = selectedModel[0] == SkinModelType.SLIM ? 1 : 0;
-
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.microsoft_skin_upload_title)
-                .setMessage(R.string.microsoft_skin_upload_message)
-                .setSingleChoiceItems(choices, checked, (dialog, which) ->
-                        selectedModel[0] = which == 1 ? SkinModelType.SLIM : SkinModelType.CLASSIC)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.microsoft_skin_upload, (dialog, which) ->
-                        uploadMicrosoftAccountSkin(skinFile, selectedModel[0]))
-                .show();
-    }
-
-    private void uploadMicrosoftAccountSkin(@NonNull File skinFile, @NonNull SkinModelType model) {
-        AccountStore.Account account = getMicrosoftSkinTargetAccount(accountStore != null ? accountStore.load() : null);
-        if (account == null) {
-            Toast.makeText(this, R.string.microsoft_skin_requires_account, Toast.LENGTH_LONG).show();
+        if (this.microsoftSkinPickerLauncher == null) {
             return;
         }
+        Intent intent = new Intent("android.intent.action.OPEN_DOCUMENT");
+        intent.addCategory("android.intent.category.OPENABLE");
+        intent.setType("image/png");
+        this.microsoftSkinPickerLauncher.launch(intent);
+    }
 
-        binding.buttonChangeMicrosoftSkin.setEnabled(false);
-        binding.buttonRefreshMicrosoftSkin.setEnabled(false);
-        binding.textSkinStatus.setText(R.string.microsoft_skin_uploading);
+    private void prepareMicrosoftSkinUpload(Uri uri) {
+        File file = new File(getCacheDir(), "pending_microsoft_account_skin.png");
+        try {
+            copyUriToFile(uri, file);
+            if (!CustomSkinStore.isSkinValid(file)) {
+                file.delete();
+                Toast.makeText(this, R.string.microsoft_skin_invalid, 1).show();
+            } else {
+                showConfirmMicrosoftSkinUploadDialog(file, CustomSkinStore.getSkinModel(file));
+            }
+        } catch (Throwable th) {
+            Toast.makeText(this, th.getMessage() != null ? th.getMessage() : th.toString(), 1).show();
+        }
+    }
 
-        Thread thread = new Thread(() -> {
+    private void showConfirmMicrosoftSkinUploadDialog(final File file, SkinModelType skinModelType) {
+        final SkinModelType[] skinModelTypeArr = new SkinModelType[1];
+        skinModelTypeArr[0] = skinModelType == SkinModelType.SLIM ? SkinModelType.SLIM : SkinModelType.CLASSIC;
+        new AlertDialog.Builder(this).setTitle(R.string.microsoft_skin_upload_title).setMessage(R.string.microsoft_skin_upload_message).setSingleChoiceItems(new String[]{getString(R.string.microsoft_skin_variant_classic), getString(R.string.microsoft_skin_variant_slim)}, skinModelTypeArr[0] != SkinModelType.SLIM ? 0 : 1, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda65
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                LauncherSettingsActivity.lambda$showConfirmMicrosoftSkinUploadDialog$66(skinModelTypeArr, dialogInterface, i);
+            }
+        }).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.microsoft_skin_upload, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda67
+            @Override // android.content.DialogInterface.OnClickListener
+            public final void onClick(DialogInterface dialogInterface, int i) {
+                this.f$0.lambda$showConfirmMicrosoftSkinUploadDialog$67(file, skinModelTypeArr, dialogInterface, i);
+            }
+        }).show();
+    }
+
+    static /* synthetic */ void lambda$showConfirmMicrosoftSkinUploadDialog$66(SkinModelType[] skinModelTypeArr, DialogInterface dialogInterface, int i) {
+        skinModelTypeArr[0] = i == 1 ? SkinModelType.SLIM : SkinModelType.CLASSIC;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$showConfirmMicrosoftSkinUploadDialog$67(File file, SkinModelType[] skinModelTypeArr, DialogInterface dialogInterface, int i) {
+        uploadMicrosoftAccountSkin(file, skinModelTypeArr[0]);
+    }
+
+    private void uploadMicrosoftAccountSkin(final File file, final SkinModelType skinModelType) {
+        AccountStore accountStore = this.accountStore;
+        final AccountStore.Account microsoftSkinTargetAccount = getMicrosoftSkinTargetAccount(accountStore != null ? accountStore.load() : null);
+        if (microsoftSkinTargetAccount == null) {
+            Toast.makeText(this, R.string.microsoft_skin_requires_account, 1).show();
+            return;
+        }
+        this.binding.buttonChangeMicrosoftSkin.setEnabled(false);
+        this.binding.buttonRefreshMicrosoftSkin.setEnabled(false);
+        this.binding.textSkinStatus.setText(R.string.microsoft_skin_uploading);
+        new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda32
+            @Override // java.lang.Runnable
+            public final void run() {
+                this.f$0.lambda$uploadMicrosoftAccountSkin$70(microsoftSkinTargetAccount, file, skinModelType);
+            }
+        }, "Microsoft Skin Upload").start();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$uploadMicrosoftAccountSkin$70(AccountStore.Account account, File file, SkinModelType skinModelType) {
+        try {
+            MicrosoftSkinUploader.uploadSkin(account.minecraftAccessToken, file, skinModelType);
+            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda22
+                @Override // java.lang.Runnable
+                public final void run() {
+                    this.f$0.lambda$uploadMicrosoftAccountSkin$68();
+                }
+            });
+        } catch (Throwable th) {
+            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda33
+                @Override // java.lang.Runnable
+                public final void run() {
+                    this.f$0.lambda$uploadMicrosoftAccountSkin$69(th);
+                }
+            });
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$uploadMicrosoftAccountSkin$68() {
+        Toast.makeText(this, R.string.microsoft_skin_upload_success, 1).show();
+        refreshMicrosoftAccountAndSkin(false);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$uploadMicrosoftAccountSkin$69(Throwable th) {
+        this.binding.buttonChangeMicrosoftSkin.setEnabled(true);
+        this.binding.buttonRefreshMicrosoftSkin.setEnabled(true);
+        String message = th.getMessage() != null ? th.getMessage() : th.toString();
+        this.binding.textSkinStatus.setText(getString(R.string.microsoft_skin_upload_failed, new Object[]{message}));
+        Toast.makeText(this, getString(R.string.microsoft_skin_upload_failed, new Object[]{message}), 1).show();
+    }
+
+    private void copyUriToFile(Uri uri, File file) throws Exception {
+        InputStream inputStreamOpenInputStream = getContentResolver().openInputStream(uri);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
             try {
-                MicrosoftSkinUploader.uploadSkin(account.minecraftAccessToken, skinFile, model);
-                runOnUiThread(() -> {
-                    Toast.makeText(this, R.string.microsoft_skin_upload_success, Toast.LENGTH_LONG).show();
-                    refreshMicrosoftAccountAndSkin(false);
-                });
-            } catch (Throwable throwable) {
-                runOnUiThread(() -> {
-                    binding.buttonChangeMicrosoftSkin.setEnabled(true);
-                    binding.buttonRefreshMicrosoftSkin.setEnabled(true);
-                    String message = throwable.getMessage() != null ? throwable.getMessage() : throwable.toString();
-                    binding.textSkinStatus.setText(getString(R.string.microsoft_skin_upload_failed, message));
-                    Toast.makeText(this, getString(R.string.microsoft_skin_upload_failed, message), Toast.LENGTH_LONG).show();
-                });
+                if (inputStreamOpenInputStream == null) {
+                    throw new IllegalStateException("Could not open selected skin.");
+                }
+                byte[] bArr = new byte[8192];
+                while (true) {
+                    int i = inputStreamOpenInputStream.read(bArr);
+                    if (i == -1) {
+                        break;
+                    } else {
+                        fileOutputStream.write(bArr, 0, i);
+                    }
+                }
+                fileOutputStream.close();
+                if (inputStreamOpenInputStream != null) {
+                    inputStreamOpenInputStream.close();
+                }
+            } finally {
             }
-        }, "Microsoft Skin Upload");
-        thread.start();
-    }
-
-    private void copyUriToFile(@NonNull Uri sourceUri, @NonNull File destination) throws Exception {
-        try (InputStream input = getContentResolver().openInputStream(sourceUri);
-             FileOutputStream output = new FileOutputStream(destination)) {
-            if (input == null) throw new IllegalStateException("Could not open selected skin.");
-            byte[] buffer = new byte[8192];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
+        } catch (Throwable th) {
+            if (inputStreamOpenInputStream != null) {
+                try {
+                    inputStreamOpenInputStream.close();
+                } catch (Throwable th2) {
+                    th.addSuppressed(th2);
+                }
             }
+            throw th;
         }
     }
 
-    private void refreshMicrosoftAccountAndSkin(boolean showToast) {
-        if (authManager == null) return;
-        binding.buttonRefreshMicrosoftSkin.setEnabled(false);
-        binding.textSkinStatus.setText(R.string.microsoft_skin_refreshing);
-        if (showToast) {
-            Toast.makeText(this, R.string.microsoft_skin_refreshing, Toast.LENGTH_SHORT).show();
+    private void refreshMicrosoftAccountAndSkin(boolean z) {
+        if (this.authManager == null) {
+            return;
         }
-        authManager.refreshMicrosoftAccount();
+        this.binding.buttonRefreshMicrosoftSkin.setEnabled(false);
+        this.binding.textSkinStatus.setText(R.string.microsoft_skin_refreshing);
+        if (z) {
+            Toast.makeText(this, R.string.microsoft_skin_refreshing, 0).show();
+        }
+        this.authManager.refreshMicrosoftAccount();
     }
 
-    private static String sanitizeOfflineName(@Nullable String raw) {
-        if (raw == null) return "Player";
-        String cleaned = raw.trim().replaceAll("[^A-Za-z0-9_]", "");
-        if (cleaned.length() > 16) cleaned = cleaned.substring(0, 16);
-        return cleaned.length() == 0 ? "Player" : cleaned;
+    private static String sanitizeOfflineName(String str) {
+        if (str == null) {
+            return "Player";
+        }
+        String strReplaceAll = str.trim().replaceAll("[^A-Za-z0-9_]", "");
+        if (strReplaceAll.length() > 16) {
+            strReplaceAll = strReplaceAll.substring(0, 16);
+        }
+        return strReplaceAll.length() == 0 ? "Player" : strReplaceAll;
     }
 
-    private static boolean isValidOfflineName(@Nullable String value) {
-        return value != null && value.matches("[A-Za-z0-9_]{3,16}");
+    private static boolean isValidOfflineName(String str) {
+        return str != null && str.matches("[A-Za-z0-9_]{3,16}");
     }
 
-    private int dp(float value) {
-        return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
+    private int dp(float f) {
+        return (int) ((f * getResources().getDisplayMetrics().density) + 0.5f);
     }
 
-    private static boolean isNullOrBlank(@Nullable String value) {
-        return value == null || value.trim().isEmpty();
+    private static boolean isNullOrBlank(String str) {
+        return str == null || str.trim().isEmpty();
     }
 }

@@ -1,200 +1,100 @@
-/*
- * Copyright (c) 2026 DNA Mobile Applications.
- * All rights reserved.
- *
- * This file is DroidBridge project code.
- * It is not part of Minecraft and does not grant rights to Minecraft,
- * Mojang, Microsoft, PojavLauncher, Zalith Launcher, or any third-party project.
- *
- * Files written entirely by DNA Mobile Applications are proprietary unless
- * a file header or separate license notice states otherwise.
- */
-
 package ca.dnamobile.javalauncher.instance;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.io.File;
 
+/* JADX INFO: loaded from: /data/data/com.termux/files/home/jadx/classes.dex */
 public final class LauncherInstance {
-    private final String id;
-    private final String name;
-    private final String loader;
     private final String baseVersionId;
-    private final String minecraftVersionId;
-    private final String versionType;
-    private final File rootDirectory;
-    private final File gameDirectory;
-    @Nullable
-    private final File iconFile;
     private final String createdAt;
+    private final File gameDirectory;
+    private final File iconFile;
+    private final String id;
     private final boolean isolated;
+    private final String loader;
+    private final String minecraftVersionId;
+    private final String name;
+    private final File rootDirectory;
+    private final String versionType;
 
-    LauncherInstance(
-            @NonNull String id,
-            @NonNull String name,
-            @NonNull String loader,
-            @NonNull String baseVersionId,
-            @NonNull String versionType,
-            @NonNull File rootDirectory,
-            @NonNull File gameDirectory,
-            @Nullable File iconFile,
-            @NonNull String createdAt
-    ) {
-        this(id, name, loader, baseVersionId, baseVersionId, versionType, rootDirectory, gameDirectory, iconFile, createdAt, true);
+    LauncherInstance(String str, String str2, String str3, String str4, String str5, File file, File file2, File file3, String str6) {
+        this(str, str2, str3, str4, str4, str5, file, file2, file3, str6, true);
     }
 
-    LauncherInstance(
-            @NonNull String id,
-            @NonNull String name,
-            @NonNull String loader,
-            @NonNull String baseVersionId,
-            @NonNull String minecraftVersionId,
-            @NonNull String versionType,
-            @NonNull File rootDirectory,
-            @NonNull File gameDirectory,
-            @Nullable File iconFile,
-            @NonNull String createdAt
-    ) {
-        this(id, name, loader, baseVersionId, minecraftVersionId, versionType, rootDirectory, gameDirectory, iconFile, createdAt, true);
+    LauncherInstance(String str, String str2, String str3, String str4, String str5, String str6, File file, File file2, File file3, String str7) {
+        this(str, str2, str3, str4, str5, str6, file, file2, file3, str7, true);
     }
 
-    LauncherInstance(
-            @NonNull String id,
-            @NonNull String name,
-            @NonNull String loader,
-            @NonNull String baseVersionId,
-            @NonNull String versionType,
-            @NonNull File rootDirectory,
-            @NonNull File gameDirectory,
-            @Nullable File iconFile,
-            @NonNull String createdAt,
-            boolean isolated
-    ) {
-        this(id, name, loader, baseVersionId, baseVersionId, versionType, rootDirectory, gameDirectory, iconFile, createdAt, isolated);
+    LauncherInstance(String str, String str2, String str3, String str4, String str5, File file, File file2, File file3, String str6, boolean z) {
+        this(str, str2, str3, str4, str4, str5, file, file2, file3, str6, z);
     }
 
-    LauncherInstance(
-            @NonNull String id,
-            @NonNull String name,
-            @NonNull String loader,
-            @NonNull String baseVersionId,
-            @NonNull String minecraftVersionId,
-            @NonNull String versionType,
-            @NonNull File rootDirectory,
-            @NonNull File gameDirectory,
-            @Nullable File iconFile,
-            @NonNull String createdAt,
-            boolean isolated
-    ) {
-        this.id = id;
-        this.name = name;
-        this.loader = loader;
-        this.baseVersionId = baseVersionId;
-        this.minecraftVersionId = minecraftVersionId.trim().isEmpty() ? baseVersionId : minecraftVersionId;
-        this.versionType = versionType;
-        this.rootDirectory = rootDirectory;
-        this.gameDirectory = gameDirectory;
-        this.iconFile = iconFile;
-        this.createdAt = createdAt;
-        this.isolated = isolated;
+    LauncherInstance(String str, String str2, String str3, String str4, String str5, String str6, File file, File file2, File file3, String str7, boolean z) {
+        this.id = str;
+        this.name = str2;
+        this.loader = str3;
+        this.baseVersionId = str4;
+        this.minecraftVersionId = str5.trim().isEmpty() ? str4 : str5;
+        this.versionType = str6;
+        this.rootDirectory = file;
+        this.gameDirectory = file2;
+        this.iconFile = file3;
+        this.createdAt = str7;
+        this.isolated = z;
     }
 
-    @NonNull
-    public static LauncherInstance sharedInstalledVersion(
-            @NonNull String versionId,
-            @NonNull String versionType,
-            @NonNull File minecraftHome,
-            @NonNull String releaseTime
-    ) {
-        return sharedInstalledVersion(versionId, versionType, minecraftHome, releaseTime, "Vanilla");
+    public static LauncherInstance sharedInstalledVersion(String str, String str2, File file, String str3) {
+        return sharedInstalledVersion(str, str2, file, str3, "Vanilla");
     }
 
-    @NonNull
-    public static LauncherInstance sharedInstalledVersion(
-            @NonNull String versionId,
-            @NonNull String versionType,
-            @NonNull File minecraftHome,
-            @NonNull String releaseTime,
-            @NonNull String loader
-    ) {
-        return new LauncherInstance(
-                sharedInstanceId(versionId, minecraftHome),
-                versionId,
-                loader,
-                versionId,
-                versionType,
-                minecraftHome,
-                minecraftHome,
-                null,
-                releaseTime,
-                false
-        );
+    public static LauncherInstance sharedInstalledVersion(String str, String str2, File file, String str3, String str4) {
+        return new LauncherInstance(sharedInstanceId(str, file), str, str4, str, str2, file, file, (File) null, str3, false);
     }
 
-    @NonNull
-    public static String sharedInstanceId(@NonNull String versionId, @NonNull File minecraftHome) {
-        return "shared-" + Integer.toHexString(minecraftHome.getAbsolutePath().hashCode()) + "-" + versionId;
+    public static String sharedInstanceId(String str, File file) {
+        return "shared-" + Integer.toHexString(file.getAbsolutePath().hashCode()) + "-" + str;
     }
 
-    @NonNull
     public String getId() {
-        return id;
+        return this.id;
     }
 
-    @NonNull
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    @NonNull
     public String getLoader() {
-        return loader;
+        return this.loader;
     }
 
-    @NonNull
     public String getBaseVersionId() {
-        return baseVersionId;
+        return this.baseVersionId;
     }
 
-    /**
-     * Real Minecraft game version used for content APIs.
-     *
-     * This intentionally stays separate from baseVersionId because Forge/NeoForge
-     * launch profile ids may use the user-facing instance name.
-     */
-    @NonNull
     public String getMinecraftVersionId() {
-        return minecraftVersionId;
+        return this.minecraftVersionId;
     }
 
-    @NonNull
     public String getVersionType() {
-        return versionType;
+        return this.versionType;
     }
 
-    @NonNull
     public File getRootDirectory() {
-        return rootDirectory;
+        return this.rootDirectory;
     }
 
-    @NonNull
     public File getGameDirectory() {
-        return gameDirectory;
+        return this.gameDirectory;
     }
 
-    @Nullable
     public File getIconFile() {
-        return iconFile;
+        return this.iconFile;
     }
 
-    @NonNull
     public String getCreatedAt() {
-        return createdAt;
+        return this.createdAt;
     }
 
     public boolean isIsolated() {
-        return isolated;
+        return this.isolated;
     }
 }
