@@ -130,4 +130,26 @@
     <item type="id" name="mainContent" />
     <item type="id" name="layoutLogOverlay" />
     <item type="id" name="fabCreateInstance" />
+    <item type="id" name="scrollContentBrowserRoot" />
+    <item type="id" name="layoutContentBrowserHeader" />
+    <item type="id" name="imageContentBrowserInstanceIcon" />
+    <item type="id" name="toggleContentSource" />
+    <item type="id" name="tabContentTypes" />
+    <item type="id" name="layoutContentSearch" />
+    <item type="id" name="editContentSearch" />
+    <item type="id" name="layoutContentPagination" />
+    <item type="id" name="imageProjectDetailsIcon" />
+
+    <item type="id" name="scrollLogOverlay" />
+
+    <item type="id" name="cardInstanceHeader" />
+    <item type="id" name="imageInstanceIcon" />
+    <item type="id" name="editTextContentSearch" />
+    <item type="id" name="layoutResourceCategoryTabs" />
+    <item type="id" name="tabResourceCategories" />
+    <item type="id" name="cardResourceItems" />
+
+    <item type="id" name="settingsContent" />
+    <item type="id" name="cardSettingsTabsHeader" />
+    <item type="id" name="settingsTabsHeader" />
 </resources>
