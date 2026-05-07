@@ -25,8 +25,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ZalithLauncher"
-include(":ZalithLauncher")
-include(":LWJGL")
-include(":LayerController")
-include(":ColorPicker")
-include(":Terracotta")
+include(":app")
+// include(":LWJGL")
+// include(":LayerController")
+// include(":ColorPicker")
+// include(":Terracotta")
