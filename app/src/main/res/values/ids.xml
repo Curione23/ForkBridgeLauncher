@@ -152,4 +152,17 @@
     <item type="id" name="settingsContent" />
     <item type="id" name="cardSettingsTabsHeader" />
     <item type="id" name="settingsTabsHeader" />
+    <item type="id" name="cardControllerSettings" />
+    <item type="id" name="layoutControllerSettings" />
+    <item type="id" name="cardLauncherSettings" />
+    <item type="id" name="checkKeepLogs" />
+    <item type="id" name="cardInstanceSettings" />
+    <item type="id" name="cardPrivacyPolicySettings" />
+
+    <item type="id" name="tabVersionTypes" />
+    <item type="id" name="progressVersions" />
+    <item type="id" name="bottomMainActions" />
+
+    <item type="id" name="imageProjectIcon" />
+    <item type="id" name="imageProjectInstalledSource" />
 </resources>

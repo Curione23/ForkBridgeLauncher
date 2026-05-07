@@ -17,5 +17,14 @@
     <style name="Widget.JavaLauncher.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorPrimary</item>
     </style>
+    <style name="ShapeAppearanceOverlay_JavaLauncher_ProjectIcon" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_JavaLauncher_ResourceIcon" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
     <style name="Theme.DroidBridge" parent="Theme.JavaLauncher" />
 </resources>
