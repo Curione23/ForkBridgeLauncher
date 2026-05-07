@@ -167,6 +167,7 @@ android {
         compose = true
         buildConfig = true
         prefab = true
+        viewBinding = true
     }
     testOptions {
         unitTests {
