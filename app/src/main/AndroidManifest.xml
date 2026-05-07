@@ -218,7 +218,7 @@
             android:exported="false"
             android:foregroundServiceType="dataSync" />
         <activity
-            android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:name="net.openid.appauth.AuthorizationManagementActivity"
             android:exported="false"
             android:launchMode="singleTask"
