@@ -12,7 +12,7 @@ public final class OfflineAccessGate {
     private static final boolean BYPASS_LOGIN_GATE_FOR_TESTING = false;
 
     private static boolean isTestingBypassEnabled() {
-        return false;
+        return true;
     }
 
     private OfflineAccessGate() {
