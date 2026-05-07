@@ -165,4 +165,19 @@
 
     <item type="id" name="imageProjectIcon" />
     <item type="id" name="imageProjectInstalledSource" />
+    <item type="id" name="settingsSectionTabs" />
+    <item type="id" name="settingsScrollView" />
+    <item type="id" name="cardAccountSettings" />
+    <item type="id" name="imagePlayerHead" />
+    <item type="id" name="cardRendererSettings" />
+    <item type="id" name="layoutVulkanDriverSettings" />
+
+    <item type="id" name="imageResourceIcon" />
+    <item type="id" name="imageResourceInstalledSource" />
+    <item type="id" name="instanceCard" />
+    <item type="id" name="versionCard" />
+
+    <item type="id" name="layoutContentControls" />
+    <item type="id" name="mainviewcardview" />
+    <item type="id" name="installinstanceslayout" />
 </resources>
