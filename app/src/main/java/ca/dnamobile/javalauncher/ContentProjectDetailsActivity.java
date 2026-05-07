@@ -135,7 +135,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         this.buttonBack.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda0
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupViews$0(view);
+                ContentProjectDetailsActivity.this.lambda$setupViews$0(view);
             }
         });
         this.buttonOpenWebsite.setEnabled(false);
@@ -167,7 +167,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda4
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadProject$3();
+                    ContentProjectDetailsActivity.this.lambda$loadProject$3();
                 }
             }, this.contentType == ModManagerContentType.MODPACKS ? "ModpackProjectDetails" : "ContentProjectDetails").start();
         }
@@ -202,14 +202,14 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadProject$1(project, arrayListLoadNormalVersionRows2);
+                    ContentProjectDetailsActivity.this.lambda$loadProject$1(project, arrayListLoadNormalVersionRows2);
                 }
             });
         } catch (Throwable th) {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadProject$2(th);
+                    ContentProjectDetailsActivity.this.lambda$loadProject$2(th);
                 }
             });
         }
@@ -257,7 +257,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         this.buttonOpenWebsite.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda8
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$bindLoadedProject$4(modrinthProject, view);
+                ContentProjectDetailsActivity.this.lambda$bindLoadedProject$4(modrinthProject, view);
             }
         });
         this.adapter.submit(arrayList);
@@ -370,7 +370,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(getString(R.string.content_project_details_install_version_title, new Object[]{modrinthProject.title, modrinthVersion.versionNumber})).setMessage(getString(R.string.content_project_details_install_version_message, new Object[]{string, displayLoader(this.loader)})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda1
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$confirmInstallVersion$5(modrinthProject, modrinthVersion, dialogInterface, i);
+                ContentProjectDetailsActivity.this.lambda$confirmInstallVersion$5(modrinthProject, modrinthVersion, dialogInterface, i);
             }
         }).show();
     }
@@ -392,7 +392,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle("Install Modpack").setMessage(sb.toString()).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda6
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$confirmInstallModpackVersion$6(modrinthProject, modpackVersionChoice, dialogInterface, i);
+                ContentProjectDetailsActivity.this.lambda$confirmInstallModpackVersion$6(modrinthProject, modpackVersionChoice, dialogInterface, i);
             }
         }).show();
     }
@@ -413,7 +413,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda7
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$installNormalVersion$7(modrinthProject, file, modrinthVersion, anonymousClass1);
+                ContentProjectDetailsActivity.this.lambda$installNormalVersion$7(modrinthProject, file, modrinthVersion, anonymousClass1);
             }
         }, resolveSource(modrinthProject) == ModManagerSource.CURSEFORGE ? "CurseForgeInstallVersion" : "ModrinthInstallVersion").start();
     }
@@ -433,7 +433,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$1$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    ContentProjectDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -443,7 +443,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$1$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$1(str);
+                    ContentProjectDetailsActivity.this.lambda$onComplete$1(str);
                 }
             });
         }
@@ -460,7 +460,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$1$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$2(th);
+                    ContentProjectDetailsActivity.this.lambda$onError$2(th);
                 }
             });
         }
@@ -490,7 +490,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda10
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$installModpackVersion$8(modrinthProject, modpackVersionChoice, anonymousClass2);
+                ContentProjectDetailsActivity.this.lambda$installModpackVersion$8(modrinthProject, modpackVersionChoice, anonymousClass2);
             }
         }, resolveSource(modrinthProject) == ModManagerSource.CURSEFORGE ? "CurseForgeModpackInstallVersion" : "ModrinthModpackInstallVersion").start();
     }
@@ -510,7 +510,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$2$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onStatus$0(str);
+                    ContentProjectDetailsActivity.this.lambda$onStatus$0(str);
                 }
             });
         }
@@ -526,7 +526,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
                 ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$2$$ExternalSyntheticLambda0
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$onProgress$1(i, i2);
+                        ContentProjectDetailsActivity.this.lambda$onProgress$1(i, i2);
                     }
                 });
             }
@@ -542,7 +542,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$2$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$2(str, launcherInstance);
+                    ContentProjectDetailsActivity.this.lambda$onComplete$2(str, launcherInstance);
                 }
             });
         }
@@ -564,7 +564,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             ContentProjectDetailsActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$2$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$3(th);
+                    ContentProjectDetailsActivity.this.lambda$onError$3(th);
                 }
             });
         }
@@ -752,7 +752,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         Collections.sort(arrayList, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda9
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return this.f$0.lambda$sortRowsNewestFirst$9((ContentProjectDetailsActivity.VersionRow) obj, (ContentProjectDetailsActivity.VersionRow) obj2);
+                return ContentProjectDetailsActivity.this.lambda$sortRowsNewestFirst$9((ContentProjectDetailsActivity.VersionRow) obj, (ContentProjectDetailsActivity.VersionRow) obj2);
             }
         });
     }
@@ -761,7 +761,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
         Collections.sort(arrayList, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$$ExternalSyntheticLambda5
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
-                return this.f$0.lambda$sortModpackVersionsNewestFirst$10((ModpackInstallManager.ModpackVersionChoice) obj, (ModpackInstallManager.ModpackVersionChoice) obj2);
+                return ContentProjectDetailsActivity.this.lambda$sortModpackVersionsNewestFirst$10((ModpackInstallManager.ModpackVersionChoice) obj, (ModpackInstallManager.ModpackVersionChoice) obj2);
             }
         });
     }
@@ -984,7 +984,7 @@ public final class ContentProjectDetailsActivity extends AppCompatActivity {
             viewHolder.install.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentProjectDetailsActivity$VersionAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$onBindViewHolder$0(versionRow, view);
+                    ContentProjectDetailsActivity.this.lambda$onBindViewHolder$0(versionRow, view);
                 }
             });
         }

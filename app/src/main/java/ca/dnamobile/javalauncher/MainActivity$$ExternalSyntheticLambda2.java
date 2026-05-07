@@ -11,6 +11,6 @@ public final /* synthetic */ class MainActivity$$ExternalSyntheticLambda2 implem
 
     @Override // java.lang.Runnable
     public final void run() {
-        this.f$0.showCreateInstanceDialog();
+        MainActivity$$ExternalSyntheticLambda2.this.showCreateInstanceDialog();
     }
 }

@@ -8,11 +8,11 @@ public final /* synthetic */ class OfflineYggdrasilServer$$ExternalSyntheticLamb
     public final /* synthetic */ OfflineYggdrasilServer f$0;
 
     public /* synthetic */ OfflineYggdrasilServer$$ExternalSyntheticLambda0(OfflineYggdrasilServer offlineYggdrasilServer) {
-        this.f$0 = offlineYggdrasilServer;
+        OfflineYggdrasilServer$$ExternalSyntheticLambda0.this = offlineYggdrasilServer;
     }
 
     @Override // ca.dnamobile.javalauncher.skin.OfflineYggdrasilServer.Signer
     public final String sign(String str) {
-        return this.f$0.sign(str);
+        return OfflineYggdrasilServer$$ExternalSyntheticLambda0.this.sign(str);
     }
 }

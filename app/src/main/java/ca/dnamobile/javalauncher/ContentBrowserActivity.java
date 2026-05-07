@@ -111,7 +111,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     private String iconPath = "";
     private String gameDirectoryPath = "";
     private final Map<String, String> resolvedProjectIconUrls = new ConcurrentHashMap();
-    private final Set<String> resolvingProjectIconUrls = Collections.newSetFromMap(new ConcurrentHashMap());
+    private final Set<
+            String> resolvingProjectIconUrls = Collections.newSetFromMap(new ConcurrentHashMap());
 
     private enum ContentSource {
         MODRINTH,
@@ -128,7 +129,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         void onVersionClicked(ModpackInstallManager.ModpackVersionChoice modpackVersionChoice);
     }
 
-    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity,
+              // androidx.core.app.ComponentActivity, android.app.Activity
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         PathManager.initContextConstants(this);
@@ -163,7 +165,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         }
     }
 
-    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity
+    @Override // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity,
+              // android.app.Activity
     protected void onDestroy() {
         clearPendingSearch();
         dismissModpackVersionLoadingDialog();
@@ -216,11 +219,11 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.buttonPageNext = (MaterialButton) findViewById(R.id.buttonPageNext);
         this.textPageIndicator = (TextView) findViewById(R.id.textPageIndicator);
         ((MaterialButton) findViewById(R.id.buttonBackToInstance)).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda9
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                ContentBrowserActivity.this.lambda$bindViews$0(view);
-            }
-        });
+                    @Override // android.view.View.OnClickListener
+                    public final void onClick(View view) {
+                        ContentBrowserActivity.this.lambda$bindViews$0(view);
+                    }
+                });
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -234,7 +237,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             this.textInstanceMeta.setText("Install modpacks as new launcher instances");
         } else {
             this.textInstanceName.setText(this.instanceName);
-            this.textInstanceMeta.setText(getString(R.string.content_browser_instance_meta, new Object[]{displayLoader(this.loader), this.gameVersionId.isEmpty() ? getString(R.string.content_browser_unknown_version) : this.gameVersionId}));
+            this.textInstanceMeta.setText(getString(R.string.content_browser_instance_meta, new Object
+                    []{displayLoader(this.loader), this.gameVersionId.isEmpty() ? getString(R.string.content_browser_unknown_version) : this.gameVersionId}));
         }
         if (!this.iconPath.isEmpty()) {
             File file = new File(this.iconPath);
@@ -299,8 +303,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         }
         this.tabContentTypes.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity.1
             @Override // com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override // com.google.android.material.tabs.TabLayout.BaseOnTabSelectedListener
             public void onTabSelected(TabLayout.Tab tab) {
@@ -326,20 +329,21 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.editSearch.setHint(getSearchHint(this.selectedType));
         this.editSearch.setImeOptions(3);
         this.editSearch.setSingleLine(true);
-        this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda16
+        this.editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() { // from
+                                                                                          // class:
+                                                                                          // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda16
             @Override // android.widget.TextView.OnEditorActionListener
             public final boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 return ContentBrowserActivity.this.lambda$setupSearch$2(textView, i, keyEvent);
             }
         });
-        this.editSearch.addTextChangedListener(new TextWatcher() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity.2
+        this.editSearch.addTextChangedListener(new TextWatcher() { // from class:
+                                                                   // ca.dnamobile.javalauncher.ContentBrowserActivity.2
             @Override // android.text.TextWatcher
-            public void afterTextChanged(Editable editable) {
-            }
+            public void afterTextChanged(Editable editable) {}
 
             @Override // android.text.TextWatcher
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
 
             @Override // android.text.TextWatcher
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -362,7 +366,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     /* JADX INFO: Access modifiers changed from: private */
     public void scheduleSearchFromTyping() {
         clearPendingSearch();
-        Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda23
+        Runnable runnable = new Runnable() { // from class:
+                                             // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda23
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$scheduleSearchFromTyping$3();
@@ -418,13 +423,15 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     private void setupPagination() {
         this.buttonPagePrevious.setFocusable(false);
         this.buttonPageNext.setFocusable(false);
-        this.buttonPagePrevious.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda24
+        this.buttonPagePrevious.setOnClickListener(new View.OnClickListener() { // from class:
+                                                                                // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda24
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
                 ContentBrowserActivity.this.lambda$setupPagination$4(view);
             }
         });
-        this.buttonPageNext.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda25
+        this.buttonPageNext.setOnClickListener(new View.OnClickListener() { // from class:
+                                                                            // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda25
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
                 ContentBrowserActivity.this.lambda$setupPagination$5(view);
@@ -471,13 +478,15 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         if (nestedScrollView == null) {
             return;
         }
-        nestedScrollView.post(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda28
+        nestedScrollView.post(new Runnable() { // from class:
+                                               // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda28
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$forceScrollTop$6();
             }
         });
-        this.scrollRoot.postDelayed(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda29
+        this.scrollRoot.postDelayed(new Runnable() { // from class:
+                                                     // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda29
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$forceScrollTop$7();
@@ -521,9 +530,11 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         final int iIncrementAndGet = this.requestGeneration.incrementAndGet();
         final String strTrim = this.editSearch.getText() == null ? "" : this.editSearch.getText().toString().trim();
         final int i = this.currentPage * 20;
-        this.textResultSummary.setText(getString(R.string.content_browser_loading_source, new Object[]{getSelectedSourceLabel()}));
+        this.textResultSummary.setText(getString(R.string.content_browser_loading_source, new Object
+                []{getSelectedSourceLabel()}));
         updatePaginationControls();
-        new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda11
+        new Thread(new Runnable() { // from class:
+                                    // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda11
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$loadContent$10(strTrim, i, iIncrementAndGet, z2);
@@ -568,14 +579,16 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             }
             final int i4 = i3;
             final ArrayList<ModrinthProject> arrayList2 = arrayList;
-            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda20
+            runOnUiThread(new Runnable() { // from class:
+                                           // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda20
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$loadContent$8(i2, i4, arrayList2, z);
                 }
             });
         } catch (Throwable th) {
-            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda21
+            runOnUiThread(new Runnable() { // from class:
+                                           // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda21
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$loadContent$9(i2, th);
@@ -609,18 +622,21 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         this.adapter.submit(new ArrayList());
         this.totalHits = 0;
         updatePaginationControls();
-        this.textResultSummary.setText(getString(R.string.content_browser_load_failed, new Object[]{th.getMessage() != null ? th.getMessage() : th.getClass().getSimpleName()}));
+        this.textResultSummary.setText(getString(R.string.content_browser_load_failed, new Object
+                []{th.getMessage() != null ? th.getMessage() : th.getClass().getSimpleName()}));
     }
 
     private void updateResultSummary() {
-        this.textResultSummary.setText(getString(R.string.content_browser_result_summary, new Object[]{Integer.valueOf(this.totalHits), getPluralLabel(this.selectedType), getSelectedSourceLabel()}));
+        this.textResultSummary.setText(getString(R.string.content_browser_result_summary, new Object
+                []{Integer.valueOf(this.totalHits), getPluralLabel(this.selectedType), getSelectedSourceLabel()}));
     }
 
     private void updatePaginationControls() {
         int totalPages = getTotalPages(this.totalHits);
         this.buttonPagePrevious.setEnabled(this.currentPage > 0);
         this.buttonPageNext.setEnabled(this.currentPage + 1 < totalPages);
-        this.textPageIndicator.setText(getString(R.string.content_browser_page_indicator, new Object[]{Integer.valueOf(this.currentPage + 1), Integer.valueOf(totalPages)}));
+        this.textPageIndicator.setText(getString(R.string.content_browser_page_indicator, new Object
+                []{Integer.valueOf(this.currentPage + 1), Integer.valueOf(totalPages)}));
     }
 
     private int getTotalPages(int i) {
@@ -651,7 +667,9 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         popupMenu.getMenu().add(0, 1, 0, R.string.content_browser_install);
         popupMenu.getMenu().add(0, 2, 1, R.string.content_browser_view_versions);
         popupMenu.getMenu().add(0, 3, 2, R.string.content_browser_open_website);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda15
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { // from
+                                                                                       // class:
+                                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda15
             @Override // androidx.appcompat.widget.PopupMenu.OnMenuItemClickListener
             public final boolean onMenuItemClick(MenuItem menuItem) {
                 return ContentBrowserActivity.this.lambda$showProjectMenu$11(modrinthProject, menuItem);
@@ -684,12 +702,14 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         } else if (this.gameDirectoryPath.trim().isEmpty()) {
             Toast.makeText(this, R.string.content_browser_missing_game_dir, 1).show();
         } else {
-            new AlertDialog.Builder(this).setTitle(getString(R.string.content_browser_install_title_value, new Object[]{modrinthProject.title})).setMessage(getString(R.string.content_browser_install_message, new Object[]{modrinthProject.title, getPluralLabel(this.selectedType), this.gameVersionId.isEmpty() ? getString(R.string.content_browser_unknown_version) : this.gameVersionId, displayLoader(this.loader)})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda5
-                @Override // android.content.DialogInterface.OnClickListener
-                public final void onClick(DialogInterface dialogInterface, int i) {
-                    ContentBrowserActivity.this.lambda$confirmInstall$12(modrinthProject, dialogInterface, i);
-                }
-            }).show();
+            new AlertDialog.Builder(this).setTitle(getString(R.string.content_browser_install_title_value, new Object
+                            []{modrinthProject.title})).setMessage(getString(R.string.content_browser_install_message, new Object
+                            []{modrinthProject.title, getPluralLabel(this.selectedType), this.gameVersionId.isEmpty() ? getString(R.string.content_browser_unknown_version) : this.gameVersionId, displayLoader(this.loader)})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda5
+                        @Override // android.content.DialogInterface.OnClickListener
+                        public final void onClick(DialogInterface dialogInterface, int i) {
+                            ContentBrowserActivity.this.lambda$confirmInstall$12(modrinthProject, dialogInterface, i);
+                        }
+                    }).show();
         }
     }
 
@@ -700,12 +720,14 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
     private void installProject(final ModrinthProject modrinthProject) {
         final File file = new File(this.gameDirectoryPath);
-        Toast.makeText(this, getString(R.string.content_browser_install_started, new Object[]{modrinthProject.title}), 0).show();
+        Toast.makeText(this, getString(R.string.content_browser_install_started, new Object
+                []{modrinthProject.title}), 0).show();
         if (this.selectedType == ModManagerContentType.MODPACKS) {
             showModpackVersionPicker(modrinthProject);
         } else {
             final AnonymousClass3 anonymousClass3 = new AnonymousClass3();
-            new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda7
+            new Thread(new Runnable() { // from class:
+                                        // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda7
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$installProject$13(modrinthProject, file, anonymousClass3);
@@ -716,8 +738,7 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
     /* JADX INFO: renamed from: ca.dnamobile.javalauncher.ContentBrowserActivity$3, reason: invalid class name */
     class AnonymousClass3 implements ModrinthInstallManager.Listener {
-        AnonymousClass3() {
-        }
+        AnonymousClass3() {}
 
         /* JADX INFO: Access modifiers changed from: private */
         public /* synthetic */ void lambda$onStatus$0(String str) {
@@ -726,7 +747,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModrinthInstallManager.Listener
         public void onStatus(final String str) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda2
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onStatus$0(str);
@@ -736,7 +758,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModrinthInstallManager.Listener
         public void onComplete(final String str) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda0
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onComplete$1(str);
@@ -754,7 +777,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModrinthInstallManager.Listener
         public void onError(final Throwable th) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda1
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$3$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onError$2(th);
@@ -765,9 +789,11 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         /* JADX INFO: Access modifiers changed from: private */
         public /* synthetic */ void lambda$onError$2(Throwable th) {
             String message = th.getMessage() != null ? th.getMessage() : th.getClass().getSimpleName();
-            ContentBrowserActivity.this.textResultSummary.setText(ContentBrowserActivity.this.getString(R.string.content_browser_install_failed, new Object[]{message}));
+            ContentBrowserActivity.this.textResultSummary.setText(ContentBrowserActivity.this.getString(R.string.content_browser_install_failed, new Object
+                    []{message}));
             ContentBrowserActivity contentBrowserActivity = ContentBrowserActivity.this;
-            Toast.makeText(contentBrowserActivity, contentBrowserActivity.getString(R.string.content_browser_install_failed, new Object[]{message}), 1).show();
+            Toast.makeText(contentBrowserActivity, contentBrowserActivity.getString(R.string.content_browser_install_failed, new Object
+                    []{message}), 1).show();
         }
     }
 
@@ -783,7 +809,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     private void installModpackProject(final ModrinthProject modrinthProject, final ModpackInstallManager.ModpackVersionChoice modpackVersionChoice) {
         showModpackInstallDialog(modrinthProject.title);
         final AnonymousClass4 anonymousClass4 = new AnonymousClass4();
-        new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda0
+        new Thread(new Runnable() { // from class:
+                                    // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$installModpackProject$14(modpackVersionChoice, modrinthProject, anonymousClass4);
@@ -793,12 +820,12 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
     /* JADX INFO: renamed from: ca.dnamobile.javalauncher.ContentBrowserActivity$4, reason: invalid class name */
     class AnonymousClass4 implements ModpackInstallManager.Listener {
-        AnonymousClass4() {
-        }
+        AnonymousClass4() {}
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModpackInstallManager.Listener
         public void onStatus(final String str) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda2
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda2
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onStatus$0(str);
@@ -819,7 +846,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModpackInstallManager.Listener
         public void onProgress(final int i, final int i2) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda1
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onProgress$1(i, i2);
@@ -834,7 +862,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModpackInstallManager.Listener
         public void onComplete(final String str, final LauncherInstance launcherInstance) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda0
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onComplete$2(str, launcherInstance);
@@ -853,7 +882,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
         @Override // ca.dnamobile.javalauncher.modmanager.ModpackInstallManager.Listener
         public void onError(final Throwable th) {
-            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda3
+            ContentBrowserActivity.this.runOnUiThread(new Runnable() { // from class:
+                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$4$$ExternalSyntheticLambda3
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$onError$3(th);
@@ -865,9 +895,11 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         public /* synthetic */ void lambda$onError$3(Throwable th) {
             ContentBrowserActivity.this.dismissModpackInstallDialog();
             String message = th.getMessage() != null ? th.getMessage() : th.getClass().getSimpleName();
-            ContentBrowserActivity.this.textResultSummary.setText(ContentBrowserActivity.this.getString(R.string.content_browser_install_failed, new Object[]{message}));
+            ContentBrowserActivity.this.textResultSummary.setText(ContentBrowserActivity.this.getString(R.string.content_browser_install_failed, new Object
+                    []{message}));
             ContentBrowserActivity contentBrowserActivity = ContentBrowserActivity.this;
-            Toast.makeText(contentBrowserActivity, contentBrowserActivity.getString(R.string.content_browser_install_failed, new Object[]{message}), 1).show();
+            Toast.makeText(contentBrowserActivity, contentBrowserActivity.getString(R.string.content_browser_install_failed, new Object
+                    []{message}), 1).show();
         }
     }
 
@@ -882,7 +914,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
     private void showModpackVersionPicker(final ModrinthProject modrinthProject) {
         showModpackVersionLoadingDialog(modrinthProject.title);
-        new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda22
+        new Thread(new Runnable() { // from class:
+                                    // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda22
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.this.lambda$showModpackVersionPicker$17(modrinthProject);
@@ -893,15 +926,18 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     /* JADX INFO: Access modifiers changed from: private */
     public /* synthetic */ void lambda$showModpackVersionPicker$17(final ModrinthProject modrinthProject) {
         try {
-            final ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayListListProjectVersions = ModpackInstallManager.listProjectVersions(this, modrinthProject.source, modrinthProject.projectId, modrinthProject.slug);
-            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda13
+            final ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayListListProjectVersions = ModpackInstallManager.listProjectVersions(this, modrinthProject.source, modrinthProject.projectId, modrinthProject.slug);
+            runOnUiThread(new Runnable() { // from class:
+                                           // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda13
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$showModpackVersionPicker$15(arrayListListProjectVersions, modrinthProject);
                 }
             });
         } catch (Throwable th) {
-            runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda14
+            runOnUiThread(new Runnable() { // from class:
+                                           // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda14
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$showModpackVersionPicker$16(th);
@@ -942,8 +978,12 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         }
     }
 
-    private void showModpackVersionSelectionDialog(ModrinthProject modrinthProject, ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
-        LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMapGroupModpackVersionsByMinecraftVersion = groupModpackVersionsByMinecraftVersion(arrayList);
+    private void showModpackVersionSelectionDialog(ModrinthProject modrinthProject, ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
+        LinkedHashMap<
+                String,
+                ArrayList<
+                        ModpackInstallManager.ModpackVersionChoice>> linkedHashMapGroupModpackVersionsByMinecraftVersion = groupModpackVersionsByMinecraftVersion(arrayList);
         if (linkedHashMapGroupModpackVersionsByMinecraftVersion.isEmpty()) {
             Toast.makeText(this, "No installable modpack versions were found for " + modrinthProject.title + ".", 1).show();
         } else {
@@ -951,7 +991,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         }
     }
 
-    private void showMinecraftVersionPickerDialog(final ModrinthProject modrinthProject, final LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap) {
+    private void showMinecraftVersionPickerDialog(final ModrinthProject modrinthProject, final LinkedHashMap<
+                    String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap) {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(1);
         int iDp = dp(20);
@@ -963,7 +1004,10 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         textView.setLineSpacing(dp(1), 1.0f);
         linearLayout.addView(textView, new LinearLayout.LayoutParams(-1, -2));
         ArrayList arrayList = new ArrayList();
-        for (Map.Entry<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> entry : linkedHashMap.entrySet()) {
+        for (Map.Entry<
+                String,
+                ArrayList<
+                        ModpackInstallManager.ModpackVersionChoice>> entry : linkedHashMap.entrySet()) {
             arrayList.add(new ModpackMinecraftVersionGroup(entry.getKey(), entry.getValue()));
         }
         RecyclerView recyclerView = new RecyclerView(this);
@@ -982,7 +1026,9 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         linearLayout.addView(recyclerView, layoutParams);
         AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setTitle("Pick Minecraft Version").setView(linearLayout).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).create();
         this.currentModpackVersionDialog = alertDialogCreate;
-        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda18
+        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from
+                                                                                         // class:
+                                                                                         // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda18
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
                 ContentBrowserActivity.this.lambda$showMinecraftVersionPickerDialog$19(dialogInterface);
@@ -1018,8 +1064,13 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         FullscreenUtils.enableImmersive(this);
     }
 
-    private void showModpackVersionsForMinecraftDialog(final ModrinthProject modrinthProject, final LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap, String str, ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
-        ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList2 = new ArrayList<>(arrayList);
+    private void showModpackVersionsForMinecraftDialog(final ModrinthProject modrinthProject, final LinkedHashMap<
+                    String,
+                    ArrayList<
+                            ModpackInstallManager.ModpackVersionChoice>> linkedHashMap, String str, ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
+        ArrayList<
+                ModpackInstallManager.ModpackVersionChoice> arrayList2 = new ArrayList<>(arrayList);
         sortModpackVersionsNewestFirst(arrayList2);
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(1);
@@ -1052,7 +1103,9 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         linearLayout.addView(recyclerView, layoutParams);
         AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setTitle(formatMinecraftVersionTitle(str)).setView(linearLayout).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setNeutralButton("Minecraft Versions", (DialogInterface.OnClickListener) null).create();
         this.currentModpackVersionDialog = alertDialogCreate;
-        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda1
+        alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from
+                                                                                         // class:
+                                                                                         // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda1
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
                 ContentBrowserActivity.this.lambda$showModpackVersionsForMinecraftDialog$22(dialogInterface);
@@ -1112,11 +1165,11 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             sb.append("\n\nWarning: this version does not match the current instance filter. The installed modpack will still use the pack's own Minecraft version and loader.");
         }
         new AlertDialog.Builder(this).setTitle("Install Modpack").setMessage(sb.toString()).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.content_browser_install, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda27
-            @Override // android.content.DialogInterface.OnClickListener
-            public final void onClick(DialogInterface dialogInterface, int i) {
-                ContentBrowserActivity.this.lambda$confirmInstallModpackVersion$25(modrinthProject, modpackVersionChoice, dialogInterface, i);
-            }
-        }).show();
+                    @Override // android.content.DialogInterface.OnClickListener
+                    public final void onClick(DialogInterface dialogInterface, int i) {
+                        ContentBrowserActivity.this.lambda$confirmInstallModpackVersion$25(modrinthProject, modpackVersionChoice, dialogInterface, i);
+                    }
+                }).show();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -1254,7 +1307,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
 
     /* JADX INFO: renamed from: ca.dnamobile.javalauncher.ContentBrowserActivity$5, reason: invalid class name */
     static /* synthetic */ class AnonymousClass5 {
-        static final /* synthetic */ int[] $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType;
+        static final /* synthetic */ int
+                [] $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType;
 
         static {
             int[] iArr = new int[ModManagerContentType.values().length];
@@ -1264,22 +1318,26 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             } catch (NoSuchFieldError unused) {
             }
             try {
-                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[ModManagerContentType.RESOURCEPACKS.ordinal()] = 2;
+                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+                ModManagerContentType.RESOURCEPACKS.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
             try {
-                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[ModManagerContentType.SHADERPACKS.ordinal()] = 3;
+                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+                ModManagerContentType.SHADERPACKS.ordinal()] = 3;
             } catch (NoSuchFieldError unused3) {
             }
             try {
-                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[ModManagerContentType.MODS.ordinal()] = 4;
+                $SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+                ModManagerContentType.MODS.ordinal()] = 4;
             } catch (NoSuchFieldError unused4) {
             }
         }
     }
 
     private String getTabTitle(ModManagerContentType modManagerContentType) {
-        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[modManagerContentType.ordinal()];
+        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+        modManagerContentType.ordinal()];
         if (i == 1) {
             return "Modpacks";
         }
@@ -1293,7 +1351,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     }
 
     private String getSearchHint(ModManagerContentType modManagerContentType) {
-        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[modManagerContentType.ordinal()];
+        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+        modManagerContentType.ordinal()];
         if (i == 1) {
             return "Search modpacks";
         }
@@ -1307,7 +1366,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     }
 
     private String getPluralLabel(ModManagerContentType modManagerContentType) {
-        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[modManagerContentType.ordinal()];
+        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+        modManagerContentType.ordinal()];
         if (i == 1) {
             return "modpacks";
         }
@@ -1410,7 +1470,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
                 NetworkImageLoader.load(imageView, strNormalizeImageUrl, i);
             }
         } else if (this.resolvingProjectIconUrls.add(str)) {
-            new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda12
+            new Thread(new Runnable() { // from class:
+                                        // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda12
                 @Override // java.lang.Runnable
                 public final void run() {
                     ContentBrowserActivity.this.lambda$resolveProjectIconUrlAsync$28(modrinthProject, str, imageView, i);
@@ -1433,7 +1494,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         if (strNormalizeImageUrl == null) {
             return;
         }
-        runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda8
+        runOnUiThread(new Runnable() { // from class:
+                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda8
             @Override // java.lang.Runnable
             public final void run() {
                 ContentBrowserActivity.lambda$resolveProjectIconUrlAsync$27(imageView, str, strNormalizeImageUrl, i);
@@ -1503,7 +1565,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct add '--show-bad-code' argument
     */
-    private java.lang.String httpGet(java.lang.String r9, java.lang.String r10) throws java.lang.Exception {
+    private java.lang.String httpGet(java.lang.String r9, java.lang.String r10)
+            throws java.lang.Exception {
         /*
             Method dump skipped, instruction units count: 203
             To view this dump add '--comments-level debug' option
@@ -1512,7 +1575,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
     }
 
     private int getFallbackIcon(ModManagerContentType modManagerContentType) {
-        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[modManagerContentType.ordinal()];
+        int i = AnonymousClass5.$SwitchMap$ca$dnamobile$javalauncher$modmanager$ModManagerContentType[
+        modManagerContentType.ordinal()];
         if (i == 1) {
             return R.drawable.ic_content_mod_24;
         }
@@ -1590,8 +1654,15 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return getString(i);
     }
 
-    private LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> groupModpackVersionsByMinecraftVersion(ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
-        LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap = new LinkedHashMap<>();
+    private LinkedHashMap<
+                    String,
+                    ArrayList<
+                            ModpackInstallManager.ModpackVersionChoice>> groupModpackVersionsByMinecraftVersion(ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
+        LinkedHashMap<
+                String,
+                ArrayList<
+                        ModpackInstallManager.ModpackVersionChoice>> linkedHashMap = new LinkedHashMap<>();
         for (ModpackInstallManager.ModpackVersionChoice modpackVersionChoice : arrayList) {
             ArrayList<String> arrayList2 = modpackVersionChoice.gameVersions;
             if (arrayList2.isEmpty()) {
@@ -1608,15 +1679,20 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             }
         }
         ArrayList<String> arrayList3 = new ArrayList(linkedHashMap.keySet());
-        Collections.sort(arrayList3, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda6
+        Collections.sort(arrayList3, new Comparator() { // from class:
+                                                        // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda6
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
                 return ContentBrowserActivity.this.compareMinecraftVersionKeysDescending((String) obj, (String) obj2);
             }
         });
-        LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap2 = new LinkedHashMap<>();
+        LinkedHashMap<
+                String,
+                ArrayList<
+                        ModpackInstallManager.ModpackVersionChoice>> linkedHashMap2 = new LinkedHashMap<>();
         for (String str : arrayList3) {
-            ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList4 = linkedHashMap.get(str);
+            ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList4 = linkedHashMap.get(str);
             if (arrayList4 != null && !arrayList4.isEmpty()) {
                 sortModpackVersionsNewestFirst(arrayList4);
                 linkedHashMap2.put(str, arrayList4);
@@ -1625,7 +1701,10 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return linkedHashMap2;
     }
 
-    private void addModpackVersionToGroup(LinkedHashMap<String, ArrayList<ModpackInstallManager.ModpackVersionChoice>> linkedHashMap, String str, ModpackInstallManager.ModpackVersionChoice modpackVersionChoice) {
+    private void addModpackVersionToGroup(LinkedHashMap<
+                    String,
+                    ArrayList<
+                            ModpackInstallManager.ModpackVersionChoice>> linkedHashMap, String str, ModpackInstallManager.ModpackVersionChoice modpackVersionChoice) {
         ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList = linkedHashMap.get(str);
         if (arrayList == null) {
             arrayList = new ArrayList<>();
@@ -1645,8 +1724,10 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return !modpackVersionChoice.versionId.trim().isEmpty() ? modpackVersionChoice.source.getId() + ":" + modpackVersionChoice.versionId : modpackVersionChoice.fileId > 0 ? modpackVersionChoice.source.getId() + ":file:" + modpackVersionChoice.fileId : modpackVersionChoice.source.getId() + ":" + modpackVersionChoice.fileName + ":" + modpackVersionChoice.downloadUrl;
     }
 
-    private void sortModpackVersionsNewestFirst(ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
-        Collections.sort(arrayList, new Comparator() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda4
+    private void sortModpackVersionsNewestFirst(ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
+        Collections.sort(arrayList, new Comparator() { // from class:
+                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$$ExternalSyntheticLambda4
             @Override // java.util.Comparator
             public final int compare(Object obj, Object obj2) {
                 return ContentBrowserActivity.this.lambda$sortModpackVersionsNewestFirst$29((ModpackInstallManager.ModpackVersionChoice) obj, (ModpackInstallManager.ModpackVersionChoice) obj2);
@@ -1810,7 +1891,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    private String buildLoaderSummary(ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
+    private String buildLoaderSummary(ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
         ArrayList<String> arrayList2 = new ArrayList<>();
         Iterator<ModpackInstallManager.ModpackVersionChoice> it = arrayList.iterator();
         while (it.hasNext()) {
@@ -1826,7 +1908,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return arrayList2.isEmpty() ? "" : "Loader " + joinShortList(arrayList2, 3);
     }
 
-    private String getNewestPublishedDate(ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
+    private String getNewestPublishedDate(ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
         String str = "";
         for (ModpackInstallManager.ModpackVersionChoice modpackVersionChoice : arrayList) {
             String strTrim = modpackVersionChoice.datePublished == null ? "" : modpackVersionChoice.datePublished.trim();
@@ -1846,7 +1929,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         return false;
     }
 
-    private ArrayList<ModpackVersionDialogRow> buildModpackVersionDialogRows(ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
+    private ArrayList<ModpackVersionDialogRow> buildModpackVersionDialogRows(ArrayList<
+                    ModpackInstallManager.ModpackVersionChoice> arrayList) {
         String str;
         LinkedHashMap linkedHashMap = new LinkedHashMap();
         for (ModpackInstallManager.ModpackVersionChoice modpackVersionChoice : arrayList) {
@@ -1955,76 +2039,78 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         final String minecraftVersion;
         final ArrayList<ModpackInstallManager.ModpackVersionChoice> versions;
 
-        ModpackMinecraftVersionGroup(String str, ArrayList<ModpackInstallManager.ModpackVersionChoice> arrayList) {
+        ModpackMinecraftVersionGroup(String str, ArrayList<
+                        ModpackInstallManager.ModpackVersionChoice> arrayList) {
             this.minecraftVersion = str;
             this.versions = new ArrayList<>(arrayList);
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    final class ModpackMinecraftVersionDialogAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private final class ModpackMinecraftVersionDialogAdapter
+            extends RecyclerView.Adapter<ModpackMinecraftVersionDialogAdapter.ViewHolder> {
         private final ArrayList<ModpackMinecraftVersionGroup> groups;
         private final ModpackMinecraftVersionClickListener listener;
 
-        ModpackMinecraftVersionDialogAdapter(ArrayList<ModpackMinecraftVersionGroup> arrayList, ModpackMinecraftVersionClickListener modpackMinecraftVersionClickListener) {
+        ModpackMinecraftVersionDialogAdapter(ArrayList<
+                        ModpackMinecraftVersionGroup> arrayList, ModpackMinecraftVersionClickListener modpackMinecraftVersionClickListener) {
             this.groups = arrayList;
             this.listener = modpackMinecraftVersionClickListener;
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+        @Override
         public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             LinearLayout linearLayout = new LinearLayout(viewGroup.getContext());
-            linearLayout.setOrientation(1);
-            linearLayout.setGravity(16);
-            linearLayout.setPadding(ContentBrowserActivity.this.dp(16), ContentBrowserActivity.this.dp(14), ContentBrowserActivity.this.dp(16), ContentBrowserActivity.this.dp(14));
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            linearLayout.setGravity(Gravity.CENTER_VERTICAL);
+
+            int p16 = ContentBrowserActivity.this.dp(16);
+            int p14 = ContentBrowserActivity.this.dp(14);
+            linearLayout.setPadding(p16, p14, p16, p14);
             linearLayout.setMinimumHeight(ContentBrowserActivity.this.dp(78));
+
             GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setColor(ContentBrowserActivity.this.resolveThemeColor(android.R.attr.colorBackground, 0));
             gradientDrawable.setCornerRadius(ContentBrowserActivity.this.dp(16));
             gradientDrawable.setStroke(ContentBrowserActivity.this.dp(1), ContentBrowserActivity.this.resolveThemeColor(android.R.attr.textColorSecondary, -7829368));
             linearLayout.setBackground(gradientDrawable);
+
             TextView textView = new TextView(viewGroup.getContext());
-            textView.setTextSize(2, 17.0f);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17.0f);
             textView.setTextColor(ContentBrowserActivity.this.resolveThemeColor(android.R.attr.textColorPrimary, -1));
-            textView.setTypeface(textView.getTypeface(), 1);
+            textView.setTypeface(null, Typeface.BOLD);
             textView.setSingleLine(true);
             textView.setEllipsize(TextUtils.TruncateAt.END);
             linearLayout.addView(textView, new LinearLayout.LayoutParams(-1, -2));
+
             TextView textView2 = new TextView(viewGroup.getContext());
-            textView2.setTextSize(2, 13.0f);
+            textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13.0f);
             textView2.setTextColor(ContentBrowserActivity.this.resolveThemeColor(android.R.attr.textColorSecondary, -3355444));
             textView2.setSingleLine(false);
             textView2.setMaxLines(2);
+
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
             layoutParams.topMargin = ContentBrowserActivity.this.dp(4);
             linearLayout.addView(textView2, layoutParams);
+
             RecyclerView.LayoutParams layoutParams2 = new RecyclerView.LayoutParams(-1, -2);
             layoutParams2.setMargins(0, 0, 0, ContentBrowserActivity.this.dp(8));
             linearLayout.setLayoutParams(layoutParams2);
+
             return new ViewHolder(linearLayout, textView, textView2);
         }
 
-        @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+        @Override
         public void onBindViewHolder(ViewHolder viewHolder, int i) {
-            final ModpackMinecraftVersionGroup modpackMinecraftVersionGroup = this.groups.get(i);
-            viewHolder.title.setText(ContentBrowserActivity.this.formatMinecraftVersionTitle(modpackMinecraftVersionGroup.minecraftVersion));
-            viewHolder.subtitle.setText(ContentBrowserActivity.this.buildMinecraftVersionGroupSubtitle(modpackMinecraftVersionGroup));
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ModpackMinecraftVersionDialogAdapter$$ExternalSyntheticLambda0
-                @Override // android.view.View.OnClickListener
-                public final void onClick(View view) {
-                    ContentBrowserActivity.this.lambda$onBindViewHolder$0(modpackMinecraftVersionGroup, view);
-                }
-            });
+            final ModpackMinecraftVersionGroup group = this.groups.get(i);
+            viewHolder.title.setText(ContentBrowserActivity.this.formatMinecraftVersionTitle(group.minecraftVersion));
+            viewHolder.subtitle.setText(ContentBrowserActivity.this.buildMinecraftVersionGroupSubtitle(group));
+
+            viewHolder.itemView.setOnClickListener(v -> listener.onMinecraftVersionClicked(group));
         }
 
-        /* JADX INFO: Access modifiers changed from: private */
-        public /* synthetic */ void lambda$onBindViewHolder$0(ModpackMinecraftVersionGroup modpackMinecraftVersionGroup, View view) {
-            this.listener.onMinecraftVersionClicked(modpackMinecraftVersionGroup);
-        }
-
-        @Override // androidx.recyclerview.widget.RecyclerView.Adapter
+        @Override
         public int getItemCount() {
-            return this.groups.size();
+            return this.groups != null ? this.groups.size() : 0;
         }
 
         final class ViewHolder extends RecyclerView.ViewHolder {
@@ -2068,7 +2154,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
         private final ModpackVersionClickListener listener;
         private final ArrayList<ModpackVersionDialogRow> rows;
 
-        ModpackVersionDialogAdapter(ArrayList<ModpackVersionDialogRow> arrayList, ModpackVersionClickListener modpackVersionClickListener) {
+        ModpackVersionDialogAdapter(ArrayList<
+                        ModpackVersionDialogRow> arrayList, ModpackVersionClickListener modpackVersionClickListener) {
             this.rows = arrayList;
             this.listener = modpackVersionClickListener;
         }
@@ -2157,7 +2244,9 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             } else {
                 versionViewHolder.warning.setText("");
             }
-            versionViewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ModpackVersionDialogAdapter$$ExternalSyntheticLambda0
+            versionViewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from
+                                                                                       // class:
+                                                                                       // ca.dnamobile.javalauncher.ContentBrowserActivity$ModpackVersionDialogAdapter$$ExternalSyntheticLambda0
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
                     ContentBrowserActivity.this.lambda$onBindViewHolder$0(modpackVersionChoice, view);
@@ -2231,7 +2320,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             final ModrinthProject modrinthProject = this.items.get(i);
             ContentBrowserActivity.this.bindProjectIcon(viewHolder.icon, modrinthProject, ContentBrowserActivity.this.resolveProjectDisplayType(modrinthProject, this.boundType));
             viewHolder.name.setText(modrinthProject.title);
-            viewHolder.author.setText(ContentBrowserActivity.this.getString(R.string.content_browser_project_author, new Object[]{(modrinthProject.author == null || modrinthProject.author.trim().isEmpty()) ? modrinthProject.source.getDisplayName() : modrinthProject.author}));
+            viewHolder.author.setText(ContentBrowserActivity.this.getString(R.string.content_browser_project_author, new Object
+                    []{(modrinthProject.author == null || modrinthProject.author.trim().isEmpty()) ? modrinthProject.source.getDisplayName() : modrinthProject.author}));
             viewHolder.description.setText(modrinthProject.description);
             viewHolder.tags.setText(ContentBrowserActivity.this.formatTags(modrinthProject.categories));
             viewHolder.downloads.setText(ContentBrowserActivity.this.formatNumber(modrinthProject.downloads));
@@ -2248,7 +2338,8 @@ public final class ContentBrowserActivity extends AppCompatActivity {
             viewHolder.sourceIcon.setVisibility(installedSource.hasIcon() ? 0 : 8);
             if (installedSource.hasIcon()) {
                 viewHolder.sourceIcon.setImageResource(installedSource.getIconRes());
-                viewHolder.sourceIcon.setContentDescription(ContentBrowserActivity.this.getString(R.string.modmanager_installed_from, new Object[]{installedSource.getDisplayName()}));
+                viewHolder.sourceIcon.setContentDescription(ContentBrowserActivity.this.getString(R.string.modmanager_installed_from, new Object
+                        []{installedSource.getDisplayName()}));
             }
             viewHolder.install.setEnabled(!zIsProjectInstalled);
             viewHolder.install.setText(zIsProjectInstalled ? R.string.content_browser_installed : R.string.content_browser_install);
@@ -2258,18 +2349,20 @@ public final class ContentBrowserActivity extends AppCompatActivity {
                 viewHolder.install.setIconResource(R.drawable.ic_add_24);
             }
             viewHolder.install.setOnClickListener(zIsProjectInstalled ? null : new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda0
-                @Override // android.view.View.OnClickListener
-                public final void onClick(View view) {
-                    ContentBrowserActivity.this.lambda$onBindViewHolder$0(modrinthProject, view);
-                }
-            });
-            viewHolder.menu.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda1
+                        @Override // android.view.View.OnClickListener
+                        public final void onClick(View view) {
+                            ContentBrowserActivity.this.lambda$onBindViewHolder$0(modrinthProject, view);
+                        }
+                    });
+            viewHolder.menu.setOnClickListener(new View.OnClickListener() { // from class:
+                                                                            // ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda1
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
                     ContentBrowserActivity.this.lambda$onBindViewHolder$1(modrinthProject, view);
                 }
             });
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda2
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() { // from class:
+                                                                                // ca.dnamobile.javalauncher.ContentBrowserActivity$ContentProjectAdapter$$ExternalSyntheticLambda2
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
                     ContentBrowserActivity.this.lambda$onBindViewHolder$2(modrinthProject, view);

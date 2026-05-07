@@ -58,7 +58,7 @@ public final class MicrosoftAuthManagerPersonal {
         this.authLauncher = componentActivity.registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda5
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$new$0((ActivityResult) obj);
+                MicrosoftAuthManagerPersonal.this.lambda$new$0((ActivityResult) obj);
             }
         });
     }
@@ -138,7 +138,7 @@ public final class MicrosoftAuthManagerPersonal {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda3
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$clearWebAuthenticationState$1();
+                MicrosoftAuthManagerPersonal.this.lambda$clearWebAuthenticationState$1();
             }
         });
     }
@@ -192,7 +192,7 @@ public final class MicrosoftAuthManagerPersonal {
             AUTH_EXECUTOR.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda4
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$refreshMicrosoftAccount$3(str);
+                    MicrosoftAuthManagerPersonal.this.lambda$refreshMicrosoftAccount$3(str);
                 }
             });
         }
@@ -208,7 +208,7 @@ public final class MicrosoftAuthManagerPersonal {
             this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda6
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$refreshMicrosoftAccount$2(accountLoginWithMicrosoftRefreshToken);
+                    MicrosoftAuthManagerPersonal.this.lambda$refreshMicrosoftAccount$2(accountLoginWithMicrosoftRefreshToken);
                 }
             });
         } catch (Throwable th) {
@@ -228,7 +228,7 @@ public final class MicrosoftAuthManagerPersonal {
         AUTH_EXECUTOR.execute(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$exchangeCodeForMinecraftAccount$5(str, str2);
+                MicrosoftAuthManagerPersonal.this.lambda$exchangeCodeForMinecraftAccount$5(str, str2);
             }
         });
     }
@@ -245,7 +245,7 @@ public final class MicrosoftAuthManagerPersonal {
             this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$exchangeCodeForMinecraftAccount$4(accountLoginWithMicrosoftCode);
+                    MicrosoftAuthManagerPersonal.this.lambda$exchangeCodeForMinecraftAccount$4(accountLoginWithMicrosoftCode);
                 }
             });
         } catch (Throwable th) {
@@ -522,7 +522,7 @@ public final class MicrosoftAuthManagerPersonal {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthManagerPersonal$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$notifyError$6(str);
+                MicrosoftAuthManagerPersonal.this.lambda$notifyError$6(str);
             }
         });
     }

@@ -1218,7 +1218,7 @@ public final class InstanceDetailsActivity extends AppCompatActivity {
         listView.setDividerHeight(0);
         listView.setClipToPadding(false);
         listView.setPadding(0, dp(8), 0, getDropdownBottomSafePadding());
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, Math.min(dp(TypedValues.CycleType.TYPE_EASING), (Math.min(Math.max(strArr.length, 1), 8) * dp(52)) + dp(8) + getDropdownBottomSafePadding()));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, Math.min(dp(400), (Math.min(Math.max(strArr.length, 1), 8) * dp(52)) + dp(8) + getDropdownBottomSafePadding()));
         layoutParams.topMargin = dp(8);
         linearLayout.addView(listView, layoutParams);
         final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setTitle(str).setView(linearLayout).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).create();

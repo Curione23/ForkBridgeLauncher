@@ -116,19 +116,19 @@ public class GameActivity extends AppCompatActivity {
         this.gamepadInputController = new GamepadInputController(this.binding.getRoot(), new GamepadInputController.MappingRequestListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda22
             @Override // ca.dnamobile.javalauncher.input.GamepadInputController.MappingRequestListener
             public final void onRequestControllerMapping() {
-                this.f$0.lambda$onCreate$0();
+                GameActivity.this.lambda$onCreate$0();
             }
         });
         configureWindow();
         lambda$startLaunchOnce$27(getString(R.string.game_surface_waiting));
         this.binding.minecraftSurface.setOnRenderingStartedListener(new MinecraftGLSurface.OnRenderingStartedListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda28
             public final void isStarted() {
-                this.f$0.lambda$onCreate$2();
+                GameActivity.this.lambda$onCreate$2();
             }
         });
         this.binding.minecraftSurface.setSurfaceReadyListener(new MinecraftGLSurface.SurfaceReadyListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda29
             public final void isReady() {
-                this.f$0.startLaunchOnce();
+                GameActivity.this.startLaunchOnce();
             }
         });
         this.binding.minecraftSurface.start(false);
@@ -139,7 +139,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda30
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.openInGameButtonOverlay();
+                GameActivity.this.openInGameButtonOverlay();
             }
         });
     }
@@ -149,7 +149,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda25
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$onCreate$1();
+                GameActivity.this.lambda$onCreate$1();
             }
         });
     }
@@ -171,7 +171,7 @@ public class GameActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda24
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$scheduleMinecraftSurfaceRefresh$3();
+                GameActivity.this.lambda$scheduleMinecraftSurfaceRefresh$3();
             }
         };
         this.binding.minecraftSurface.post(runnable);
@@ -401,7 +401,7 @@ public class GameActivity extends AppCompatActivity {
             touchControlsOverlay.setAppMenuListener(new TouchControlsOverlay.AppMenuListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda6
                 @Override // ca.dnamobile.javalauncher.controls.TouchControlsOverlay.AppMenuListener
                 public final void onTouchControlsMenuRequested() {
-                    this.f$0.openInGameButtonOverlay();
+                    GameActivity.this.openInGameButtonOverlay();
                 }
             });
             this.touchControlsOverlay.loadSelectedLayout();
@@ -488,7 +488,7 @@ public class GameActivity extends AppCompatActivity {
             root.post(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda27
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$configureLogOverlay$5(root);
+                    GameActivity.this.lambda$configureLogOverlay$5(root);
                 }
             });
             if (this.binding.textLogOverlay.length() == 0) {
@@ -548,7 +548,7 @@ public class GameActivity extends AppCompatActivity {
         this.binding.buttonGameSettings.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda5
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$configureInGameSettingsButton$6(view);
+                GameActivity.this.lambda$configureInGameSettingsButton$6(view);
             }
         });
         this.floatingGameSettingsOverlayController.refreshFromPreferences();
@@ -596,7 +596,7 @@ public class GameActivity extends AppCompatActivity {
         linearLayout.addView(buildInGameDialogAction("Controller / gamepad overlay", "Edit controller mappings, cursor behavior, FPS, log overlay, and floating button placement.", false, new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda10
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$9(alertDialogArr);
+                GameActivity.this.lambda$openInGameButtonOverlay$9(alertDialogArr);
             }
         }));
         String str2 = zIsTouchControlsEnabled ? "Hide touch controls" : "Show touch controls";
@@ -608,19 +608,19 @@ public class GameActivity extends AppCompatActivity {
         linearLayout.addView(buildInGameDialogAction(str2, str, false, new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda12
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$10(alertDialogArr);
+                GameActivity.this.lambda$openInGameButtonOverlay$10(alertDialogArr);
             }
         }));
         linearLayout.addView(buildInGameDialogAction("Edit touch controls", "Open the touch layout editor for the current control layout.", false, new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda13
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$11(alertDialogArr);
+                GameActivity.this.lambda$openInGameButtonOverlay$11(alertDialogArr);
             }
         }));
         linearLayout.addView(buildInGameDialogAction("Manage / import touch layouts", "Choose, import, or manage touch control layouts.", false, new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda14
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$12(alertDialogArr);
+                GameActivity.this.lambda$openInGameButtonOverlay$12(alertDialogArr);
             }
         }));
         TextView textView3 = new TextView(this);
@@ -633,7 +633,7 @@ public class GameActivity extends AppCompatActivity {
         linearLayout.addView(buildInGameDialogAction("Force close game", "Use this if Minecraft is frozen, crashed, or will not return to the launcher normally.", true, new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda15
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$13(alertDialogArr);
+                GameActivity.this.lambda$openInGameButtonOverlay$13(alertDialogArr);
             }
         }));
         final AlertDialog alertDialogCreate = new AlertDialog.Builder(this).setView(scrollView).create();
@@ -642,7 +642,7 @@ public class GameActivity extends AppCompatActivity {
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda16
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$openInGameButtonOverlay$14(alertDialogCreate, dialogInterface);
+                GameActivity.this.lambda$openInGameButtonOverlay$14(alertDialogCreate, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -655,7 +655,7 @@ public class GameActivity extends AppCompatActivity {
         GamepadMappingDialog.show(this, new GamepadMappingDialog.OnSettingsSavedListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda34
             @Override // ca.dnamobile.javalauncher.input.GamepadMappingDialog.OnSettingsSavedListener
             public final void onSettingsSaved() {
-                this.f$0.lambda$openInGameButtonOverlay$8();
+                GameActivity.this.lambda$openInGameButtonOverlay$8();
             }
         });
     }
@@ -665,7 +665,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda26
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openInGameButtonOverlay$7();
+                GameActivity.this.lambda$openInGameButtonOverlay$7();
             }
         });
     }
@@ -732,7 +732,7 @@ public class GameActivity extends AppCompatActivity {
         linearLayout.setOnTouchListener(new View.OnTouchListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda2
             @Override // android.view.View.OnTouchListener
             public final boolean onTouch(View view, MotionEvent motionEvent) {
-                return this.f$0.lambda$buildInGameDialogAction$16(view, motionEvent);
+                return GameActivity.this.lambda$buildInGameDialogAction$16(view, motionEvent);
             }
         });
         TextView textView = new TextView(this);
@@ -787,13 +787,13 @@ public class GameActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda32
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showForceCloseGameDialog$18(alertDialogCreate, dialogInterface);
+                GameActivity.this.lambda$showForceCloseGameDialog$18(alertDialogCreate, dialogInterface);
             }
         });
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda33
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showForceCloseGameDialog$19(dialogInterface);
+                GameActivity.this.lambda$showForceCloseGameDialog$19(dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -807,7 +807,7 @@ public class GameActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda9
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showForceCloseGameDialog$17(alertDialog, view);
+                GameActivity.this.lambda$showForceCloseGameDialog$17(alertDialog, view);
             }
         });
     }
@@ -838,7 +838,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda7
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$forceCloseGameAndReturnToLauncher$20();
+                GameActivity.this.lambda$forceCloseGameAndReturnToLauncher$20();
             }
         });
         stopLogOverlayTicker();
@@ -988,7 +988,7 @@ public class GameActivity extends AppCompatActivity {
             this.binding.scrollLogOverlay.post(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda31
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$refreshLogOverlay$22();
+                    GameActivity.this.lambda$refreshLogOverlay$22();
                 }
             });
         } catch (Throwable th) {
@@ -1111,7 +1111,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$scheduleForcedGameProcessExit$23();
+                GameActivity.this.lambda$scheduleForcedGameProcessExit$23();
             }
         });
         if (this.quitWatchdogHandler == null) {
@@ -1120,7 +1120,7 @@ public class GameActivity extends AppCompatActivity {
         this.quitWatchdogHandler.postDelayed(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda11
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$scheduleForcedGameProcessExit$24();
+                GameActivity.this.lambda$scheduleForcedGameProcessExit$24();
             }
         }, 2500L);
     }
@@ -1158,7 +1158,7 @@ public class GameActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda18
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$startLaunchOnce$25();
+                        GameActivity.this.lambda$startLaunchOnce$25();
                     }
                 });
                 try {
@@ -1173,19 +1173,19 @@ public class GameActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda19
                         @Override // java.lang.Runnable
                         public final void run() {
-                            this.f$0.lambda$startLaunchOnce$26();
+                            GameActivity.this.lambda$startLaunchOnce$26();
                         }
                     });
                     final int iRunGame = LaunchGame.runGame(this, this.versionId, accountLoad, iMax, iMax2, this.quickPlayWorld, new LaunchGame.StatusListener() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda20
                         @Override // ca.dnamobile.javalauncher.launcher.LaunchGame.StatusListener
                         public final void onStatus(String str) {
-                            this.f$0.lambda$startLaunchOnce$28(str);
+                            GameActivity.this.lambda$startLaunchOnce$28(str);
                         }
                     });
                     runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda21
                         @Override // java.lang.Runnable
                         public final void run() {
-                            this.f$0.lambda$startLaunchOnce$29(iRunGame);
+                            GameActivity.this.lambda$startLaunchOnce$29(iRunGame);
                         }
                     });
                 } catch (Throwable th2) {
@@ -1193,7 +1193,7 @@ public class GameActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda23
                         @Override // java.lang.Runnable
                         public final void run() {
-                            this.f$0.lambda$startLaunchOnce$30(th2);
+                            GameActivity.this.lambda$startLaunchOnce$30(th2);
                         }
                     });
                 }
@@ -1216,7 +1216,7 @@ public class GameActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda3
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$startLaunchOnce$27(str);
+                GameActivity.this.lambda$startLaunchOnce$27(str);
             }
         });
     }
@@ -1249,7 +1249,7 @@ public class GameActivity extends AppCompatActivity {
         getWindow().getDecorView().postDelayed(new Runnable() { // from class: ca.dnamobile.javalauncher.GameActivity$$ExternalSyntheticLambda4
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.finish();
+                GameActivity.this.finish();
             }
         }, 1000L);
     }

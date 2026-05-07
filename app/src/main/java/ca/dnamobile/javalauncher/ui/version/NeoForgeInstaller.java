@@ -623,7 +623,7 @@ public final class NeoForgeInstaller {
                         if (jSONObjectOptJSONObject == null) {
                             throw new IllegalStateException("Unable to find NeoForge install_profile install block.");
                         }
-                        jSONObjectOptJSONObject.put(TypedValues.AttributesType.S_TARGET, str);
+                        jSONObjectOptJSONObject.put("target", str);
                         jSONObject.put("install", jSONObjectOptJSONObject);
                     }
                     relaxGeneratedClientOutputHashes(jSONObject);

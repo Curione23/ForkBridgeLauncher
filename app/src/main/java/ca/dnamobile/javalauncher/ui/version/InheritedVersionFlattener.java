@@ -97,16 +97,16 @@ public final class InheritedVersionFlattener {
         ensureActivePathManager(context);
         String flattenedParentId = readFlattenedParentId(context, str);
         boolean z = false;
-        Object[] objArr = 0;
-        Object[] objArr2 = 0;
-        Object[] objArr3 = 0;
-        Object[] objArr4 = 0;
-        Object[] objArr5 = 0;
-        Object[] objArr6 = 0;
-        Object[] objArr7 = 0;
-        Object[] objArr8 = 0;
+        Object[] objArr = null;
+        Object[] objArr2 = null;
+        Object[] objArr3 = null;
+        Object[] objArr4 = null;
+        Object[] objArr5 = null;
+        Object[] objArr6 = null;
+        Object[] objArr7 = null;
+        Object[] objArr8 = null;
         if (flattenedParentId == null || flattenedParentId.trim().isEmpty()) {
-            return new ParentDeleteResult(z, objArr2 == true ? 1 : 0, "No flattened parent marker found.");
+            return new ParentDeleteResult(z, (objArr2 != null) ? 1 : 0, "No flattened parent marker found.");
         }
         String strTrim = flattenedParentId.trim();
         File canonicalFile = getVersionsRoot().getCanonicalFile();

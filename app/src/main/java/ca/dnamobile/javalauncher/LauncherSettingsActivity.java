@@ -109,7 +109,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.buttonSettingsBack.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda63
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$onCreate$0(view);
+                LauncherSettingsActivity.this.lambda$onCreate$0(view);
             }
         });
         applySettingsDefaultsOnce();
@@ -251,7 +251,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.settingsScrollView.post(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda8
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$scrollToSettingsSection$1(materialCardView);
+                LauncherSettingsActivity.this.lambda$scrollToSettingsSection$1(materialCardView);
             }
         });
     }
@@ -299,31 +299,31 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.buttonSignIn.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda66
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$2(view);
+                LauncherSettingsActivity.this.lambda$setupAccountUi$2(view);
             }
         });
         this.binding.buttonSignOut.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda68
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$3(view);
+                LauncherSettingsActivity.this.lambda$setupAccountUi$3(view);
             }
         });
         this.binding.buttonUseMicrosoftAccount.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda69
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$4(view);
+                LauncherSettingsActivity.this.lambda$setupAccountUi$4(view);
             }
         });
         this.binding.buttonManageOfflineAccounts.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda70
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$5(view);
+                LauncherSettingsActivity.this.lambda$setupAccountUi$5(view);
             }
         });
         this.binding.buttonRefreshMicrosoftSkin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda1
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$6(view);
+                LauncherSettingsActivity.this.lambda$setupAccountUi$6(view);
             }
         });
         AccountStore accountStore = this.accountStore;
@@ -370,7 +370,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         activityLauncherSettingsBinding.buttonChangeMicrosoftSkin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda52
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupChangeMicrosoftSkinButton$7(view);
+                LauncherSettingsActivity.this.lambda$setupChangeMicrosoftSkinButton$7(view);
             }
         });
     }
@@ -384,7 +384,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.sign_out_confirm_title).setMessage(R.string.sign_out_confirm_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_sign_out, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda54
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showSignOutConfirmationDialog$8(dialogInterface, i);
+                LauncherSettingsActivity.this.lambda$showSignOutConfirmationDialog$8(dialogInterface, i);
             }
         }).show();
     }
@@ -423,7 +423,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.microsoftSkinPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda61
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerMicrosoftSkinPickerLauncher$10((ActivityResult) obj);
+                LauncherSettingsActivity.this.lambda$registerMicrosoftSkinPickerLauncher$10((ActivityResult) obj);
             }
         });
     }
@@ -441,7 +441,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.offlineSkinPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda3
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerOfflineSkinPickerLauncher$11((ActivityResult) obj);
+                LauncherSettingsActivity.this.lambda$registerOfflineSkinPickerLauncher$11((ActivityResult) obj);
             }
         });
     }
@@ -501,7 +501,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchShowSharedInstalls.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda13
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupInstanceSettings$12(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupInstanceSettings$12(compoundButton, z);
             }
         });
         boolean zIsRemoveInheritedVanillaAfterLoaderInstall = LauncherPreferences.isRemoveInheritedVanillaAfterLoaderInstall(this);
@@ -510,7 +510,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchRemoveInheritedVanilla.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda14
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupInstanceSettings$13(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupInstanceSettings$13(compoundButton, z);
             }
         });
     }
@@ -564,25 +564,25 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.buttonImportRendererPlugin.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda19
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupRendererSettings$14(view);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$14(view);
             }
         });
         this.binding.buttonGrantRendererStorageAccess.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda20
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupRendererSettings$15(view);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$15(view);
             }
         });
         this.binding.buttonClearRendererPluginCache.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda21
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupRendererSettings$16(view);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$16(view);
             }
         });
         this.binding.buttonRefreshRenderers.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda23
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupRendererSettings$17(view);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$17(view);
             }
         });
         boolean zIsUseSystemVulkanDriver = LauncherPreferences.isUseSystemVulkanDriver(this);
@@ -591,7 +591,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchUseSystemVulkanDriver.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda24
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupRendererSettings$18(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$18(compoundButton, z);
             }
         });
         boolean zIsUseOpenGlForMinecraft26Plus = LauncherPreferences.isUseOpenGlForMinecraft26Plus(this);
@@ -600,7 +600,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchUseOpenGlFor26Plus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda25
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupRendererSettings$19(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupRendererSettings$19(compoundButton, z);
             }
         });
         Renderers.reload(this);
@@ -810,7 +810,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchUseNativeSurface.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda10
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupRenderSurfaceSettings$20(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupRenderSurfaceSettings$20(compoundButton, z);
             }
         });
         setupGameDisplaySettings();
@@ -850,7 +850,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.textGameResolutionScale.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda41
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupGameDisplaySettings$21(view);
+                LauncherSettingsActivity.this.lambda$setupGameDisplaySettings$21(view);
             }
         });
         boolean zIsForceFullscreenMode = LauncherPreferences.isForceFullscreenMode(this);
@@ -859,7 +859,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchForceFullscreenMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda42
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupGameDisplaySettings$22(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupGameDisplaySettings$22(compoundButton, z);
             }
         });
         boolean zIsAvoidRoundedDisplayCorners = LauncherPreferences.isAvoidRoundedDisplayCorners(this);
@@ -868,7 +868,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchAvoidRoundedCorners.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda43
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupGameDisplaySettings$23(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupGameDisplaySettings$23(compoundButton, z);
             }
         });
     }
@@ -901,7 +901,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda28
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$openResolutionScaleInputDialog$25(alertDialogCreate, editText, dialogInterface);
+                LauncherSettingsActivity.this.lambda$openResolutionScaleInputDialog$25(alertDialogCreate, editText, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -912,7 +912,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda9
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$openResolutionScaleInputDialog$24(editText, alertDialog, view);
+                LauncherSettingsActivity.this.lambda$openResolutionScaleInputDialog$24(editText, alertDialog, view);
             }
         });
     }
@@ -949,13 +949,13 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.buttonEditBuiltInController.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda30
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupControllerSettings$28(view);
+                LauncherSettingsActivity.this.lambda$setupControllerSettings$28(view);
             }
         });
         this.binding.buttonManageTouchControls.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda31
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupControllerSettings$29(view);
+                LauncherSettingsActivity.this.lambda$setupControllerSettings$29(view);
             }
         });
         setupHardwareMouseDpiScaleSettings();
@@ -972,7 +972,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda36
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$setupControllerSettings$26();
+                LauncherSettingsActivity.this.lambda$setupControllerSettings$26();
             }
         });
     }
@@ -982,7 +982,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         GamepadMappingDialog.show(this, new GamepadMappingDialog.OnSettingsSavedListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda55
             @Override // ca.dnamobile.javalauncher.input.GamepadMappingDialog.OnSettingsSavedListener
             public final void onSettingsSaved() {
-                this.f$0.lambda$setupControllerSettings$27();
+                LauncherSettingsActivity.this.lambda$setupControllerSettings$27();
             }
         });
     }
@@ -1064,7 +1064,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchTouchControlsEnabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda34
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$refreshControllerSettingsValues$30(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$refreshControllerSettingsValues$30(compoundButton, z);
             }
         });
         updateMinecraftTouchGestureSettingsUi();
@@ -1076,7 +1076,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchForceSdlControllerBridge.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda35
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$refreshControllerSettingsValues$31(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$refreshControllerSettingsValues$31(compoundButton, z);
             }
         });
     }
@@ -1101,7 +1101,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchMinecraftTouchGestures.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda38
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$updateMinecraftTouchGestureSettingsUi$32(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$updateMinecraftTouchGestureSettingsUi$32(compoundButton, z);
             }
         });
         boolean zIsDoubleTapToDropEnabled = ControlsPreferences.isDoubleTapToDropEnabled(this);
@@ -1112,7 +1112,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchDoubleTapToDrop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda39
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$updateMinecraftTouchGestureSettingsUi$33(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$updateMinecraftTouchGestureSettingsUi$33(compoundButton, z);
             }
         });
     }
@@ -1201,7 +1201,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda15
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerNotificationPermissionLauncher$34((Boolean) obj);
+                LauncherSettingsActivity.this.lambda$registerNotificationPermissionLauncher$34((Boolean) obj);
             }
         });
     }
@@ -1254,7 +1254,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchInstallNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda51
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z2) {
-                this.f$0.lambda$updateInstallNotificationSettingsUi$35(compoundButton, z2);
+                LauncherSettingsActivity.this.lambda$updateInstallNotificationSettingsUi$35(compoundButton, z2);
             }
         });
     }
@@ -1282,7 +1282,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.notification_permission_denied_title).setMessage(R.string.notification_permission_denied_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.notification_permission_open_settings, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda29
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showNotificationDeniedSettingsDialog$36(dialogInterface, i);
+                LauncherSettingsActivity.this.lambda$showNotificationDeniedSettingsDialog$36(dialogInterface, i);
             }
         }).show();
     }
@@ -1296,7 +1296,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.microphonePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda50
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerMicrophonePermissionLauncher$37((Boolean) obj);
+                LauncherSettingsActivity.this.lambda$registerMicrophonePermissionLauncher$37((Boolean) obj);
             }
         });
     }
@@ -1321,7 +1321,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.mobileGluesFolderPickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda44
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerMobileGluesFolderPickerLauncher$38((ActivityResult) obj);
+                LauncherSettingsActivity.this.lambda$registerMobileGluesFolderPickerLauncher$38((ActivityResult) obj);
             }
         });
     }
@@ -1346,7 +1346,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.buttonSimpleVoiceChatMicrophonePermission.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda62
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupSimpleVoiceChatSettings$39(view);
+                LauncherSettingsActivity.this.lambda$setupSimpleVoiceChatSettings$39(view);
             }
         });
     }
@@ -1397,7 +1397,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.simple_voice_chat_microphone_title).setMessage(R.string.simple_voice_chat_microphone_denied_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.simple_voice_chat_open_app_settings, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda40
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showSimpleVoiceChatPermissionDeniedDialog$40(dialogInterface, i);
+                LauncherSettingsActivity.this.lambda$showSimpleVoiceChatPermissionDeniedDialog$40(dialogInterface, i);
             }
         }).show();
     }
@@ -1415,7 +1415,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.checkKeepLogs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda57
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupLauncherSettings$41(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupLauncherSettings$41(compoundButton, z);
             }
         });
         boolean zIsShowInGameSettingsButton = LauncherPreferences.isShowInGameSettingsButton(this);
@@ -1424,7 +1424,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchShowInGameSettingsButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda58
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupLauncherSettings$42(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupLauncherSettings$42(compoundButton, z);
             }
         });
         boolean zIsShowGameLogOverlay = LauncherPreferences.isShowGameLogOverlay(this);
@@ -1433,14 +1433,14 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.switchShowGameLogOverlay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda59
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupLauncherSettings$43(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupLauncherSettings$43(compoundButton, z);
             }
         });
         setupFloatingGameOverlaySettings();
         this.binding.buttonShareLatestLog.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda60
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupLauncherSettings$44(view);
+                LauncherSettingsActivity.this.lambda$setupLauncherSettings$44(view);
             }
         });
         setupUpdateCheckerSettings();
@@ -1498,7 +1498,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda17
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupFloatingGameOverlaySettings$45(switchMaterial, compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupFloatingGameOverlaySettings$45(switchMaterial, compoundButton, z);
             }
         });
         linearLayout.addView(switchMaterial, new LinearLayout.LayoutParams(-1, -2));
@@ -1551,7 +1551,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda18
             @Override // android.view.View.OnClickListener
             public final void onClick(View view2) {
-                this.f$0.lambda$setupFloatingGameOverlaySettings$46(view2);
+                LauncherSettingsActivity.this.lambda$setupFloatingGameOverlaySettings$46(view2);
             }
         });
         LinearLayout.LayoutParams layoutParams6 = new LinearLayout.LayoutParams(-2, -2);
@@ -1604,7 +1604,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda26
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupUpdateCheckerSettings$47(compoundButton, z);
+                LauncherSettingsActivity.this.lambda$setupUpdateCheckerSettings$47(compoundButton, z);
             }
         });
         linearLayout.addView(checkBox, new LinearLayout.LayoutParams(-1, -2));
@@ -1614,7 +1614,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda27
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupUpdateCheckerSettings$48(view);
+                LauncherSettingsActivity.this.lambda$setupUpdateCheckerSettings$48(view);
             }
         });
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, -2);
@@ -1645,7 +1645,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda37
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupLegalLinkButton$49(z, str, str2, view);
+                LauncherSettingsActivity.this.lambda$setupLegalLinkButton$49(z, str, str2, view);
             }
         });
     }
@@ -1688,7 +1688,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         this.binding.textAllocatedRam.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda2
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupMemorySettings$50(view);
+                LauncherSettingsActivity.this.lambda$setupMemorySettings$50(view);
             }
         });
     }
@@ -1710,7 +1710,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda53
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$openMemoryInputDialog$52(alertDialogCreate, editText, dialogInterface);
+                LauncherSettingsActivity.this.lambda$openMemoryInputDialog$52(alertDialogCreate, editText, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -1721,7 +1721,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda56
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$openMemoryInputDialog$51(editText, alertDialog, view);
+                LauncherSettingsActivity.this.lambda$openMemoryInputDialog$51(editText, alertDialog, view);
             }
         });
     }
@@ -1963,14 +1963,14 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda0
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showOfflineAccountsDialog$54(alertDialogCreate, dialogInterface);
+                LauncherSettingsActivity.this.lambda$showOfflineAccountsDialog$54(alertDialogCreate, dialogInterface);
             }
         });
         this.offlineAccountsDialog = alertDialogCreate;
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda11
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showOfflineAccountsDialog$55(alertDialogCreate, dialogInterface);
+                LauncherSettingsActivity.this.lambda$showOfflineAccountsDialog$55(alertDialogCreate, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -1981,7 +1981,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda12
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showOfflineAccountsDialog$53(alertDialog, view);
+                LauncherSettingsActivity.this.lambda$showOfflineAccountsDialog$53(alertDialog, view);
             }
         });
     }
@@ -2065,7 +2065,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButtonBuildCompactDialogButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda45
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$buildOfflineAccountRow$56(account, view);
+                LauncherSettingsActivity.this.lambda$buildOfflineAccountRow$56(account, view);
             }
         });
         addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton, 0);
@@ -2073,7 +2073,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButtonBuildCompactDialogButton2.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda46
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$buildOfflineAccountRow$57(account, view);
+                LauncherSettingsActivity.this.lambda$buildOfflineAccountRow$57(account, view);
             }
         });
         addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton2, dp(6.0f));
@@ -2081,7 +2081,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButtonBuildCompactDialogButton3.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda47
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$buildOfflineAccountRow$58(account, view);
+                LauncherSettingsActivity.this.lambda$buildOfflineAccountRow$58(account, view);
             }
         });
         addButtonWithTopMargin(linearLayout3, materialButtonBuildCompactDialogButton3, dp(6.0f));
@@ -2195,7 +2195,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButtonBuildCompactDialogButton.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda4
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showEditOfflineAccountDialog$59(view);
+                LauncherSettingsActivity.this.lambda$showEditOfflineAccountDialog$59(view);
             }
         });
         linearLayout4.addView(materialButtonBuildCompactDialogButton, new LinearLayout.LayoutParams(0, -2, 1.0f));
@@ -2204,7 +2204,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         materialButtonBuildCompactDialogButton2.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda5
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showEditOfflineAccountDialog$60(zArr, imageView, textView, view);
+                LauncherSettingsActivity.this.lambda$showEditOfflineAccountDialog$60(zArr, imageView, textView, view);
             }
         });
         LinearLayout.LayoutParams layoutParams5 = new LinearLayout.LayoutParams(0, -2, 1.0f);
@@ -2214,13 +2214,13 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda6
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$showEditOfflineAccountDialog$62(alertDialogCreate, editText, account, zArr, dialogInterface);
+                LauncherSettingsActivity.this.lambda$showEditOfflineAccountDialog$62(alertDialogCreate, editText, account, zArr, dialogInterface);
             }
         });
         alertDialogCreate.setOnDismissListener(new DialogInterface.OnDismissListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda7
             @Override // android.content.DialogInterface.OnDismissListener
             public final void onDismiss(DialogInterface dialogInterface) {
-                this.f$0.lambda$showEditOfflineAccountDialog$63(dialogInterface);
+                LauncherSettingsActivity.this.lambda$showEditOfflineAccountDialog$63(dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -2244,7 +2244,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda48
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$showEditOfflineAccountDialog$61(editText, account, zArr, alertDialog, view);
+                LauncherSettingsActivity.this.lambda$showEditOfflineAccountDialog$61(editText, account, zArr, alertDialog, view);
             }
         });
     }
@@ -2398,7 +2398,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(getString(R.string.offline_account_delete_title, new Object[]{account.getBestDisplayName()})).setMessage(R.string.offline_account_delete_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.offline_account_delete_button, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda49
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$confirmDeleteOfflineAccount$64(account, dialogInterface, i);
+                LauncherSettingsActivity.this.lambda$confirmDeleteOfflineAccount$64(account, dialogInterface, i);
             }
         }).show();
     }
@@ -2444,7 +2444,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle(R.string.microsoft_skin_change_title).setMessage(getString(R.string.microsoft_skin_change_message, new Object[]{microsoftSkinTargetAccount.getBestDisplayName()})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.microsoft_skin_pick, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda16
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$showChangeMicrosoftSkinDialog$65(dialogInterface, i);
+                    LauncherSettingsActivity.this.lambda$showChangeMicrosoftSkinDialog$65(dialogInterface, i);
                 }
             }).show();
         }
@@ -2491,7 +2491,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         }).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.microsoft_skin_upload, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda67
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showConfirmMicrosoftSkinUploadDialog$67(file, skinModelTypeArr, dialogInterface, i);
+                LauncherSettingsActivity.this.lambda$showConfirmMicrosoftSkinUploadDialog$67(file, skinModelTypeArr, dialogInterface, i);
             }
         }).show();
     }
@@ -2518,7 +2518,7 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda32
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$uploadMicrosoftAccountSkin$70(microsoftSkinTargetAccount, file, skinModelType);
+                LauncherSettingsActivity.this.lambda$uploadMicrosoftAccountSkin$70(microsoftSkinTargetAccount, file, skinModelType);
             }
         }, "Microsoft Skin Upload").start();
     }
@@ -2530,14 +2530,14 @@ public final class LauncherSettingsActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda22
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$uploadMicrosoftAccountSkin$68();
+                    LauncherSettingsActivity.this.lambda$uploadMicrosoftAccountSkin$68();
                 }
             });
         } catch (Throwable th) {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.LauncherSettingsActivity$$ExternalSyntheticLambda33
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$uploadMicrosoftAccountSkin$69(th);
+                    LauncherSettingsActivity.this.lambda$uploadMicrosoftAccountSkin$69(th);
                 }
             });
         }

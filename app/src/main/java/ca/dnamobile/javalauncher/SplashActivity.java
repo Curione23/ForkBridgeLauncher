@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$startInstallThread$0();
+                SplashActivity.this.lambda$startInstallThread$0();
             }
         }, "JavaLauncher Unpack").start();
     }
@@ -104,7 +104,7 @@ public class SplashActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda1
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$openMainActivity$1();
+                SplashActivity.this.lambda$openMainActivity$1();
             }
         });
     }
@@ -126,7 +126,7 @@ public class SplashActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.SplashActivity$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$setStatus$2(str);
+                SplashActivity.this.lambda$setStatus$2(str);
             }
         });
     }

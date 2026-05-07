@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         textView2.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda41
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$maybeShowRequiredLegalAcceptanceDialog$0(view);
+                MainActivity.this.lambda$maybeShowRequiredLegalAcceptanceDialog$0(view);
             }
         });
         linearLayout.addView(textView2, new LinearLayout.LayoutParams(-1, -2));
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialogCreate.setOnShowListener(new DialogInterface.OnShowListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda42
             @Override // android.content.DialogInterface.OnShowListener
             public final void onShow(DialogInterface dialogInterface) {
-                this.f$0.lambda$maybeShowRequiredLegalAcceptanceDialog$2(alertDialogCreate, dialogInterface);
+                MainActivity.this.lambda$maybeShowRequiredLegalAcceptanceDialog$2(alertDialogCreate, dialogInterface);
             }
         });
         alertDialogCreate.show();
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.getButton(-1).setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda22
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$maybeShowRequiredLegalAcceptanceDialog$1(alertDialog, view);
+                MainActivity.this.lambda$maybeShowRequiredLegalAcceptanceDialog$1(alertDialog, view);
             }
         });
     }
@@ -297,13 +297,13 @@ public class MainActivity extends AppCompatActivity {
         this.binding.buttonSignIn.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda29
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$3(view);
+                MainActivity.this.lambda$setupAccountUi$3(view);
             }
         });
         this.binding.buttonSignOut.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda30
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupAccountUi$4(view);
+                MainActivity.this.lambda$setupAccountUi$4(view);
             }
         });
     }
@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(R.string.sign_out_confirm_title).setMessage(R.string.sign_out_confirm_message).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_sign_out, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda44
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i) {
-                this.f$0.lambda$showSignOutConfirmationDialog$5(dialogInterface, i);
+                MainActivity.this.lambda$showSignOutConfirmationDialog$5(dialogInterface, i);
             }
         }).show();
     }
@@ -382,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
         return OfflineAccessBlocker.requireActiveMicrosoftAccountBeforeInstall(this, this.accountStore, new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda23
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$requireActiveMicrosoftAccountBeforeCreateInstance$6(runnable);
+                MainActivity.this.lambda$requireActiveMicrosoftAccountBeforeCreateInstance$6(runnable);
             }
         });
     }
@@ -392,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
         return OfflineAccessBlocker.requireMicrosoftLoginHistoryBeforeLaunch(this, this.accountStore, new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda21
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$requireMicrosoftLoginHistoryBeforeLaunch$7(runnable);
+                MainActivity.this.lambda$requireMicrosoftLoginHistoryBeforeLaunch$7(runnable);
             }
         });
     }
@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity {
         this.binding.buttonRefreshVersions.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda10
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupInstanceUi$8(view);
+                MainActivity.this.lambda$setupInstanceUi$8(view);
             }
         });
         setupStorageLocationsButton();
@@ -416,26 +416,26 @@ public class MainActivity extends AppCompatActivity {
         this.binding.fabCreateInstance.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda12
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupInstanceUi$9(view);
+                MainActivity.this.lambda$setupInstanceUi$9(view);
             }
         });
         this.binding.buttonLaunchVersion.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda13
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupInstanceUi$10(view);
+                MainActivity.this.lambda$setupInstanceUi$10(view);
             }
         });
         this.binding.buttonOpenFolder.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda14
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupInstanceUi$11(view);
+                MainActivity.this.lambda$setupInstanceUi$11(view);
             }
         });
         if (this.binding.buttonOpenSettings != null) {
             this.binding.buttonOpenSettings.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda15
                 @Override // android.view.View.OnClickListener
                 public final void onClick(View view) {
-                    this.f$0.lambda$setupInstanceUi$12(view);
+                    MainActivity.this.lambda$setupInstanceUi$12(view);
                 }
             });
         }
@@ -443,13 +443,13 @@ public class MainActivity extends AppCompatActivity {
         this.binding.checkKeepLogs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda16
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupInstanceUi$13(compoundButton, z);
+                MainActivity.this.lambda$setupInstanceUi$13(compoundButton, z);
             }
         });
         this.binding.buttonShareLatestLog.setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda17
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupInstanceUi$14(view);
+                MainActivity.this.lambda$setupInstanceUi$14(view);
             }
         });
         this.binding.buttonLaunchVersion.setEnabled(false);
@@ -472,7 +472,7 @@ public class MainActivity extends AppCompatActivity {
             if (MainActivity.this.requireMicrosoftLoginHistoryBeforeLaunch(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$2$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onInstanceSelected$0(launcherInstance);
+                    MainActivity.this.lambda$onInstanceSelected$0(launcherInstance);
                 }
             })) {
                 MainActivity.this.selectedInstance = null;
@@ -542,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
         this.binding.switchUseNativeSurface.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda3
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupRenderSurfaceUi$15(compoundButton, z);
+                MainActivity.this.lambda$setupRenderSurfaceUi$15(compoundButton, z);
             }
         });
     }
@@ -572,7 +572,7 @@ public class MainActivity extends AppCompatActivity {
         this.binding.switchShowSharedInstalls.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda1
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$setupSharedInstallsUi$16(compoundButton, z);
+                MainActivity.this.lambda$setupSharedInstallsUi$16(compoundButton, z);
             }
         });
     }
@@ -646,7 +646,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda20
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$loadVersions$19(z);
+                MainActivity.this.lambda$loadVersions$19(z);
             }
         }, "Minecraft Version Manifest").start();
     }
@@ -658,7 +658,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda51
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadVersions$17(listLoadVersions, z);
+                    MainActivity.this.lambda$loadVersions$17(listLoadVersions, z);
                 }
             });
         } catch (Throwable th) {
@@ -666,7 +666,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda52
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$loadVersions$18(z, th);
+                    MainActivity.this.lambda$loadVersions$18(z, th);
                 }
             });
         }
@@ -827,7 +827,7 @@ public class MainActivity extends AppCompatActivity {
             arrayList.sort(new Comparator() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda25
                 @Override // java.util.Comparator
                 public final int compare(Object obj, Object obj2) {
-                    return this.f$0.lambda$applyInstanceFilter$20((LauncherInstance) obj, (LauncherInstance) obj2);
+                    return MainActivity.this.lambda$applyInstanceFilter$20((LauncherInstance) obj, (LauncherInstance) obj2);
                 }
             });
         }
@@ -955,13 +955,13 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda4
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupMainContentButtons$21(view);
+                MainActivity.this.lambda$setupMainContentButtons$21(view);
             }
         };
         View.OnClickListener onClickListener2 = new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda5
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupMainContentButtons$22(view);
+                MainActivity.this.lambda$setupMainContentButtons$22(view);
             }
         };
         View viewFindOrCreateMainActionButton = findOrCreateMainActionButton("buttonBrowseContentMain", TAG_BROWSE_CONTENT_MAIN_BUTTON, "Browse Modpacks", onClickListener, true);
@@ -984,7 +984,7 @@ public class MainActivity extends AppCompatActivity {
             lambda$requireMicrosoftLoginHistoryBeforeLaunch$7(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda18
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.openGlobalContentBrowser();
+                    MainActivity.this.openGlobalContentBrowser();
                 }
             });
         } else {
@@ -998,7 +998,7 @@ public class MainActivity extends AppCompatActivity {
             lambda$requireMicrosoftLoginHistoryBeforeLaunch$7(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda19
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.openModpackImportPicker();
+                    MainActivity.this.openModpackImportPicker();
                 }
             });
         } else {
@@ -1099,7 +1099,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda11
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$importModpackFromUri$23(uri, anonymousClass4);
+                MainActivity.this.lambda$importModpackFromUri$23(uri, anonymousClass4);
             }
         }, "Import Modpack").start();
     }
@@ -1132,7 +1132,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$4$$ExternalSyntheticLambda0
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onComplete$0(str, launcherInstance);
+                    MainActivity.this.lambda$onComplete$0(str, launcherInstance);
                 }
             });
         }
@@ -1158,7 +1158,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$4$$ExternalSyntheticLambda1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$onError$1(th);
+                    MainActivity.this.lambda$onError$1(th);
                 }
             });
         }
@@ -1189,7 +1189,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda37
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$setupStorageLocationsButton$24(view);
+                MainActivity.this.lambda$setupStorageLocationsButton$24(view);
             }
         };
         int identifier = getResources().getIdentifier("buttonStorageLocations", "id", getPackageName());
@@ -1256,12 +1256,12 @@ public class MainActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle(getString(R.string.storage_location_delete_title, new Object[]{storageLocation.getDisplayName()})).setMessage(getString(R.string.storage_location_delete_message, new Object[]{storageLocation.getDisplayName()})).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda48
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$showDeleteStorageLocationDialog$25(dialogInterface, i);
+                    MainActivity.this.lambda$showDeleteStorageLocationDialog$25(dialogInterface, i);
                 }
             }).setPositiveButton(R.string.storage_location_delete_confirm, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda49
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$showDeleteStorageLocationDialog$26(storageLocation, dialogInterface, i);
+                    MainActivity.this.lambda$showDeleteStorageLocationDialog$26(storageLocation, dialogInterface, i);
                 }
             }).show();
         }
@@ -1322,7 +1322,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda31
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshStorageLocationForAdapter$28(str, z);
+                MainActivity.this.lambda$refreshStorageLocationForAdapter$28(str, z);
             }
         }, "ScopedStorageMetadataRefresh").start();
     }
@@ -1339,7 +1339,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda58
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$refreshStorageLocationForAdapter$27(th, str, z);
+                MainActivity.this.lambda$refreshStorageLocationForAdapter$27(th, str, z);
             }
         });
     }
@@ -1466,7 +1466,7 @@ public class MainActivity extends AppCompatActivity {
         if (ControlsMain.toastAndBlockIfInvalidSignature(this) || requireActiveMicrosoftAccountBeforeCreateInstance(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda54
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$createInstanceFromRequest$29(request);
+                MainActivity.this.lambda$createInstanceFromRequest$29(request);
             }
         })) {
             return;
@@ -1490,13 +1490,13 @@ public class MainActivity extends AppCompatActivity {
         final MinecraftVersionInstaller.InstallProgressListener installProgressListener = new MinecraftVersionInstaller.InstallProgressListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda55
             @Override // ca.dnamobile.javalauncher.ui.version.MinecraftVersionInstaller.InstallProgressListener
             public final void onProgress(int i, String str2) {
-                this.f$0.dispatchInstallProgress(i, str2);
+                MainActivity.this.dispatchInstallProgress(i, str2);
             }
         };
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda56
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$createInstanceFromRequest$33(installProgressListener, minecraftVersionFindManifestVersionById, request);
+                MainActivity.this.lambda$createInstanceFromRequest$33(installProgressListener, minecraftVersionFindManifestVersionById, request);
             }
         }, "Create Launcher Instance").start();
     }
@@ -1526,7 +1526,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda45
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$createInstanceFromRequest$30(str2);
+                        MainActivity.this.lambda$createInstanceFromRequest$30(str2);
                     }
                 });
                 return;
@@ -1537,7 +1537,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda46
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$createInstanceFromRequest$31(launcherInstanceCreateInstance);
+                    MainActivity.this.lambda$createInstanceFromRequest$31(launcherInstanceCreateInstance);
                 }
             });
         } catch (Throwable th) {
@@ -1545,7 +1545,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda47
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$createInstanceFromRequest$32(th);
+                    MainActivity.this.lambda$createInstanceFromRequest$32(th);
                 }
             });
         }
@@ -1661,7 +1661,7 @@ public class MainActivity extends AppCompatActivity {
         this.notificationPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda36
             @Override // androidx.activity.result.ActivityResultCallback
             public final void onActivityResult(Object obj) {
-                this.f$0.lambda$registerNotificationPermissionLauncher$35((Boolean) obj);
+                MainActivity.this.lambda$registerNotificationPermissionLauncher$35((Boolean) obj);
             }
         });
     }
@@ -1691,7 +1691,7 @@ public class MainActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle(R.string.notification_permission_launch_title).setMessage(R.string.notification_permission_launch_message).setNegativeButton(R.string.notification_permission_not_now, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.notification_permission_allow, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda6
                 @Override // android.content.DialogInterface.OnClickListener
                 public final void onClick(DialogInterface dialogInterface, int i) {
-                    this.f$0.lambda$maybeShowNotificationPermissionLaunchPrompt$36(dialogInterface, i);
+                    MainActivity.this.lambda$maybeShowNotificationPermissionLaunchPrompt$36(dialogInterface, i);
                 }
             }).show();
         }
@@ -1862,7 +1862,7 @@ public class MainActivity extends AppCompatActivity {
         this.installDialogForegroundCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda26
             @Override // android.widget.CompoundButton.OnCheckedChangeListener
             public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                this.f$0.lambda$showInstallDialog$38(compoundButton, z);
+                MainActivity.this.lambda$showInstallDialog$38(compoundButton, z);
             }
         });
         linearLayout.addView(this.installDialogMessage);
@@ -1933,7 +1933,7 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this).setTitle(getString(R.string.delete_instance_title, new Object[]{launcherInstance.getName()})).setMessage(getString(i, new Object[]{launcherInstance.getName(), absolutePath})).setNegativeButton(android.R.string.cancel, (DialogInterface.OnClickListener) null).setPositiveButton(R.string.button_delete_forever, new DialogInterface.OnClickListener() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda24
             @Override // android.content.DialogInterface.OnClickListener
             public final void onClick(DialogInterface dialogInterface, int i2) {
-                this.f$0.lambda$showDeleteInstanceDialog$39(launcherInstance, dialogInterface, i2);
+                MainActivity.this.lambda$showDeleteInstanceDialog$39(launcherInstance, dialogInterface, i2);
             }
         }).show();
     }
@@ -1949,7 +1949,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda50
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$deleteInstance$42(launcherInstance);
+                MainActivity.this.lambda$deleteInstance$42(launcherInstance);
             }
         }, "Delete Launcher Instance").start();
     }
@@ -1962,7 +1962,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda27
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteInstance$40(launcherInstance);
+                    MainActivity.this.lambda$deleteInstance$40(launcherInstance);
                 }
             });
         } catch (Throwable th) {
@@ -1970,7 +1970,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda28
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$deleteInstance$41(th, launcherInstance);
+                    MainActivity.this.lambda$deleteInstance$41(th, launcherInstance);
                 }
             });
         }
@@ -2007,7 +2007,7 @@ public class MainActivity extends AppCompatActivity {
         restoreScopedStorageForInstanceDetails(launcherInstance, new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda38
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$selectAndOpenInstance$43(launcherInstance);
+                MainActivity.this.lambda$selectAndOpenInstance$43(launcherInstance);
             }
         });
     }
@@ -2024,7 +2024,7 @@ public class MainActivity extends AppCompatActivity {
         if (ControlsMain.toastAndBlockIfInvalidSignature(this) || requireMicrosoftLoginHistoryBeforeLaunch(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda39
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$quickLaunchInstance$44(launcherInstance);
+                MainActivity.this.lambda$quickLaunchInstance$44(launcherInstance);
             }
         })) {
             return;
@@ -2039,7 +2039,7 @@ public class MainActivity extends AppCompatActivity {
             restoreScopedStorageForLaunchIfNeeded(launcherInstance, new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda40
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$quickLaunchInstance$45(launcherInstance);
+                    MainActivity.this.lambda$quickLaunchInstance$45(launcherInstance);
                 }
             });
         }
@@ -2055,14 +2055,14 @@ public class MainActivity extends AppCompatActivity {
         } else if (!requireMicrosoftLoginHistoryBeforeLaunch(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda8
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.launchSelectedInstance();
+                MainActivity.this.launchSelectedInstance();
             }
         }) && SimpleVoiceChatCompat.ensureMicrophoneReadyBeforeLaunch(this, this.selectedInstance.getGameDirectory())) {
             final LauncherInstance launcherInstance = this.selectedInstance;
             restoreScopedStorageForLaunchIfNeeded(launcherInstance, new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda9
                 @Override // java.lang.Runnable
                 public final void run() {
-                    this.f$0.lambda$launchSelectedInstance$46(launcherInstance);
+                    MainActivity.this.lambda$launchSelectedInstance$46(launcherInstance);
                 }
             });
         }
@@ -2078,7 +2078,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda43
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$restoreScopedStorageForInstanceDetails$48(launcherInstance, runnable);
+                MainActivity.this.lambda$restoreScopedStorageForInstanceDetails$48(launcherInstance, runnable);
             }
         }, "ScopedStorageInstanceDetails").start();
     }
@@ -2096,7 +2096,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda7
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$restoreScopedStorageForInstanceDetails$47(th, runnable);
+                MainActivity.this.lambda$restoreScopedStorageForInstanceDetails$47(th, runnable);
             }
         });
     }
@@ -2131,7 +2131,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda35
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$restoreScopedStorageForLaunchIfNeeded$52(runnable);
+                MainActivity.this.lambda$restoreScopedStorageForLaunchIfNeeded$52(runnable);
             }
         }, "ScopedStorageLaunchRestore").start();
     }
@@ -2142,7 +2142,7 @@ public class MainActivity extends AppCompatActivity {
             StorageLocationStore.syncSelectedTreeToMirror(this, new SafMinecraftMirror.Progress() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda32
                 @Override // ca.dnamobile.javalauncher.storage.SafMinecraftMirror.Progress
                 public final void onProgress(int i, String str) {
-                    this.f$0.lambda$restoreScopedStorageForLaunchIfNeeded$50(i, str);
+                    MainActivity.this.lambda$restoreScopedStorageForLaunchIfNeeded$50(i, str);
                 }
             });
             th = null;
@@ -2153,7 +2153,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda34
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$restoreScopedStorageForLaunchIfNeeded$51(th, runnable);
+                MainActivity.this.lambda$restoreScopedStorageForLaunchIfNeeded$51(th, runnable);
             }
         });
     }
@@ -2163,7 +2163,7 @@ public class MainActivity extends AppCompatActivity {
         this.mainHandler.post(new Runnable() { // from class: ca.dnamobile.javalauncher.MainActivity$$ExternalSyntheticLambda53
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$restoreScopedStorageForLaunchIfNeeded$49(str, i);
+                MainActivity.this.lambda$restoreScopedStorageForLaunchIfNeeded$49(str, i);
             }
         });
     }

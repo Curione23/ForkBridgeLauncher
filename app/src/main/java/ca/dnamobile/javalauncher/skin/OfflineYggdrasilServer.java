@@ -74,7 +74,7 @@ public final class OfflineYggdrasilServer {
         Thread thread = new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.skin.OfflineYggdrasilServer$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.acceptLoop();
+                OfflineYggdrasilServer.this.acceptLoop();
             }
         }, "JavaLauncherOfflineYggdrasilServer");
         this.serverThread = thread;
@@ -117,7 +117,7 @@ public final class OfflineYggdrasilServer {
                 Thread thread = new Thread(new Runnable() { // from class: ca.dnamobile.javalauncher.skin.OfflineYggdrasilServer$$ExternalSyntheticLambda1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        this.f$0.lambda$acceptLoop$0(socketAccept);
+                        OfflineYggdrasilServer.this.lambda$acceptLoop$0(socketAccept);
                     }
                 }, "JavaLauncherOfflineYggdrasilRequest");
                 thread.setDaemon(true);

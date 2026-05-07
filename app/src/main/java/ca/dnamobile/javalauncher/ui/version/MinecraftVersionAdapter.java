@@ -69,7 +69,7 @@ public final class MinecraftVersionAdapter extends RecyclerView.Adapter<VersionV
         versionViewHolder.binding.getRoot().setOnClickListener(new View.OnClickListener() { // from class: ca.dnamobile.javalauncher.ui.version.MinecraftVersionAdapter$$ExternalSyntheticLambda0
             @Override // android.view.View.OnClickListener
             public final void onClick(View view) {
-                this.f$0.lambda$onBindViewHolder$0(minecraftVersion, view);
+                MinecraftVersionAdapter.this.lambda$onBindViewHolder$0(minecraftVersion, view);
             }
         });
     }

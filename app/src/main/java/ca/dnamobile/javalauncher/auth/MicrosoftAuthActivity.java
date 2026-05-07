@@ -99,7 +99,7 @@ public final class MicrosoftAuthActivity extends Activity {
         final Runnable runnable = new Runnable() { // from class: ca.dnamobile.javalauncher.auth.MicrosoftAuthActivity$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                this.f$0.lambda$startSession$0(z);
+                MicrosoftAuthActivity.this.lambda$startSession$0(z);
             }
         };
         if (!z) {

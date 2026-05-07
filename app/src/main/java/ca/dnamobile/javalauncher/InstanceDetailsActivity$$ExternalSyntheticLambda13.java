@@ -11,6 +11,6 @@ public final /* synthetic */ class InstanceDetailsActivity$$ExternalSyntheticLam
 
     @Override // java.lang.Runnable
     public final void run() {
-        this.f$0.enableFullscreen();
+        InstanceDetailsActivity$$ExternalSyntheticLambda13.this.enableFullscreen();
     }
 }
