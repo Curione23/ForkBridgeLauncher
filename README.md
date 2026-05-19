@@ -1,3 +1,6 @@
+# Before anything, LOOK AT DNAMobile's PAST
+## https://docs.google.com/document/d/1MpblBzFEjJZDVkVChou8sdy7MuB2V_bck6MXDAGt4a0/edit?tab=t.0
+
 ## ForkBridgeLauncher, an alternative without the Minecraft account requirement
 
 This fork exists because DNAMobile's actions are problematic.
